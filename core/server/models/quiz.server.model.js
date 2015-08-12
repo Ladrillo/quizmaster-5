@@ -6,14 +6,10 @@ var QuizSchema = new Schema({
         type: String,
         required: true
     },
-    
     created: {
         type: Date,
         default: Date.now
     }
-
-
 });
-
 
 mongoose.model('Quiz', QuizSchema);
