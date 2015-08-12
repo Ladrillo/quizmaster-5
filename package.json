@@ -1,21 +1,21 @@
 {
-  "name": "mean-boilerplate",
-  "version": "1.0.0",
-  "description": "This will be a fully wired  MEAN stack sample app.",
+  "name": "quizmaster-5",
+  "version": "0.0.5",
+  "description": "quiz manager and test engine",
   "main": "server.js",
   "dependencies": {
     "body-parser": "^1.13.3",
     "compression": "^1.5.2",
     "connect-flash": "^0.1.1",
     "cors": "^2.7.1",
-    "ejs": "^2.3.3",
-    "express": "^4.13.3",
-    "express-session": "^1.11.3",
     "method-override": "^2.3.5",
     "mongoose": "^4.1.1",
-    "morgan": "^1.6.1",
     "passport": "^0.2.2",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "ejs": "^2.3.3",
+    "express-session": "^1.11.3",
+    "morgan": "^1.6.1",
+    "express": "^4.13.3"
   },
   "devDependencies": {},
   "scripts": {
@@ -24,12 +24,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Ladrillo/mean-boilerplate.git"
+    "url": "git+https://github.com/Ladrillo/quizmaster-5.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Gabriel Cabrejas",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Ladrillo/mean-boilerplate/issues"
+    "url": "https://github.com/Ladrillo/quizmaster-5/issues"
   },
-  "homepage": "https://github.com/Ladrillo/mean-boilerplate#readme"
+  "homepage": "https://github.com/Ladrillo/quizmaster-5#readme"
 }
