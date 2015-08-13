@@ -1,5 +1,5 @@
 // ENVIRONMENT VARIABLES
 module.exports = {
-    db: 'mongodb://quizzes:quizzes@ds033163.mongolab.com:33163/quizzes',
+    db: 'mongodb://user:password@ds033113.mongolab.com:33113/quizmaster',
     sessionSecret: 'productionSessionSecret'
 };

@@ -1,33 +1,31 @@
 // here we handle actions for specific routes and verbs
 // TODAVIA ESTA HECHO UNA MIERDA
 
-
-
 var Quiz = require('mongoose').model('Quiz');
 
 
 exports.postQuiz = function (req, res, next) {
-    // var quiz = new Quiz(req.body);
-    // quiz.save(function (err) {
-    //     if (err) res.send(err);
-    //     else res.json(quiz);
-    // });
+    var quiz = new Quiz(req.body);
+    quiz.save(function (err) {
+        if (err) res.send(err);
+        else res.json(quiz);
+    });
 };
 
 
 exports.getQuizzes = function (req, res) {
-    //     var query = {};
-    //     if (req.query.species && req.query.region) {
-    //         query.species = req.query.species;
-    //         query.region = req.query.region;
-    //     }
-    //     else if (req.query.species) query.species = req.query.species;
-    //     else if (req.query.region) query.region = req.query.region;
-    //
-    //     Quiz.find(query, function (err, quizzes) {
-    //         if (err) res.status(500).send(err);
-    //         else res.json(quizzes);
-    //     });
+    var query = {};
+    // if (req.query.species && req.query.region) {
+    //     query.species = req.query.species;
+    //     query.region = req.query.region;
+    // }
+    // else if (req.query.species) query.species = req.query.species;
+    // else if (req.query.region) query.region = req.query.region;
+
+    Quiz.find(query, function (err, quizzes) {
+        if (err) res.status(500).send(err);
+        else res.json(quizzes);
+    });
 };
 
 
