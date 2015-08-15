@@ -63,10 +63,7 @@ module.exports = function () {
 
 
     // THIS WILL BE ANGULAR APP
-    // here we set the static files folder
     // needs to come after setting the rendering engine
-    // the route to link to static resources from our
-    // website will start at 'assets'; see index.ejs
     app.use(express.static('./core/client'));
 
     return app;

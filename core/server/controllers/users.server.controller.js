@@ -15,8 +15,8 @@ exports.postUser = function (req, res, next) {
 
 exports.getUsers = function (req, res) {
     var query = {};
-    User.find(query, function (err, userzes) {
+    User.find(query, function (err, users) {
         if (err) res.status(500).send(err);
-        else res.json(userzes);
+        else res.json(users);
     });
 };
