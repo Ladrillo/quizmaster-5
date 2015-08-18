@@ -6,9 +6,12 @@
             return {
                 restrict: 'E',
                 templateUrl: 'directives/words/words.template.html',
-                controller: function ($scope) {
+                scope: {
+                    list: "="
+                },
+                controller: function ($scope, $q, dataService) {
+
                     $scope.description = "Subjects";
-                    $scope.list = ["Math", "Biology", "English"];
                     $scope.editing = false;
                     $scope.editWord = function () {
                         this.editing = true;
@@ -19,11 +22,6 @@
                 }
             };
         });
-
-
-
-
-
 
 
 

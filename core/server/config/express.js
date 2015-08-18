@@ -61,6 +61,7 @@ module.exports = function () {
     require('../routes/users.server.routes.js')(app);
     require('../routes/quizzes.server.routes.js')(app);
     require('../routes/subjects.server.routes.js')(app);
+    require('../routes/keywords.server.routes.js')(app);
 
 
     // THIS WILL BE ANGULAR APP

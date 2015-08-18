@@ -1,7 +1,7 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
-var SubjectSchema = new mongoose.Schema({
+var KeywordSchema = new mongoose.Schema({
     name: {
         required: true,
         trim: true,
@@ -13,4 +13,4 @@ var SubjectSchema = new mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model('Subject', SubjectSchema);
+module.exports = mongoose.model('Keyword', KeywordSchema);

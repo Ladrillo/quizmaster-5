@@ -7,5 +7,6 @@ module.exports = function () {
     require('../models/quiz.server.model');
     require('../models/user.server.model');
     require('../models/subject.server.model');
+    require('../models/keyword.server.model');
     return db;
 };

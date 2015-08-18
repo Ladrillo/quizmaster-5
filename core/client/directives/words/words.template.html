@@ -18,10 +18,10 @@
         <br>
         <!--lista de palabras-->
         <div ng-repeat="word in list | filter:searchWord" class="checkbox">
-            <!--checkbox visibles no editando-->
+            <!--checkboxes visibles, no editando-->
             <div ng-hide="!!editing">
                 <label>
-                    <input type="checkbox"> {{ word }}
+                    <input type="checkbox"> {{ word.name }}
                 </label>
                 <div class="pull-right">
                     <button ng-click="editWord()" type="button" class="btn btn-xs btn-link">Edit</button>
@@ -30,7 +30,7 @@
             </div>
             <!--editando-->
             <div ng-show="!!editing" class="input-group">
-                <input ng-model="word" type="text" class="form-control" placeholder="Create New">
+                <input ng-model="word.name" type="text" class="form-control" placeholder="Create New">
                 <span class="input-group-btn">
                         <button ng-click="saveWord()" class="btn btn-primary" type="button">Save</button>
                     </span>
@@ -41,3 +41,4 @@
         <button type="button" class="btn btn-danger pull-right">Select</button>
     </div>
 </div>
+<!--{{ list }}-->
