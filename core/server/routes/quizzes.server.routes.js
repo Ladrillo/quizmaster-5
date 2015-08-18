@@ -4,7 +4,7 @@ var quizzesCtrl = require('../controllers/quizzes.server.controller.js');
 module.exports = function (app) {
     app.route('/api/quizzes')
         .post(quizzesCtrl.postQuiz)
-        // .get(quizzesCtrl.getQuizzes);
+        .get(quizzesCtrl.getQuizzes);
 
     // app.route('/api/quizzes/:id')
     //     .get(quizzesCtrl.getQuiz)

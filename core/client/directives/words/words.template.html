@@ -1,0 +1,43 @@
+<div class="panel panel-primary">
+    <!--título del panel-->
+    <div class="panel-heading">
+        <h3 class="panel-title">{{ description }}</h3>
+    </div>
+    <!--cuerpo del panel-->
+    <div class="panel-body">
+        <!--busqueda de palabras-->
+        <input ng-model="searchWord" type="text" class="form-control" placeholder="Search for {{ description }}">
+        <br>
+        <!--creación de nuevas palabras-->
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Create New">
+            <span class="input-group-btn">
+                    <button class="btn btn-primary" type="button">Save</button>
+                </span>
+        </div>
+        <br>
+        <!--lista de palabras-->
+        <div ng-repeat="word in list | filter:searchWord" class="checkbox">
+            <!--checkbox visibles no editando-->
+            <div ng-hide="!!editing">
+                <label>
+                    <input type="checkbox"> {{ word }}
+                </label>
+                <div class="pull-right">
+                    <button ng-click="editWord()" type="button" class="btn btn-xs btn-link">Edit</button>
+                    <button ng-click="deleteWord()" type="button" class="btn btn-xs btn-link">Delete</button>
+                </div>
+            </div>
+            <!--editando-->
+            <div ng-show="!!editing" class="input-group">
+                <input ng-model="word" type="text" class="form-control" placeholder="Create New">
+                <span class="input-group-btn">
+                        <button ng-click="saveWord()" class="btn btn-primary" type="button">Save</button>
+                    </span>
+            </div>
+        </div>
+        <br>
+        <!--selección de palabra-->
+        <button type="button" class="btn btn-danger pull-right">Select</button>
+    </div>
+</div>

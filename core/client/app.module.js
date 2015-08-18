@@ -2,7 +2,7 @@
 (function () {
     "use strict";
 
-    angular.module('app', [
+    angular.module('quizmaster', [
         'ui.router',
         'ngSanitize'
     ]);

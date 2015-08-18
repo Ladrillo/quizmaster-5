@@ -13,8 +13,9 @@ exports.postQuiz = function (req, res, next) {
 
 
 exports.getQuizzes = function (req, res) {
-    var query = {};
-    Quiz.find(query, function (err, quizzes) {
+    Quiz.find({})
+    .populate('user')
+    .exec(function (err, quizzes) {
         if (err) res.status(500).send(err);
         else res.json(quizzes);
     });

@@ -3,8 +3,8 @@ var usersCtrl = require('../controllers/users.server.controller.js');
 
 module.exports = function (app) {
     app.route('/api/users')
-        .post(usersCtrl.postUser);
-        // .get(usersCtrl.getUsers);
+        .post(usersCtrl.postUser)
+        .get(usersCtrl.getUsers);
 
     // app.route('/api/users/:id')
     //     .get(usersCtrl.getUser)

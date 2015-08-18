@@ -1,31 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <title>Angular Template</title>
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <title>Quizmaster</title>
+</head>
 
-    <body ng-app="app">
+<body ng-app="quizmaster">
+    <div class="container">
         <ul>
             <li>
                 <a href="#/">Home</a>
             </li>
         </ul>
-        <h1>Angular Template</h1>
+        <h1>Quizmaster</h1>
         <h3>App wired: {{ true }}</h3>
         <div ui-view></div>
-        <!-- Dependencies -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-sanitize.js"></script>
-        <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
-        <script src="https://cdn.firebase.com/libs/angularfire/1.1.2/angularfire.min.js"></script>
-        <script src="app.module.js"></script>
-        <script src="app.routes.js"></script>
-        <script src="components/home/homeController.js"></script>
-    </body>
+    </div>
+    <!-- Dependencies -->
+    <script>
+        document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>');
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-sanitize.js"></script>
+    <script src="app.module.js"></script>
+    <script src="app.routes.js"></script>
+    <script src="directives/words/words.directive.js"></script>
+    <script src="components/test/test.client.controller.js"></script>
+
+</body>
 
 </html>
