@@ -6,10 +6,10 @@
             $urlRouterProvider.otherwise('/');
 
             $stateProvider
-                .state('home', {
-                    url: '/',
-                    templateUrl: 'components/test/test.client.template.html',
-                    controller: 'testController'
+                .state('words', {
+                    url: '/words',
+                    templateUrl: 'components/words/words.client.template.html',
+                    controller: 'wordsController'
                 });
         });
 

@@ -4,6 +4,7 @@ var mongoose = require('mongoose'),
 var SubjectSchema = new mongoose.Schema({
     name: {
         required: true,
+        unique: true,
         trim: true,
         type: String
     },

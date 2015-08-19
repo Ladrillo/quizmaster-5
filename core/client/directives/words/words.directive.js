@@ -2,16 +2,18 @@
     "use strict";
 
     angular.module('quizmaster')
-        .directive('words', function () {
+        .directive('gabeWords', function () {
             return {
                 restrict: 'E',
                 templateUrl: 'directives/words/words.template.html',
                 scope: {
                     list: "=",
-                    kind: "="
+                    kind: "=",
+                    newWord: "=",
+                    addWord: "&"
                 },
                 controller: function ($scope) {
-
+                    $scope.newWord = "";
                     $scope.description = "Subjects";
                     $scope.editing = false;
                     $scope.editWord = function () {
