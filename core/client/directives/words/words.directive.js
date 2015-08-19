@@ -7,9 +7,10 @@
                 restrict: 'E',
                 templateUrl: 'directives/words/words.template.html',
                 scope: {
-                    list: "="
+                    list: "=",
+                    kind: "="
                 },
-                controller: function ($scope, $q, dataService) {
+                controller: function ($scope) {
 
                     $scope.description = "Subjects";
                     $scope.editing = false;

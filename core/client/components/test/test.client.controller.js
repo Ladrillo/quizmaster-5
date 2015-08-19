@@ -21,10 +21,12 @@
         function getSubjectsSuccess(data) {
             console.log(data);
             $scope.subjects = data; // atención
+            $scope.subjectsKind = "Subjects";
         }
         function getKeywordsSuccess(data) {
             console.log(data);
             $scope.keywords = data; // atención
+            $scope.keywordsKind = "Keywords";
         }
         function getError(errorMsg) {
             console.log('Error: ' + errorMsg);

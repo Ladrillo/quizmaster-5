@@ -18,3 +18,34 @@ exports.getKeywords = function (req, res) {
         else res.json(keywords);
     });
 };
+
+
+exports.getOneKeyword = function (req, res) {
+    Keyword.findById(req.params.id)
+    .exec(function (err, keyword) {
+        if (err) res.status(500).send(err);
+        else res.json(keyword);
+    });
+};
+
+
+exports.putKeyword = function (req, res) {
+    Keyword.findById(req.params.id)
+        .exec(function (err, keyword) {
+            if (err) res.status(500).send(err);
+            else {
+                keyword.name = req.body.name;
+                keyword.save();
+                res.json(keyword);
+            }
+        });
+};
+
+
+exports.deleteKeyword = function (req, res) {
+    Keyword.findById(req.params.id)
+        .remove(function (err) {
+            if (err) res.status(500).send(err);
+            else res.status(204).send('Removed');
+        });
+};

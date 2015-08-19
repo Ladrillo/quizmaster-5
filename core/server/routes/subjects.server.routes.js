@@ -6,9 +6,8 @@ module.exports = function (app) {
         .post(subjectsCtrl.postSubject)
         .get(subjectsCtrl.getSubjects);
 
-    // app.route('/api/subjects/:id')
-    //     .get(subjectsCtrl.getSubject)
-    //     .patch(subjectsCtrl.patchSubject)
-    //     .put(subjectsCtrl.putSubject)
-    //     .delete(subjectsCtrl.deleteSubject);
+    app.route('/api/subjects/:id')
+        .get(subjectsCtrl.getOneSubject)
+        .put(subjectsCtrl.putSubject)
+        .delete(subjectsCtrl.deleteSubject);
 };

@@ -6,9 +6,8 @@ module.exports = function (app) {
         .post(keywordsCtrl.postKeyword)
         .get(keywordsCtrl.getKeywords);
 
-    // app.route('/api/keywords/:id')
-    //     .get(keywordsCtrl.getKeywords)
-    //     .patch(keywordsCtrl.patchKeywords)
-    //     .put(keywordsCtrl.putKeywords)
-    //     .delete(keywordsCtrl.deleteKeywords);
+    app.route('/api/keywords/:id')
+        .get(keywordsCtrl.getOneKeyword)
+        .put(keywordsCtrl.putKeyword)
+        .delete(keywordsCtrl.deleteKeyword);
 };
