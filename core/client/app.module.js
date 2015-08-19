@@ -4,7 +4,7 @@
 
     angular.module('quizmaster', [
         'ui.router',
-        'ngSanitize'
+        'ngSanitize',
     ]);
 
 

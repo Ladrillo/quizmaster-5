@@ -24,15 +24,17 @@
                     <input type="checkbox"> {{ word.name }}
                 </label>
                 <div class="pull-right">
-                    <button ng-click="editWord()" type="button" class="btn btn-xs btn-link">Edit</button>
-                    <button ng-click="deleteWord()" type="button" class="btn btn-xs btn-link">Delete</button>
+                    <button ng-hide="!!deleting" ng-click="flipEditing(); setCurrentWord(word)" type="button" class="btn btn-xs btn-link">Edit</button>
+                    <button ng-hide="!!deleting" ng-click="flipDeleting(); setCurrentWord(word)" type="button" class="btn btn-xs btn-link">Delete</button>
+                    <button ng-show="!!deleting" ng-click="flipDeleting(); eraseWord()" class="btn btn-xs btn-danger">Delete!</button>
+                    <button ng-show="!!deleting" ng-click="flipDeleting()" type="button" class="btn btn-xs btn-primary">Cancel</button>
                 </div>
             </div>
             <!--editando-->
             <div ng-show="!!editing" class="input-group">
-                <input ng-model="word.name" type="text" class="form-control" placeholder="Create New">
+                <input ng-model="currentWord.name" type="text" class="form-control" placeholder="Create New">
                 <span class="input-group-btn">
-                    <button ng-click="saveWord()" class="btn btn-primary" type="button">Save</button>
+                    <button ng-click="flipEditing(); saveWord()" class="btn btn-primary" type="button">Save</button>
                 </span>
             </div>
         </div>

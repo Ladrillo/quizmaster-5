@@ -5,22 +5,38 @@
         .directive('gabeWords', function () {
             return {
                 restrict: 'E',
+
                 templateUrl: 'directives/words/words.template.html',
+
                 scope: {
                     list: "=",
                     kind: "=",
+
                     newWord: "=",
-                    addWord: "&"
+                    addWord: "&",
+
+                    currentWord: "=",
+                    saveWord: "&",
+                    eraseWord: "&"
+
                 },
+
                 controller: function ($scope) {
                     $scope.newWord = "";
-                    $scope.description = "Subjects";
+
                     $scope.editing = false;
-                    $scope.editWord = function () {
-                        this.editing = true;
+                    $scope.flipEditing = function () {
+                        this.editing = !this.editing;
                     };
-                    $scope.saveWord = function () {
-                        this.editing = false;
+
+                    $scope.deleting = false;
+                    $scope.flipDeleting = function () {
+                        this.deleting = !this.deleting;
+                    };
+
+                    $scope.currentWord = {};
+                    $scope.setCurrentWord = function (word) {
+                        $scope.currentWord = word;
                     };
                 }
             };
