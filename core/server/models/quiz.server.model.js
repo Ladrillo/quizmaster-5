@@ -14,12 +14,10 @@ var QuizSchema = new mongoose.Schema({
     },
     truthies: {
         required: true,
-        trim: true,
         type: [String]
     },
     falsies: {
         required: true,
-        trim: true,
         type: [String]
     },
     created: {
@@ -31,3 +29,12 @@ var QuizSchema = new mongoose.Schema({
 });
 
 module.exports = mongoose.model('Quiz', QuizSchema);
+
+var example =
+    {
+        "instructions": "Translate this, bitch!",
+        "stem": "Javascript...",
+        "truthies": ["hola", "adios"],
+        "falsies": ["mal", "asunto"],
+        "user": "55cea7d98f799c044bee920f"
+    };

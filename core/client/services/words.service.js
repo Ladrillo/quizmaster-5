@@ -80,6 +80,7 @@
                 .then(sendResponseData)
                 .catch(sendResponseError);
         }
+        
 
         function postNewKeyword(newKeyword) { // post new
             return $http({

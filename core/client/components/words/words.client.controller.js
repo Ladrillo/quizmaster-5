@@ -21,7 +21,7 @@
                     $scope.subjectsKind = "Subjects";
                 })
                 .catch(function (errorMsg) {
-                    console.log('Error: ' + errorMsg);
+                    $log.error('Error: ' + errorMsg);
                 });
 
         }
@@ -74,7 +74,7 @@
                     $scope.keywordsKind = "Keywords";
                 })
                 .catch(function (errorMsg) {
-                    console.log('Error: ' + errorMsg);
+                    $log.error('Error: ' + errorMsg);
                 });
         }
 
