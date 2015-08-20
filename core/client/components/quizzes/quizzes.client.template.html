@@ -1,0 +1,13 @@
+<h1>quizzes</h1>
+<ul>
+    <li ng-repeat="quiz in quizzes">
+        <p>{{ quiz.instructions }}</p>
+        <h3>{{ quiz.stem }}</h3>
+        <ul>
+            <li ng-repeat="truthy in quiz.truthies">{{ truthy }}</li>
+        </ul>
+        <ul>
+            <li ng-repeat="falsy in quiz.falsies">{{ falsy }}</li>
+        </ul>
+    </li>
+</ul>

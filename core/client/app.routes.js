@@ -10,6 +10,11 @@
                     url: '/words',
                     templateUrl: 'components/words/words.client.template.html',
                     controller: 'wordsController'
+                })
+                .state('quizzes', {
+                    url: '/quizzes',
+                    templateUrl: 'components/quizzes/quizzes.client.template.html',
+                    controller: 'quizzesController'
                 });
         });
 
