@@ -2,120 +2,106 @@
     "use strict";
 
     angular.module('quizmaster')
-        .controller('wordsController', ['$scope', '$log', '$location', '$q', 'wordsService', wordsController]);
+        .controller('wordsController', [
+            '$scope',
+            '$log',
+            '$location',
+            '$q',
+            '$resource',
+            '$state',
+            'subjectsResource',
+            'keywordsResource',
+            wordsController]);
 
-    function wordsController($scope, $log, $location, $q, wordsService) {
+    function wordsController(
+        $scope,
+        $log,
+        $location,
+        $q,
+        $resource,
+        $state,
+        subjectsResource,
+        keywordsResource) {
 
         $scope.test = "This means the wordsController and view are working.";
 
+        // SUBJECTS SUBJECTS SUBJECTS SUBJECTS SUBJECTS
+        // SUBJECTS SUBJECTS SUBJECTS SUBJECTS SUBJECTS
+        // SUBJECTS SUBJECTS SUBJECTS SUBJECTS SUBJECTS
 
 
-        // SUBJECTS
-        (refreshSubjects());
+        // GET all
+        $scope.listSubjects = function () {
+            $scope.subjects = subjectsResource.query();
+            $scope.subjectsKind = "Subjects";
+        };
 
-        function refreshSubjects() {
-            wordsService.getAllSubjects()
-                .then(function (data) {
-                    console.log(data); // debugging
-                    $scope.subjects = data; // atención
-                    $scope.subjectsKind = "Subjects";
-                })
-                .catch(function (errorMsg) {
-                    $log.error('Error: ' + errorMsg);
-                });
-
-        }
-
-
-        $scope.addSubject = function () {
-            wordsService.postNewSubject({ name: $scope.newSubject })
-                .then(function (message) {
-                    $log.info(message); // debugging
-                    refreshSubjects();
-                })
-                .catch(function (errorMsg) {
-                    $log.error(errorMsg);
+        // DELETE
+        $scope.deleteSubject = function () {
+            $scope.currentSubject.$delete()
+                .then(function () {
+                    $scope.subjects.splice($scope.subjects.indexOf($scope.currentSubject), 1);
                 });
         };
 
-
-        $scope.editSubject = function () {
-            wordsService.putSubject($scope.currentSubject, $scope.currentSubject._id)
-                .then(function (message) {
-                    $log.info(message);
-                    refreshSubjects();
-                })
-                .catch(function (errorMsg) {
-                    $log.error(errorMsg);
+        // POST
+        $scope.createSubject = function () {
+            new subjectsResource({ name: $scope.newSubject })
+                .$save()
+                .then(function (createdSubject) {
+                    $scope.subjects.push(createdSubject);
                 });
         };
 
+        // PUT
+        $scope.updateSubject = function () {
+            subjectsResource.update({ _id: $scope.currentSubject._id }, $scope.currentSubject);
+        };
 
-        $scope.removeSubject = function () {
-            wordsService.deleteSubject($scope.currentSubject._id)
-                .then(function (message) {
-                    $log.info(message);
-                    refreshSubjects();
-                })
-                .catch(function (errorMsg) {
-                    $log.error(errorMsg);
+        $scope.listSubjects();
+
+
+
+        // KEYWORDS KEYWORDS KEYWORDS KEYWORDS KEYWORDS
+        // KEYWORDS KEYWORDS KEYWORDS KEYWORDS KEYWORDS
+        // KEYWORDS KEYWORDS KEYWORDS KEYWORDS KEYWORDS
+
+
+        // GET all
+        $scope.listKeywords = function () {
+            $scope.keywords = keywordsResource.query();
+            $scope.keywordsKind = "Keywords";
+        };
+
+        // DELETE
+        $scope.deleteKeyword = function () {
+            $scope.currentKeyword.$delete()
+                .then(function () {
+                    $scope.keywords.splice($scope.keywords.indexOf($scope.currentKeyword), 1);
                 });
         };
 
-
-        // KEYWORDS
-        (refreshKeywords());
-
-        function refreshKeywords() {
-            wordsService.getAllKeywords()
-                .then(function (data) {
-                    console.log(data); // debugging
-                    $scope.keywords = data; // atención
-                    $scope.keywordsKind = "Keywords";
-                })
-                .catch(function (errorMsg) {
-                    $log.error('Error: ' + errorMsg);
-                });
-        }
-
-
-        $scope.addKeyword = function () {
-            wordsService.postNewKeyword({ name: $scope.newKeyword })
-                .then(function (message) {
-                    $log.info(message);
-                    refreshKeywords();
-                })
-                .catch(function (errorMsg) {
-                    $log.error(errorMsg);
+        // POST
+        $scope.createKeyword = function () {
+            new keywordsResource({ name: $scope.newKeyword })
+                .$save()
+                .then(function (createdKeyword) {
+                    $scope.keywords.push(createdKeyword);
                 });
         };
 
-
-        $scope.editKeyword = function () {
-            wordsService.putKeyword($scope.currentKeyword, $scope.currentKeyword._id)
-                .then(function (message) {
-                    $log.info(message);
-                    refreshKeywords();
-                })
-                .catch(function (errorMsg) {
-                    $log.error(errorMsg);
-                });
+        // PUT
+        $scope.updateKeyword = function () {
+            keywordsResource.update({ _id: $scope.currentKeyword._id }, $scope.currentKeyword);
         };
 
+        $scope.listKeywords();
 
-        $scope.removeKeyword = function () {
-            wordsService.deleteKeyword($scope.currentKeyword._id)
-                .then(function (message) {
-                    $log.info(message);
-                    refreshKeywords();
-                })
-                .catch(function (errorMsg) {
-                    $log.error(errorMsg);
-                });
-        };
+
+
+
 
     }
-
 
 
 } ());
