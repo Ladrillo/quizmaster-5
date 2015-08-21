@@ -12,7 +12,7 @@
         <div class="input-group">
             <input ng-model="newWord" type="text" class="form-control" placeholder="Create New">
             <span class="input-group-btn">
-                <button ng-disabled="currentWord._id" ng-click="addWord()" class="btn btn-primary" type="button">Save</button>
+                <button ng-disabled="currentWord._id" ng-click="createWord()" class="btn btn-primary" type="button">Save</button>
             </span>
         </div>
         <br>
@@ -26,23 +26,21 @@
                 <div class="pull-right">
                     <button ng-disabled="currentWord._id" ng-hide="!!deleting" ng-click="flipEditing(); setCurrentWord(word)" type="button" class="btn btn-xs btn-link">Edit</button>
                     <button ng-disabled="currentWord._id" ng-hide="!!deleting" ng-click="flipDeleting(); setCurrentWord(word)" type="button" class="btn btn-xs btn-link">Delete</button>
-                    <button ng-show="!!deleting" ng-click="flipDeleting(); eraseWord(); flushCurrentWord()" class="btn btn-xs btn-danger">Delete!</button>
+                    <!--Only visible when we are in a deleting operation-->
+                    <button ng-show="!!deleting" ng-click="flipDeleting(); deleteWord(); flushCurrentWord()" class="btn btn-xs btn-danger">Delete!</button>
                     <button ng-show="!!deleting" ng-click="flipDeleting(); flushCurrentWord()" type="button" class="btn btn-xs btn-primary">Cancel</button>
                 </div>
             </div>
             <!--editando-->
             <div ng-show="!!editing" class="input-group">
-                <input ng-model="currentWord.name" type="text" class="form-control" placeholder="Create New">
+                <input ng-model="currentWord.name" type="text" class="form-control">
                 <span class="input-group-btn">
-                    <button ng-click="flipEditing(); saveWord(); flushCurrentWord()" class="btn btn-primary" type="button">Save</button>
+                    <button ng-click="flipEditing(); updateWord(); flushCurrentWord()" class="btn btn-primary" type="button">Save</button>
                 </span>
             </div>
         </div>
         {{ checked }}
         {{ currentWord }}
-        <!--<br>-->
-        <!--selección de palabra-->
-        <!--<button type="button" class="btn btn-danger pull-right">Add to Selection</button>-->
     </div>
 </div>
 <!--{{ list }}-->

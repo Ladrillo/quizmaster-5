@@ -13,11 +13,11 @@
                     kind: "=",
 
                     newWord: "=",
-                    addWord: "&",
+                    createWord: "&",
 
                     currentWord: "=",
-                    saveWord: "&",
-                    eraseWord: "&"
+                    updateWord: "&",
+                    deleteWord: "&"
 
                 },
 

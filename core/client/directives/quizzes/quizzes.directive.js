@@ -11,12 +11,9 @@
 
 
                 controller: function ($scope) {
-                    $scope.selectedSubject = "";
-                    $scope.selectedKeywords = [];
-                    $scope.addToSelection = function () {
 
 
-                    };
+
 
                 }
             };
