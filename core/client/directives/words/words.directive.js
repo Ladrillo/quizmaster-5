@@ -23,6 +23,7 @@
 
                 controller: function ($scope) {
                     $scope.newWord = "";
+                    $scope.checked = [];
 
                     $scope.editing = false;
                     $scope.flipEditing = function () {
@@ -36,7 +37,18 @@
 
                     $scope.currentWord = {};
                     $scope.setCurrentWord = function (word) {
+                        $scope.checked.splice($scope.checked.indexOf(word), 1);
                         $scope.currentWord = word;
+                    };
+                    $scope.flushCurrentWord = function () {
+                         $scope.currentWord = {};
+                    };
+
+                    $scope.toggleChecked = function (wordName) {
+                        if (this.checked.indexOf(wordName) === -1) {
+                            this.checked.push(wordName);
+                        }
+                        else this.checked.splice(this.checked.indexOf(wordName), 1);
                     };
                 }
             };

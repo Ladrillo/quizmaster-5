@@ -6,13 +6,13 @@
     <!--cuerpo del panel-->
     <div class="panel-body">
         <!--busqueda de palabras-->
-        <input ng-model="searchWord" type="text" class="form-control" placeholder="Search for {{ kind }}">
+        <input ng-disabled="currentWord._id" ng-model="searchWord" type="text" class="form-control" placeholder="Search for {{ kind }}">
         <br>
         <!--creación de nuevas palabras-->
         <div class="input-group">
             <input ng-model="newWord" type="text" class="form-control" placeholder="Create New">
             <span class="input-group-btn">
-                <button ng-click="addWord()" class="btn btn-primary" type="button">Save</button>
+                <button ng-disabled="currentWord._id" ng-click="addWord()" class="btn btn-primary" type="button">Save</button>
             </span>
         </div>
         <br>
@@ -21,26 +21,28 @@
             <!--checkboxes visibles, no editando-->
             <div ng-hide="!!editing">
                 <label>
-                    <input type="checkbox"> {{ word.name }}
+                    <input ng-click="toggleChecked(word.name)" type="checkbox" value="{{ word.name }}"> {{ word.name }}
                 </label>
                 <div class="pull-right">
-                    <button ng-hide="!!deleting" ng-click="flipEditing(); setCurrentWord(word)" type="button" class="btn btn-xs btn-link">Edit</button>
-                    <button ng-hide="!!deleting" ng-click="flipDeleting(); setCurrentWord(word)" type="button" class="btn btn-xs btn-link">Delete</button>
-                    <button ng-show="!!deleting" ng-click="flipDeleting(); eraseWord()" class="btn btn-xs btn-danger">Delete!</button>
-                    <button ng-show="!!deleting" ng-click="flipDeleting()" type="button" class="btn btn-xs btn-primary">Cancel</button>
+                    <button ng-disabled="currentWord._id" ng-hide="!!deleting" ng-click="flipEditing(); setCurrentWord(word)" type="button" class="btn btn-xs btn-link">Edit</button>
+                    <button ng-disabled="currentWord._id" ng-hide="!!deleting" ng-click="flipDeleting(); setCurrentWord(word)" type="button" class="btn btn-xs btn-link">Delete</button>
+                    <button ng-show="!!deleting" ng-click="flipDeleting(); eraseWord(); flushCurrentWord()" class="btn btn-xs btn-danger">Delete!</button>
+                    <button ng-show="!!deleting" ng-click="flipDeleting(); flushCurrentWord()" type="button" class="btn btn-xs btn-primary">Cancel</button>
                 </div>
             </div>
             <!--editando-->
             <div ng-show="!!editing" class="input-group">
                 <input ng-model="currentWord.name" type="text" class="form-control" placeholder="Create New">
                 <span class="input-group-btn">
-                    <button ng-click="flipEditing(); saveWord()" class="btn btn-primary" type="button">Done</button>
+                    <button ng-click="flipEditing(); saveWord(); flushCurrentWord()" class="btn btn-primary" type="button">Save</button>
                 </span>
             </div>
         </div>
-        <br>
+        {{ checked }}
+        {{ currentWord }}
+        <!--<br>-->
         <!--selección de palabra-->
-        <button type="button" class="btn btn-danger pull-right">Add to Selection</button>
+        <!--<button type="button" class="btn btn-danger pull-right">Add to Selection</button>-->
     </div>
 </div>
 <!--{{ list }}-->

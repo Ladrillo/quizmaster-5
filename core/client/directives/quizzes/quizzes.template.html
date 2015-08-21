@@ -1,0 +1,139 @@
+<!-- Modal Subjects-->
+<div class="modal fade" id="modalSubjects" tabindex="-1" role="dialog" aria-labelledby="subjectsModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="subjectsModalLabel">Select One:</h4>
+            </div>
+            <div class="modal-body">
+                <!--directive-->
+                <gabe-words list="subjects" kind="subjectsKind" new-word="newSubject" add-word="addSubject()" current-word="currentSubject"
+                save-word="editSubject()" erase-word="removeSubject()"></gabe-words>
+                <!--directive ends-->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Use Selected</button>
+                <!--<button type="button" class="btn btn-primary">Use Selected</button>-->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Keywords-->
+<div class="modal fade" id="modalKeywords" tabindex="-1" role="dialog" aria-labelledby="keywordsModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="keywordsModalLabel">Select as many as apply:</h4>
+            </div>
+            <div class="modal-body">
+                <!--directive-->
+                <gabe-words list="keywords" kind="keywordsKind" new-word="newKeyword" add-word="addKeyword()" current-word="currentKeyword"
+                save-word="editKeyword()" erase-word="removeKeyword()"></gabe-words>
+                <!--directive ends-->
+            </div>
+            <div class="modal-footer">
+                <button ng-click="makeKeywordsSelection()" type="button" class="btn btn-primary" data-dismiss="modal">Use Selected</button>
+                <!--<button type="button" class="btn btn-primary">Use Selected</button>-->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">Labels</h3>
+    </div>
+    <div class="panel-body">
+        <div class="btn-group btn-group-justified" role="group" aria-label="...">
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modalSubjects">Select Subject</button>
+            </div>
+        </div>
+        <br>
+        <ul class="list-group">
+            <li class="list-group-item">Subject</li>
+        </ul>
+        <br>
+        <div class="btn-group btn-group-justified" role="group" aria-label="...">
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modalKeywords">Select Keywords</button>
+            </div>
+        </div>
+        <br>
+        <ul class="list-group">
+            <li class="list-group-item">Keyword 1</li>
+            <li class="list-group-item">Keyword 2</li>
+            <li class="list-group-item">Keyword 3</li>
+        </ul>
+    </div>
+</div>
+
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">Question</h3>
+    </div>
+    <div class="panel-body">
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label for="inputInstructions" class="col-sm-2 control-label">Instructions</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputInstructions" placeholder="Type clear instructions">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputStem" class="col-sm-2 control-label">Stem</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputStem" placeholder="Type a stem">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">Answers</h3>
+    </div>
+    <div class="panel-body">
+        <label for="truthy" class="control-label">Truthy</label>
+        <div class="input-group">
+            <input type="text" class="form-control" id="truthy" placeholder="Type the truth...">
+            <span class="input-group-btn">
+            <button class="btn btn-default" type="button">Save</button>
+        </div>
+        <br>
+        <ul class="list-group">
+            <li class="list-group-item">Truthy 1
+                <div class="pull-right">
+                    <button ng-hide="!!deleting" ng-click="flipEditing(); setCurrentWord(word)" type="button" class="btn btn-xs btn-link">Edit</button>
+                    <button ng-hide="!!deleting" ng-click="flipDeleting(); setCurrentWord(word)" type="button" class="btn btn-xs btn-link">Delete</button>
+                    <button ng-show="!!deleting" ng-click="flipDeleting(); eraseWord()" class="btn btn-xs btn-danger">Delete!</button>
+                    <button ng-show="!!deleting" ng-click="flipDeleting()" type="button" class="btn btn-xs btn-primary">Cancel</button>
+                </div>
+            </li>
+        </ul>
+        <br>
+        <label for="falsy" class="control-label">Falsy</label>
+        <div class="input-group">
+            <input type="text" class="form-control" id="falsy" placeholder="Type NOT the truth...">
+            <span class="input-group-btn">
+            <button class="btn btn-default" type="button">Save</button>
+        </div><br>
+        <ul class="list-group">
+            <li class="list-group-item">Falsy 1
+                <div class="pull-right">
+                    <button ng-hide="!!deleting" ng-click="flipEditing(); setCurrentWord(word)" type="button" class="btn btn-xs btn-link">Edit</button>
+                    <button ng-hide="!!deleting" ng-click="flipDeleting(); setCurrentWord(word)" type="button" class="btn btn-xs btn-link">Delete</button>
+                    <button ng-show="!!deleting" ng-click="flipDeleting(); eraseWord()" class="btn btn-xs btn-danger">Delete!</button>
+                    <button ng-show="!!deleting" ng-click="flipDeleting()" type="button" class="btn btn-xs btn-primary">Cancel</button>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
