@@ -35,7 +35,8 @@
 
                     $scope.editValid = function () {
                         if (!this.sentence) return false;
-                        else if (this.sentences.some(function (e) { return e === $scope.sentence; })) return false;
+                        else if (this.sentence !== this.currentSentence &&
+                            this.sentences.indexOf(this.sentence) > -1) return false;
                         else return true;
                     };
 
