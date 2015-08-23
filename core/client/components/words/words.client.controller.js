@@ -58,7 +58,34 @@
         // KEYWORDS KEYWORDS KEYWORDS KEYWORDS KEYWORDS
         // KEYWORDS KEYWORDS KEYWORDS KEYWORDS KEYWORDS
 
+        $scope.kind = "Keywords";
 
+        // GET all
+        $scope.listKeywords = function () {
+            $scope.keywords = keywordsResource.query();
+        };
+
+        // DELETE
+        $scope.deleteKeyword = function () {
+            $scope.currentKeyword.$delete();
+        };
+
+        // POST
+        $scope.createKeyword = function () {
+            new keywordsResource({ name: $scope.newKeyword })
+                .$save()
+                .then(function (newWord) {
+                    $scope.keywords.push(newWord);
+                });
+        };
+
+        // PUT
+        $scope.updateKeyword = function () {
+            keywordsResource.update({ _id: $scope.currentKeyword._id }, $scope.currentKeyword);
+        };
+
+
+        $scope.listKeywords(); // populate view
 
 
 

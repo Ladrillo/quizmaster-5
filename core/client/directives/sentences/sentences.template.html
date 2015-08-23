@@ -24,10 +24,13 @@
             <div ng-show="!!editing" class="input-group">
                 <input ng-model="sentence" type="text" class="form-control">
                 <span class="input-group-btn">
-                    <button ng-click="flipEditing(); updateSentence(); flushCurrentSentence()" class="btn btn-primary" type="button">Save</button>
+                    <button ng-disabled="!editValid()" ng-click="flipEditing(); updateSentence(); flushCurrentSentence()" class="btn btn-primary" type="button">Save</button>
                 </span>
             </div>
         </li>
     </ul>
 </div>
-{{ sentences }}
+sentences: {{ sentences }} <br>
+current sentence: {{ currentSentence }} <br>
+edit valid: {{ editValid() }} <br>
+sentence: {{ sentence }}

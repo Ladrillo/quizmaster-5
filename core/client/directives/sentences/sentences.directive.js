@@ -33,6 +33,12 @@
                         else return true;
                     };
 
+                    $scope.editValid = function () {
+                        if (!this.sentence) return false;
+                        else if (this.sentences.some(function (e) { return e === $scope.sentence; })) return false;
+                        else return true;
+                    };
+
                     $scope.addSentence = function () {
                         this.sentences.push(this.newSentence);
                         this.newSentence = "";
@@ -50,6 +56,7 @@
                         var idx = this.sentences.indexOf(this.currentSentence);
                         this.sentences.splice(idx, 1);
                         this.sentences.splice(idx, 0, this.sentence);
+
                     };
 
                     $scope.eraseSentence = function () {
