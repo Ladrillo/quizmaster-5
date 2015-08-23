@@ -6,9 +6,6 @@
         .factory('keywordsResource', ['$resource', keywordsResource]);
 
 
-
-
-
     function subjectsResource($resource) {
 
         return $resource(

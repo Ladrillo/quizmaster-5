@@ -13,9 +13,10 @@
                 controller: function ($scope) {
                     $scope.checkedSubjects = [];
                     $scope.checkedKeywords = [];
+
                     $scope.truthies = [];
                     $scope.falsies = [];
-                    $scope.editing = false;
+
                     $scope.addTruthy = function (truthy) {
                         this.truthies.push(truthy);
                     };
@@ -28,6 +29,7 @@
                     $scope.flipEditing = function () {
                         this.editing = !this.editing;
                     };
+                    $scope.currentAnswer
                 }
             };
         });

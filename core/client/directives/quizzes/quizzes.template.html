@@ -91,48 +91,8 @@
         <h3 class="panel-title">Answers</h3>
     </div>
     <div class="panel-body">
-        <label for="truthy" class="control-label">Truthy</label>
-        <div class="input-group">
-            <input ng-model="newTruthy" type="text" class="form-control" id="truthy" placeholder="Type the truth...">
-            <span class="input-group-btn">
-            <button ng-click="addTruthy(newTruthy)" class="btn btn-primary" type="button">Add</button>
-        </div>
-        <br>
-        <ul class="list-group">
-            <li ng-repeat="truthy in truthies" class="list-group-item">
-                <div ng-hide="!!editing">{{ truthy }}
-                    <div class="pull-right">
-                        <button ng-hide="!!deleting" ng-click="flipEditing(); setCurrentWord(word)" type="button" class="btn btn-xs btn-link">Edit</button>
-                        <button ng-hide="!!deleting" ng-click="flipDeleting(); setCurrentWord(word)" type="button" class="btn btn-xs btn-link">Delete</button>
-                        <button ng-show="!!deleting" ng-click="flipDeleting(); eraseWord()" class="btn btn-xs btn-danger">Delete!</button>
-                        <button ng-show="!!deleting" ng-click="flipDeleting()" type="button" class="btn btn-xs btn-primary">Cancel</button>
-                    </div>
-                </div>
-                <!--only visible when editing-->
-                <div ng-show="!!editing" class="input-group">
-                    <input ng-model="currentWord.name" type="text" class="form-control">
-                    <span class="input-group-btn">
-                        <button ng-click="flipEditing(); updateWord(); flushCurrentWord()" class="btn btn-primary" type="button">Save</button>
-                    </span>
-                </div>
-            </li>
-        </ul>
-
-        <label for="falsy" class="control-label">Falsy</label>
-        <div class="input-group">
-            <input ng-model="newFalsy" type="text" class="form-control" id="falsy" placeholder="Type NOT the truth...">
-            <span class="input-group-btn">
-            <button ng-click="addFalsy(newFalsy)" class="btn btn-primary" type="button">Add</button>
-        </div><br>
-        <ul class="list-group">
-            <li ng-repeat="falsy in falsies" class="list-group-item">{{ falsy }}
-                <div class="pull-right">
-                    <button ng-hide="!!deleting" ng-click="flipEditing(); setCurrentWord(word)" type="button" class="btn btn-xs btn-link">Edit</button>
-                    <button ng-hide="!!deleting" ng-click="flipDeleting(); setCurrentWord(word)" type="button" class="btn btn-xs btn-link">Delete</button>
-                    <button ng-show="!!deleting" ng-click="flipDeleting(); eraseWord()" class="btn btn-xs btn-danger">Delete!</button>
-                    <button ng-show="!!deleting" ng-click="flipDeleting()" type="button" class="btn btn-xs btn-primary">Cancel</button>
-                </div>
-            </li>
-        </ul>
+        <!--empieza el bloque truthies-->
+        
+        <!--empieza el bloque falsies-->
     </div>
 </div>
