@@ -12,23 +12,23 @@
         <div class="input-group">
             <input ng-model="newWord" type="text" class="form-control" placeholder="Create New">
             <span class="input-group-btn">
-                <button ng-disabled="currentWord._id" ng-click="createWord(); flushInput()" class="btn btn-primary" type="button">Save</button>
+                <button ng-disabled="!validNewWord()" ng-click="addNewWord()" class="btn btn-primary" type="button">Save</button>
             </span>
         </div>
         <br>
         <!--lista de palabras-->
-        <div ng-repeat="word in list | orderBy:'name' | filter:searchWord" class="checkbox">
+        <div ng-repeat="word in words | orderBy:'name' | filter:searchWord" class="checkbox">
             <!--checkboxes visibles, no editando-->
             <div ng-hide="!!editing">
                 <label>
-                    <input ng-click="toggleChecked(word.name)" type="checkbox" value="{{ word.name }}"> {{ word.name }}
+                    <input ng-click="toggleChecked(word)" type="checkbox" value="{{ word.name }}"> {{ word.name }}
                 </label>
                 <div class="pull-right">
                     <button ng-disabled="currentWord._id" ng-hide="!!deleting" ng-click="flipEditing(); setCurrentWord(word)" type="button" class="btn btn-xs btn-link">Edit</button>
                     <button ng-disabled="currentWord._id" ng-hide="!!deleting" ng-click="flipDeleting(); setCurrentWord(word)" type="button"
                     class="btn btn-xs btn-link">Delete</button>
                     <!--Only visible when we are in a deleting operation-->
-                    <button ng-show="!!deleting" ng-click="flipDeleting(); deleteWord(); flushCurrentWord()" class="btn btn-xs btn-danger">Delete!</button>
+                    <button ng-show="!!deleting" ng-click="flipDeleting(); removeWord(); flushCurrentWord()" class="btn btn-xs btn-danger">Delete!</button>
                     <button ng-show="!!deleting" ng-click="flipDeleting(); flushCurrentWord()" type="button" class="btn btn-xs btn-primary">Cancel</button>
                 </div>
             </div>
@@ -36,11 +36,11 @@
             <div ng-show="!!editing" class="input-group">
                 <input ng-model="currentWord.name" type="text" class="form-control">
                 <span class="input-group-btn">
-                    <button ng-click="flipEditing(); updateWord(); flushCurrentWord()" class="btn btn-primary" type="button">Save</button>
+                    <button ng-disabled="!validWordEdit()" ng-click="flipEditing(); editWord(); flushCurrentWord()" class="btn btn-primary" type="button">Save</button>
                 </span>
             </div>
         </div>
-        {{ checked }} {{ currentWord }}
+        <!--{{ checked }} {{ currentWord }} {{ validNewWord() }} {{ validWordEdit() }}-->
     </div>
 </div>
 <!--{{ list }}-->

@@ -9,42 +9,75 @@
                 templateUrl: 'directives/words/words.template.html',
 
                 scope: {
-                    list: "=",
+                    words: "=",
                     kind: "=",
-
                     newWord: "=",
-                    createWord: "&",
-
                     currentWord: "=",
-                    updateWord: "&",
-                    deleteWord: "&",
+                    checked: "=",
 
-                    checked: "="
+                    createWord: "&",
+                    updateWord: "&",
+                    deleteWord: "&"
                 },
 
                 controller: function ($scope) {
                     $scope.newWord = "";
                     $scope.checked = [];
-
-                    $scope.editing = false;
-                    $scope.flipEditing = function () {
-                        this.editing = !this.editing;
-                    };
-
                     $scope.deleting = false;
-                    $scope.flipDeleting = function () {
-                        this.deleting = !this.deleting;
-                    };
+                    $scope.editing = false;
 
+                    // WORD BEING EDITED OR DELETED
                     $scope.currentWord = {};
                     $scope.setCurrentWord = function (word) {
-                        $scope.checked.splice($scope.checked.indexOf(word), 1);
                         $scope.currentWord = word;
+                        $scope.notCurrent = $scope.words.filter(function (e) { return e !== $scope.currentWord; });
                     };
                     $scope.flushCurrentWord = function () {
                         $scope.currentWord = {};
                     };
 
+
+
+                    // CREATING NEW WORDS
+                    $scope.validNewWord = function () {
+                        return !!this.newWord &&
+                            this.words.every(function (e) { return e.name !== $scope.newWord; });
+                    };
+
+
+                    $scope.addNewWord = function () {
+                        this.createWord(); // method provided by parent controller !!!!!!
+                        this.newWord = "";
+                    };
+
+
+                    // DELETING A WORD
+                    $scope.flipDeleting = function () {
+                        this.deleting = !this.deleting;
+                    };
+
+                    $scope.removeWord = function () {
+                        this.words.splice(this.words.indexOf(this.currentWord), 1);
+                        this.deleteWord(); // method provided by parent controller !!!!!!
+                    };
+
+
+                    // EDITING A WORD
+                    $scope.flipEditing = function () {
+                        this.editing = !this.editing;
+                    };
+
+                    $scope.editWord = function () {
+                        this.updateWord(); // method provided by parent controller !!!!!!
+                    };
+
+                    $scope.validWordEdit = function () {
+                        return !!this.currentWord.name &&
+                            $scope.notCurrent.every(function (e) { return e.name !== $scope.currentWord.name; });
+                    };
+
+
+                    // MANAGING CHECKBOXES
                     $scope.toggleChecked = function (wordName) {
                         if (this.checked.indexOf(wordName) === -1) {
                             this.checked.push(wordName);
