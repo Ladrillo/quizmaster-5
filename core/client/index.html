@@ -14,6 +14,7 @@
         <ul>
             <li>
                 <a ui-sref="words">Words</a>
+                <a ui-sref="sentences">Sentences</a>
                 <a ui-sref="quizzes">Quizzes</a>
             </li>
         </ul>
@@ -25,21 +26,26 @@
     <script>
         document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>');
     </script>
+    <!--libraries and dependencies-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-resource.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-sanitize.js"></script>
+    <!--main modules-->
     <script src="app.module.js"></script>
     <script src="app.routes.js"></script>
+    <!--services-->
     <script src="services/words.service.js"></script>
+    <script src="services/quizzes.service.js"></script>
+    <!--controllers and directives-->
     <script src="directives/words/words.directive.js"></script>
     <script src="components/words/words.client.controller.js"></script>
-    <script src="services/quizzes.service.js"></script>
     <script src="directives/quizzes/quizzes.directive.js"></script>
     <script src="components/quizzes/quizzes.client.controller.js"></script>
     <script src="directives/sentences/sentences.directive.js"></script>
+    <script src="components/sentences/sentences.client.controller.js"></script>
 </body>
 
 </html>

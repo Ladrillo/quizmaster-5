@@ -29,7 +29,6 @@
                     $scope.flipEditing = function () {
                         this.editing = !this.editing;
                     };
-                    $scope.currentAnswer
                 }
             };
         });

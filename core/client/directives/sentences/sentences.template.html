@@ -1,27 +1,33 @@
-<label for="{{ title }}" class="control-label">{{ title }}</label>
-<div class="input-group">
-    <input ng-model="newSentence" type="text" class="form-control" id="{{ title }}" placeholder="Type {{ title }}...">
-    <span class="input-group-btn">
-            <button ng-click="addTruthy(newTruthy)" class="btn btn-primary" type="button">Add</button>
-        </div><br>
-        <div>
-            <ul class="list-group">
-                <li ng-repeat="truthy in truthies" class="list-group-item">
-                    <div ng-hide="!!editing">{{ truthy }}
-                        <div class="pull-right">
-                            <button ng-hide="!!deleting" ng-click="flipEditing(); setCurrentWord(word)" type="button" class="btn btn-xs btn-link">Edit</button>
-                            <button ng-hide="!!deleting" ng-click="flipDeleting(); setCurrentWord(word)" type="button" class="btn btn-xs btn-link">Delete</button>
-                            <button ng-show="!!deleting" ng-click="flipDeleting(); eraseWord()" class="btn btn-xs btn-danger">Delete!</button>
-                            <button ng-show="!!deleting" ng-click="flipDeleting()" type="button" class="btn btn-xs btn-primary">Cancel</button>
-                        </div>
-                    </div>
-                    <!--only visible when editing-->
-                    <div ng-show="!!editing" class="input-group">
-                        <input ng-model="currentWord.name" type="text" class="form-control">
-                        <span class="input-group-btn">
-                            <button ng-click="flipEditing(); updateWord(); flushCurrentWord()" class="btn btn-primary" type="button">Save</button>
-                        </span>
+<div>
+    <label for="{{ title }}" class="control-label">{{ title }}</label>
+    <div class="input-group">
+        <input ng-model="newSentence" type="text" class="form-control" id="{{ title }}" placeholder="Type {{ title }}...">
+        <span class="input-group-btn">
+            <button ng-disabled="!inputValid()" ng-click="addSentence()" class="btn btn-primary" type="button">Add</button>
+        </span>
+    </div>
+    <br>
+    <ul class="list-group">
+        <li ng-repeat="sentence in sentences" class="list-group-item">
+            <div ng-hide="!!editing">{{ sentence }}
+                <div class="pull-right">
+                    <button ng-disabled="!!currentSentence" ng-hide="!!deleting" ng-click="flipEditing(); setCurrentSentence(sentence)" type="button"
+                    class="btn btn-xs btn-link">Edit</button>
+                    <button ng-disabled="!!currentSentence" ng-hide="!!deleting" ng-click="flipDeleting(); setCurrentSentence(sentence)" type="button"
+                    class="btn btn-xs btn-link">Delete</button>
+                    <button ng-show="!!deleting" ng-click="flipDeleting(); eraseSentence(); flushCurrentSentence()" class="btn btn-xs btn-danger">Delete!</button>
+                    <button ng-show="!!deleting" ng-click="flipDeleting()" type="button" class="btn btn-xs btn-primary">Cancel</button>
+                </div>
+            </div>
+
+            <!--only visible when editing-->
+            <div ng-show="!!editing" class="input-group">
+                <input ng-model="sentence" type="text" class="form-control">
+                <span class="input-group-btn">
+                    <button ng-click="flipEditing(); updateSentence(); flushCurrentSentence()" class="btn btn-primary" type="button">Save</button>
+                </span>
+            </div>
+        </li>
+    </ul>
 </div>
-</li>
-</ul>
-</div>
+{{ sentences }}

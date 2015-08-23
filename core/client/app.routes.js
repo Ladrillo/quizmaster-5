@@ -15,8 +15,12 @@
                     url: '/quizzes',
                     templateUrl: 'components/quizzes/quizzes.client.template.html',
                     controller: 'quizzesController'
+                })
+                .state('sentences', {
+                    url: '/sentences',
+                    templateUrl: 'components/sentences/sentences.client.template.html',
+                    controller: 'sentencesController'
                 });
         });
-
 
 } ());
