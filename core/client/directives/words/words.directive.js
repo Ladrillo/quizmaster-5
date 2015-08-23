@@ -17,8 +17,9 @@
 
                     currentWord: "=",
                     updateWord: "&",
-                    deleteWord: "&"
+                    deleteWord: "&",
 
+                    checked: "="
                 },
 
                 controller: function ($scope) {
@@ -41,7 +42,7 @@
                         $scope.currentWord = word;
                     };
                     $scope.flushCurrentWord = function () {
-                         $scope.currentWord = {};
+                        $scope.currentWord = {};
                     };
 
                     $scope.toggleChecked = function (wordName) {

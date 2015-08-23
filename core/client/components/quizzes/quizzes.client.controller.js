@@ -27,6 +27,8 @@
 
         $scope.test = "This means the quizzesController and view are working.";
 
+
+
         // SUBJECTS SUBJECTS SUBJECTS SUBJECTS SUBJECTS
         // SUBJECTS SUBJECTS SUBJECTS SUBJECTS SUBJECTS
         // SUBJECTS SUBJECTS SUBJECTS SUBJECTS SUBJECTS
@@ -104,37 +106,6 @@
         // QUIZZES QUIZZES QUIZZES QUIZZES QUIZZES
         // QUIZZES QUIZZES QUIZZES QUIZZES QUIZZES
         // QUIZZES QUIZZES QUIZZES QUIZZES QUIZZES
-
-
-        // GET all
-        $scope.listQuizzes = function () {
-            $scope.quizzes = quizzesResource.query();
-        };
-
-        // DELETE
-        $scope.deleteQuiz = function (quiz) {
-            quiz.$delete()
-                .then(function () {
-                    $scope.quiz.splice($scope.quizzes.indexOf(quiz), 1);
-                });
-        };
-
-        // POST
-        $scope.createQuiz = function (quiz) {
-            new $scope.quizzesResource(quiz)
-                .$save()
-                .then(function (newQuiz) {
-                    $scope.quizzes.push(newQuiz);
-                });
-        };
-
-        // PUT
-        $scope.updateQuiz = function (quiz) {
-            quiz.$save();
-        };
-
-        $scope.listQuizzes();
-
 
 
 

@@ -25,6 +25,8 @@
 
         $scope.test = "This means the wordsController and view are working.";
 
+
+
         // SUBJECTS SUBJECTS SUBJECTS SUBJECTS SUBJECTS
         // SUBJECTS SUBJECTS SUBJECTS SUBJECTS SUBJECTS
         // SUBJECTS SUBJECTS SUBJECTS SUBJECTS SUBJECTS
@@ -98,10 +100,7 @@
         $scope.listKeywords();
 
 
-
-
-
-    }
+    };
 
 
 } ());

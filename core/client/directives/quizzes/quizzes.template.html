@@ -2,19 +2,14 @@
 <div class="modal fade" id="modalSubjects" tabindex="-1" role="dialog" aria-labelledby="subjectsModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="subjectsModalLabel">Select One:</h4>
-            </div>
             <div class="modal-body">
                 <!--directive-->
                 <gabe-words list="subjects" kind="subjectsKind" new-word="newSubject" create-word="createSubject()" current-word="currentSubject"
-                update-word="updateSubject()" delete-word="deleteSubject()"></gabe-words>
+                update-word="updateSubject()" delete-word="deleteSubject()" checked="checkedSubjects"></gabe-words>
                 <!--directive ends-->
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Use Selected</button>
-                <!--<button type="button" class="btn btn-primary">Use Selected</button>-->
+                <button type="button" class="btn btn-primary pull-right" data-dismiss="modal">Done</button>
+                <br>
+                <br>
             </div>
         </div>
     </div>
@@ -25,25 +20,20 @@
 <div class="modal fade" id="modalKeywords" tabindex="-1" role="dialog" aria-labelledby="keywordsModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="keywordsModalLabel">Select as many as apply:</h4>
-            </div>
             <div class="modal-body">
                 <!--directive-->
                 <gabe-words list="keywords" kind="keywordsKind" new-word="newKeyword" create-word="createKeyword()" current-word="currentKeyword"
-                update-word="updateKeyword()" delete-word="deleteKeyword()"></gabe-words>
+                update-word="updateKeyword()" delete-word="deleteKeyword()" checked="checkedKeywords"></gabe-words>
                 <!--directive ends-->
-            </div>
-            <div class="modal-footer">
-                <button ng-click="makeKeywordsSelection()" type="button" class="btn btn-primary" data-dismiss="modal">Use Selected</button>
-                <!--<button type="button" class="btn btn-primary">Use Selected</button>-->
+                <button type="button" class="btn btn-primary pull-right" data-dismiss="modal">Done</button>
+                <br>
+                <br>
             </div>
         </div>
     </div>
 </div>
 
-
+<!--subject and keyword selection and list block-->
 <div class="panel panel-primary">
     <div class="panel-heading">
         <h3 class="panel-title">Labels</h3>
@@ -56,7 +46,7 @@
         </div>
         <br>
         <ul class="list-group">
-            <li class="list-group-item">Subject</li>
+            <li ng-repeat="subject in checkedSubjects" class="list-group-item">{{ subject }}</li>
         </ul>
         <br>
         <div class="btn-group btn-group-justified" role="group" aria-label="...">
@@ -66,14 +56,12 @@
         </div>
         <br>
         <ul class="list-group">
-            <li class="list-group-item">Keyword 1</li>
-            <li class="list-group-item">Keyword 2</li>
-            <li class="list-group-item">Keyword 3</li>
+            <li ng-repeat="keyword in checkedKeywords" class="list-group-item">{{ keyword }}</li>
         </ul>
     </div>
 </div>
 
-
+<!--stem and instructions block-->
 <div class="panel panel-primary">
     <div class="panel-heading">
         <h3 class="panel-title">Question</h3>
@@ -83,20 +71,21 @@
             <div class="form-group">
                 <label for="inputInstructions" class="col-sm-2 control-label">Instructions</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="inputInstructions" placeholder="Type clear instructions">
+                    <input ng-model="instructions" type="text" class="form-control" id="inputInstructions" placeholder="Type clear instructions">
                 </div>
             </div>
+            <br>
             <div class="form-group">
                 <label for="inputStem" class="col-sm-2 control-label">Stem</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="inputStem" placeholder="Type a stem">
+                    <input ng-model="stem" type="text" class="form-control" id="inputStem" placeholder="Type a stem">
                 </div>
             </div>
         </form>
     </div>
 </div>
 
-
+<!--truthy and falsy answers block-->
 <div class="panel panel-primary">
     <div class="panel-heading">
         <h3 class="panel-title">Answers</h3>
@@ -104,30 +93,39 @@
     <div class="panel-body">
         <label for="truthy" class="control-label">Truthy</label>
         <div class="input-group">
-            <input type="text" class="form-control" id="truthy" placeholder="Type the truth...">
+            <input ng-model="newTruthy" type="text" class="form-control" id="truthy" placeholder="Type the truth...">
             <span class="input-group-btn">
-            <button class="btn btn-primary" type="button">Save</button>
+            <button ng-click="addTruthy(newTruthy)" class="btn btn-primary" type="button">Add</button>
         </div>
         <br>
         <ul class="list-group">
-            <li class="list-group-item">Truthy 1
-                <div class="pull-right">
-                    <button ng-hide="!!deleting" ng-click="flipEditing(); setCurrentWord(word)" type="button" class="btn btn-xs btn-link">Edit</button>
-                    <button ng-hide="!!deleting" ng-click="flipDeleting(); setCurrentWord(word)" type="button" class="btn btn-xs btn-link">Delete</button>
-                    <button ng-show="!!deleting" ng-click="flipDeleting(); eraseWord()" class="btn btn-xs btn-danger">Delete!</button>
-                    <button ng-show="!!deleting" ng-click="flipDeleting()" type="button" class="btn btn-xs btn-primary">Cancel</button>
+            <li ng-repeat="truthy in truthies" class="list-group-item">
+                <div ng-hide="!!editing">{{ truthy }}
+                    <div class="pull-right">
+                        <button ng-hide="!!deleting" ng-click="flipEditing(); setCurrentWord(word)" type="button" class="btn btn-xs btn-link">Edit</button>
+                        <button ng-hide="!!deleting" ng-click="flipDeleting(); setCurrentWord(word)" type="button" class="btn btn-xs btn-link">Delete</button>
+                        <button ng-show="!!deleting" ng-click="flipDeleting(); eraseWord()" class="btn btn-xs btn-danger">Delete!</button>
+                        <button ng-show="!!deleting" ng-click="flipDeleting()" type="button" class="btn btn-xs btn-primary">Cancel</button>
+                    </div>
+                </div>
+                <!--only visible when editing-->
+                <div ng-show="!!editing" class="input-group">
+                    <input ng-model="currentWord.name" type="text" class="form-control">
+                    <span class="input-group-btn">
+                        <button ng-click="flipEditing(); updateWord(); flushCurrentWord()" class="btn btn-primary" type="button">Save</button>
+                    </span>
                 </div>
             </li>
         </ul>
-        <br>
+
         <label for="falsy" class="control-label">Falsy</label>
         <div class="input-group">
-            <input type="text" class="form-control" id="falsy" placeholder="Type NOT the truth...">
+            <input ng-model="newFalsy" type="text" class="form-control" id="falsy" placeholder="Type NOT the truth...">
             <span class="input-group-btn">
-            <button class="btn btn-primary" type="button">Save</button>
+            <button ng-click="addFalsy(newFalsy)" class="btn btn-primary" type="button">Add</button>
         </div><br>
         <ul class="list-group">
-            <li class="list-group-item">Falsy 1
+            <li ng-repeat="falsy in falsies" class="list-group-item">{{ falsy }}
                 <div class="pull-right">
                     <button ng-hide="!!deleting" ng-click="flipEditing(); setCurrentWord(word)" type="button" class="btn btn-xs btn-link">Edit</button>
                     <button ng-hide="!!deleting" ng-click="flipDeleting(); setCurrentWord(word)" type="button" class="btn btn-xs btn-link">Delete</button>
