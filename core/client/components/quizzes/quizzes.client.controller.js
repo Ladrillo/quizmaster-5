@@ -103,7 +103,7 @@
         function extractCheckedNames(objArray) {
             var names = [];
             for (var i = 0; i < objArray.length; i++) {
-                names.push(objArray[i][name]);
+                names.push(objArray[i]['name']);
             }
             return names;
         }

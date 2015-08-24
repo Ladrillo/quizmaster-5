@@ -26,14 +26,6 @@
                     $scope.falsiesType = "Falsy answers";
                     $scope.regexpsType = "Regular Expressions";
 
-//                     $scope.addTruthy = function (truthy) {
-//                         this.truthies.push(truthy.name);
-//                     };
-//
-//                     $scope.addFalsy = function (falsy) {
-//                         this.falsies.push(falsy.name);
-//                     };
-
                     $scope.editing = false;
                     $scope.flipEditing = function () {
                         this.editing = !this.editing;

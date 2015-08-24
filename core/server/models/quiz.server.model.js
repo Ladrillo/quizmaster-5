@@ -2,15 +2,15 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 var QuizSchema = new Schema({
-//     subjects: {
-//         required: true,
-//         type: [String]
-//     },
-//
-//     keywords: {
-//         required: true,
-//         type: [String]
-//     },
+    subjects: {
+        required: true,
+        type: [String]
+    },
+
+    keywords: {
+        required: true,
+        type: [String]
+    },
 
     instructions: {
         required: true,
