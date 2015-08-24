@@ -100,12 +100,19 @@
         // QUIZZES QUIZZES QUIZZES QUIZZES QUIZZES
         // QUIZZES QUIZZES QUIZZES QUIZZES QUIZZES
 
+        function extractCheckedNames(objArray) {
+            var names = [];
+            for (var i = 0; i < objArray.length; i++) {
+                names.push(objArray[i][name]);
+            }
+            return names;
+        }
 
 
         $scope.createQuiz = function () {
             new quizzesResource({
-                subjects: $scope.checkedSubjects,
-                keywords: $scope.checkedKeywords,
+                subjects: extractCheckedNames($scope.checkedSubjects),
+                keywords: extractCheckedNames($scope.checkedKeywords),
                 instructions: $scope.instructions,
                 stem: $scope.stem,
                 truthies: $scope.truthies,

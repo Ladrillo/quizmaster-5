@@ -78,11 +78,11 @@
 
 
                     // MANAGING CHECKBOXES
-                    $scope.toggleChecked = function (wordName) {
-                        if (this.checked.indexOf(wordName) === -1) {
-                            this.checked.push(wordName);
+                    $scope.toggleChecked = function (word) {
+                        if (this.checked.indexOf(word) === -1) {
+                            this.checked.push(word);
                         }
-                        else this.checked.splice(this.checked.indexOf(wordName), 1);
+                        else this.checked.splice(this.checked.indexOf(word), 1);
                     };
                 }
             };

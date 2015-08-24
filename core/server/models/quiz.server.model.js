@@ -2,15 +2,15 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 var QuizSchema = new Schema({
-    subjects: {
-        required: true,
-        type: [String]
-    },
-
-    keywords: {
-        required: true,
-        type: [String]
-    },
+//     subjects: {
+//         required: true,
+//         type: [String]
+//     },
+//
+//     keywords: {
+//         required: true,
+//         type: [String]
+//     },
 
     instructions: {
         required: true,
@@ -25,19 +25,16 @@ var QuizSchema = new Schema({
     },
 
     truthies: {
-        required: true,
         trim: true,
         type: [String]
     },
 
     falsies: {
-        required: true,
         trim: true,
         type: [String]
     },
 
     regexps: {
-        required: true,
         trim: true,
         type: [String]
     },
