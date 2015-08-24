@@ -13,8 +13,7 @@
             'api/quizzes/:id',
             { id: '@_id' },
             {
-                'update': { method: 'PUT' },
-                interceptor: { responseError: errorHandler }
+                'update': { method: 'PUT' }
             });
     }
 

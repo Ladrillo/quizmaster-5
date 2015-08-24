@@ -4,8 +4,8 @@
         <div class="modal-content">
             <div class="modal-body">
                 <!--directive-->
-                <gabe-words words="subjects" kind="kind" new-word="newSubject" create-word="createSubject()" current-word="currentSubject"
-                update-word="updateSubject()" delete-word="deleteSubject()"></gabe-words>
+                <gabe-words words="subjects" kind="subjectKind" new-word="newSubject" create-word="createSubject()" current-word="currentSubject"
+                update-word="updateSubject()" delete-word="deleteSubject()" checked="checkedSubjects"></gabe-words>
                 <!--directive ends-->
                 <button type="button" class="btn btn-primary pull-right" data-dismiss="modal">Done</button>
                 <br>
@@ -22,8 +22,8 @@
         <div class="modal-content">
             <div class="modal-body">
                 <!--directive-->
-                <gabe-words words="keywords" kind="kind" new-word="newKeyword" create-word="createKeyword()" current-word="currentKeyword"
-                update-word="updateKeyword()" delete-word="deleteKeyword()"></gabe-words>
+                <gabe-words words="keywords" kind="keywordKind" new-word="newKeyword" create-word="createKeyword()" current-word="currentKeyword"
+                update-word="updateKeyword()" delete-word="deleteKeyword()" checked="checkedKeywords"></gabe-words>
                 <!--directive ends-->
                 <button type="button" class="btn btn-primary pull-right" data-dismiss="modal">Done</button>
                 <br>
@@ -41,22 +41,21 @@
     <div class="panel-body">
         <div class="btn-group btn-group-justified" role="group" aria-label="...">
             <div class="btn-group" role="group">
-                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modalSubjects">Select Subject</button>
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalSubjects">Select Subject</button>
             </div>
         </div>
         <br>
         <ul class="list-group">
-            <li ng-repeat="subject in checkedSubjects" class="list-group-item">{{ subject }}</li>
+            <li ng-repeat="subject in checkedSubjects" class="list-group-item">{{ subject.name }}</li>
         </ul>
-        <br>
         <div class="btn-group btn-group-justified" role="group" aria-label="...">
             <div class="btn-group" role="group">
-                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modalKeywords">Select Keywords</button>
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalKeywords">Select Keywords</button>
             </div>
         </div>
         <br>
         <ul class="list-group">
-            <li ng-repeat="keyword in checkedKeywords" class="list-group-item">{{ keyword }}</li>
+            <li ng-repeat="keyword in checkedKeywords" class="list-group-item">{{ keyword.name }}</li>
         </ul>
     </div>
 </div>
@@ -74,7 +73,6 @@
                     <input ng-model="instructions" type="text" class="form-control" id="inputInstructions" placeholder="Type clear instructions">
                 </div>
             </div>
-            <br>
             <div class="form-group">
                 <label for="inputStem" class="col-sm-2 control-label">Stem</label>
                 <div class="col-sm-10">

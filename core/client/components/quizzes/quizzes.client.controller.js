@@ -27,13 +27,13 @@
 
         $scope.test = "This means the quizzesController and view are working.";
 
-        
+
 
         // SUBJECTS SUBJECTS SUBJECTS SUBJECTS SUBJECTS
         // SUBJECTS SUBJECTS SUBJECTS SUBJECTS SUBJECTS
         // SUBJECTS SUBJECTS SUBJECTS SUBJECTS SUBJECTS
 
-        $scope.kind = "Subjects";
+        $scope.subjectKind = "Subjects";
 
         // GET all
         $scope.listSubjects = function () {
@@ -63,12 +63,11 @@
         $scope.listSubjects(); // populate view
 
 
-
         // KEYWORDS KEYWORDS KEYWORDS KEYWORDS KEYWORDS
         // KEYWORDS KEYWORDS KEYWORDS KEYWORDS KEYWORDS
         // KEYWORDS KEYWORDS KEYWORDS KEYWORDS KEYWORDS
 
-        $scope.kind = "Keywords";
+        $scope.keywordKind = "Keywords";
 
         // GET all
         $scope.listKeywords = function () {
