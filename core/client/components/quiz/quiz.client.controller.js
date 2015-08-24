@@ -2,7 +2,7 @@
     "use strict";
 
     angular.module('quizmaster')
-        .controller('quizzesController', [
+        .controller('quizController', [
             '$scope',
             '$log',
             '$location',
@@ -12,9 +12,9 @@
             'subjectsResource',
             'keywordsResource',
             'quizzesResource',
-            quizzesController]);
+            quizController]);
 
-    function quizzesController(
+    function quizController(
         $scope,
         $log,
         $location,
@@ -25,7 +25,7 @@
         keywordsResource,
         quizzesResource) {
 
-        $scope.test = "This means the quizzesController and view are working.";
+        $scope.test = "This means the quizController and view are working.";
 
 
 

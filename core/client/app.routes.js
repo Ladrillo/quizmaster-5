@@ -11,15 +11,10 @@
                     templateUrl: 'components/words/words.client.template.html',
                     controller: 'wordsController'
                 })
-                .state('quizzes', {
-                    url: '/quizzes',
-                    templateUrl: 'components/quizzes/quizzes.client.template.html',
-                    controller: 'quizzesController'
-                })
-                .state('sentences', {
-                    url: '/sentences',
-                    templateUrl: 'components/sentences/sentences.client.template.html',
-                    controller: 'sentencesController'
+                .state('quiz', {
+                    url: '/quiz',
+                    templateUrl: 'components/quiz/quiz.client.template.html',
+                    controller: 'quizController'
                 });
         });
 

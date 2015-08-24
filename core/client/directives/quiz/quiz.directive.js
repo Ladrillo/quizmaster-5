@@ -2,11 +2,11 @@
     "use strict";
 
     angular.module('quizmaster')
-        .directive('gabeQuizzes', function () {
+        .directive('gabeQuiz', function () {
             return {
                 restrict: 'E',
 
-                templateUrl: 'directives/quizzes/quizzes.template.html',
+                templateUrl: 'directives/quiz/quiz.template.html',
 
                 controller: function ($scope, subjectsResource, keywordsResource, quizzesResource) {
                     // words directive is bound to these:
