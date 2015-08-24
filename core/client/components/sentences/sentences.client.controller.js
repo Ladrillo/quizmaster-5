@@ -8,7 +8,6 @@
 
         $scope.test = "This means the sentencesController and view are working.";
         $scope.sentences = [];
-
     }
 
 

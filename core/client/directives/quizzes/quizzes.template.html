@@ -83,15 +83,26 @@
     </div>
 </div>
 
-<!--truthy and falsy answers block-->
+<!--Answers block-->
 <div class="panel panel-primary">
     <div class="panel-heading">
         <h3 class="panel-title">Answers</h3>
     </div>
     <div class="panel-body">
         <!--empieza el bloque truthies-->
-        <gabe-sentences sentences="truthies"></gabe-sentences>
+        <gabe-sentences sentences="truthies" sentences-type="truthiesType"></gabe-sentences>
         <!--empieza el bloque falsies-->
-        <gabe-sentences sentences="falsies"></gabe-sentences>
+        <gabe-sentences sentences="falsies" sentences-type="falsiesType"></gabe-sentences>
+        <!--empieza el bloque pattern matching-->
+        <gabe-sentences sentences="regexps" sentences-type="regexpsType"></gabe-sentences>
     </div>
 </div>
+
+
+<br><h4>subjects:</h4> {{ checkedSubjects }}
+<br><h4>keywords:</h4> {{ checkedKeywords }}
+<br><h4>instructions:</h4> {{ instructions }}
+<br><h4>stem:</h4> {{ stem }}
+<br><h4>truthies:</h4> {{ truthies }}
+<br><h4>falsies:</h4> {{ falsies }}
+<br><h4>regexps:</h4> {{ regexps }}

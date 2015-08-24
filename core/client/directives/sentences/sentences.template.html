@@ -1,7 +1,7 @@
 <div>
-    <label for="{{ title }}" class="control-label">{{ title }}</label>
+    <label for="{{ sentencesType }}" class="control-label">{{ sentencesType }}</label>
     <div class="input-group">
-        <input ng-model="newSentence" type="text" class="form-control" id="{{ title }}" placeholder="Type {{ title }}...">
+        <input ng-model="newSentence" type="text" class="form-control" id="{{ sentencesType }}" placeholder="Type {{ sentencesType }}...">
         <span class="input-group-btn">
             <button ng-disabled="!inputValid()" ng-click="addSentence()" class="btn btn-primary" type="button">Add</button>
         </span>
@@ -16,7 +16,7 @@
                     <button ng-disabled="!!currentSentence" ng-hide="!!deleting" ng-click="flipDeleting(); setCurrentSentence(sentence)" type="button"
                     class="btn btn-xs btn-link">Delete</button>
                     <button ng-show="!!deleting" ng-click="flipDeleting(); eraseSentence(); flushCurrentSentence()" class="btn btn-xs btn-danger">Delete!</button>
-                    <button ng-show="!!deleting" ng-click="flipDeleting()" type="button" class="btn btn-xs btn-primary">Cancel</button>
+                    <button ng-show="!!deleting" ng-click="flipDeleting(); flushCurrentSentence()" type="button" class="btn btn-xs btn-primary">Cancel</button>
                 </div>
             </div>
 

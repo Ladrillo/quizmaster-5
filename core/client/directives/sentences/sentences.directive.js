@@ -9,7 +9,8 @@
                 templateUrl: 'directives/sentences/sentences.template.html',
 
                 scope: {
-                    sentences: "="
+                    sentences: "=",
+                    sentencesType: "="
                 },
 
                 controller: function ($scope) {

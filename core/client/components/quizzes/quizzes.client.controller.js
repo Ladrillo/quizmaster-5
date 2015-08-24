@@ -28,7 +28,6 @@
         $scope.test = "This means the quizzesController and view are working.";
 
 
-
         // SUBJECTS SUBJECTS SUBJECTS SUBJECTS SUBJECTS
         // SUBJECTS SUBJECTS SUBJECTS SUBJECTS SUBJECTS
         // SUBJECTS SUBJECTS SUBJECTS SUBJECTS SUBJECTS
@@ -95,6 +94,28 @@
 
 
         $scope.listKeywords(); // populate view
+
+
+        // QUIZZES QUIZZES QUIZZES QUIZZES QUIZZES
+        // QUIZZES QUIZZES QUIZZES QUIZZES QUIZZES
+        // QUIZZES QUIZZES QUIZZES QUIZZES QUIZZES
+
+
+
+        $scope.createQuiz = function () {
+            new quizzesResource({
+                subjects: $scope.checkedSubjects,
+                keywords: $scope.checkedKeywords,
+                instructions: $scope.instructions,
+                stem: $scope.stem,
+                truthies: $scope.truthies,
+                falsies: $scope.falsies,
+                regexps: $scope.regexps
+            })
+                .$save();
+        };
+
+
 
 
     }

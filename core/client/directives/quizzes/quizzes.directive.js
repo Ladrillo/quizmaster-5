@@ -8,22 +8,31 @@
 
                 templateUrl: 'directives/quizzes/quizzes.template.html',
 
-
-
                 controller: function ($scope) {
+                    // words directive is bound to these:
                     $scope.checkedSubjects = [];
                     $scope.checkedKeywords = [];
 
+                    // sentences directive is bound to these:
                     $scope.truthies = [];
                     $scope.falsies = [];
+                    $scope.regexps = [];
 
-                    $scope.addTruthy = function (truthy) {
-                        this.truthies.push(truthy);
-                    };
+                    // the other values the quiz needs:
+                    $scope.instructions = "";
+                    $scope.stem = "";
 
-                    $scope.addFalsy = function (falsy) {
-                        this.falsies.push(falsy);
-                    };
+                    $scope.truthiesType = "Truthy answers";
+                    $scope.falsiesType = "Falsy answers";
+                    $scope.regexpsType = "Regular Expressions";
+
+//                     $scope.addTruthy = function (truthy) {
+//                         this.truthies.push(truthy.name);
+//                     };
+//
+//                     $scope.addFalsy = function (falsy) {
+//                         this.falsies.push(falsy.name);
+//                     };
 
                     $scope.editing = false;
                     $scope.flipEditing = function () {
