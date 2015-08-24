@@ -4,6 +4,11 @@
     angular.module('quizmaster')
         .controller('quizController', [
             '$scope',
+            '$log',
+            '$location',
+            '$q',
+            '$resource',
+            '$state',
             'subjectsResource',
             'keywordsResource',
             'quizzesResource',
@@ -11,11 +16,21 @@
 
     function quizController(
         $scope,
+        $log,
+        $location,
+        $q,
+        $resource,
+        $state,
         subjectsResource,
         keywordsResource,
         quizzesResource) {
 
         $scope.test = "This means the quizController and view are working.";
+
+
+
+
+
 
 
     }
