@@ -83,7 +83,7 @@
         };
 
 
-        $scope.listKeywords(); // populate view
+         $scope.listKeywords(); // populate view
 
 
 

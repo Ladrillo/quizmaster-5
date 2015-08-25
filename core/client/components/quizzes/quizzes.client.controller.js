@@ -4,11 +4,6 @@
     angular.module('quizmaster')
         .controller('quizzesController', [
             '$scope',
-            '$log',
-            '$location',
-            '$q',
-            '$resource',
-            '$state',
             'subjectsResource',
             'keywordsResource',
             'quizzesResource',
@@ -16,11 +11,6 @@
 
     function quizzesController(
         $scope,
-        $log,
-        $location,
-        $q,
-        $resource,
-        $state,
         subjectsResource,
         keywordsResource,
         quizzesResource) {
@@ -30,6 +20,12 @@
 
         $scope.listQuizzes = function () {
             $scope.quizzes = quizzesResource.query();
+        };
+
+        // DELETE QUIZ
+        $scope.removeQuiz = function (quiz) {
+            this.quizzes.splice(this.quizzes.indexOf(quiz), 1);
+            quiz.$delete();
         };
 
         $scope.listQuizzes();

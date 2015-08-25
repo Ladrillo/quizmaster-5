@@ -26,6 +26,7 @@
                     $scope.deleting = false;
                     $scope.editing = false;
 
+
                     // WORD BEING EDITED OR DELETED
                     $scope.currentWord = {};
                     $scope.setCurrentWord = function (word) {
@@ -37,13 +38,11 @@
                     };
 
 
-
                     // CREATING NEW WORDS
                     $scope.validNewWord = function () {
                         return !!this.newWord &&
                             this.words.every(function (e) { return e.name !== $scope.newWord; });
                     };
-
 
                     $scope.addNewWord = function () {
                         this.createWord(); // method provided by parent controller !!!!!!

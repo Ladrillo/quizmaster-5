@@ -4,6 +4,7 @@
     angular.module('quizmaster')
         .controller('quizController', [
             '$scope',
+            '$resource',
             'subjectsResource',
             'keywordsResource',
             'quizzesResource',
@@ -11,6 +12,7 @@
 
     function quizController(
         $scope,
+        $resource,
         subjectsResource,
         keywordsResource,
         quizzesResource) {

@@ -1,4 +1,4 @@
-<div class="panel panel-primary">
+<div class="panel panel-default">
     <!--título del panel-->
     <div class="panel-heading">
         <h3 class="panel-title">{{ kind }}</h3>
@@ -12,7 +12,7 @@
         <div class="input-group">
             <input ng-model="newWord" type="text" class="form-control" placeholder="Create New">
             <span class="input-group-btn">
-                <button ng-disabled="!validNewWord()" ng-click="addNewWord()" class="btn btn-primary" type="button">Save</button>
+                <button ng-disabled="!validNewWord()" ng-click="addNewWord()" class="btn btn-default" type="button">Save</button>
             </span>
         </div>
         <br>
@@ -29,14 +29,14 @@
                     class="btn btn-xs btn-link">Delete</button>
                     <!--Only visible when we are in a deleting operation-->
                     <button ng-show="!!deleting" ng-click="flipDeleting(); removeWord(); flushCurrentWord()" class="btn btn-xs btn-danger">Delete!</button>
-                    <button ng-show="!!deleting" ng-click="flipDeleting(); flushCurrentWord()" type="button" class="btn btn-xs btn-primary">Cancel</button>
+                    <button ng-show="!!deleting" ng-click="flipDeleting(); flushCurrentWord()" type="button" class="btn btn-xs btn-default">Cancel</button>
                 </div>
             </div>
             <!--editando-->
             <div ng-show="!!editing" class="input-group">
                 <input ng-model="currentWord.name" type="text" class="form-control">
                 <span class="input-group-btn">
-                    <button ng-disabled="!validWordEdit()" ng-click="flipEditing(); editWord(); flushCurrentWord()" class="btn btn-primary" type="button">Save</button>
+                    <button ng-disabled="!validWordEdit()" ng-click="flipEditing(); editWord(); flushCurrentWord()" class="btn btn-default" type="button">Save</button>
                 </span>
             </div>
         </div>

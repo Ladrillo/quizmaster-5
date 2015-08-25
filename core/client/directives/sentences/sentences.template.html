@@ -1,13 +1,13 @@
-<div class="flex">
-    <div class="col-sm-3">
+<div class="row">
+    <div class="col-sm-2 gabri-label">
         <label for="{{ sentencesType }}" class="control-label">{{ sentencesType }}</label>
     </div>
-    <div class="col-sm-9">
+    <div class="col-sm-10">
         <div class="input-group">
             <input ng-model="newSentence" type="text" class="form-control" id="{{ sentencesType }}" placeholder="Type {{ sentencesType }}...">
             <span class="input-group-btn">
-            <button ng-disabled="!inputValid()" ng-click="addSentence()" class="btn btn-primary" type="button">Add</button>
-        </span>
+                <button ng-disabled="!inputValid()" ng-click="addSentence()" class="btn btn-primary" type="button">Add</button>
+            </span>
         </div>
         <br>
         <ul class="list-group">
@@ -27,14 +27,14 @@
                 <div ng-show="!!editing" class="input-group">
                     <input ng-model="sentence" type="text" class="form-control">
                     <span class="input-group-btn">
-                    <button ng-disabled="!editValid()" ng-click="flipEditing(); updateSentence(); flushCurrentSentence()" class="btn btn-primary" type="button">Save</button>
-                </span>
+                        <button ng-disabled="!editValid()" ng-click="flipEditing(); updateSentence(); flushCurrentSentence()" class="btn btn-primary" type="button">Save</button>
+                    </span>
                 </div>
                 <!--sentences: {{ sentences }}
-            <br> current sentence: {{ currentSentence }}
-            <br> input valid: {{ inputValid() }}
-            <br> edit valid: {{ editValid() }}
-            <br> sentence: {{ sentence }}-->
+                <br> current sentence: {{ currentSentence }}
+                <br> input valid: {{ inputValid() }}
+                <br> edit valid: {{ editValid() }}
+                <br> sentence: {{ sentence }}-->
             </li>
         </ul>
     </div>
