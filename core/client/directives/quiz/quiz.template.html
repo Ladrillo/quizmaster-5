@@ -39,24 +39,28 @@
         <h3 class="panel-title">Labels</h3>
     </div>
     <div class="panel-body">
-        <div class="btn-group btn-group-justified" role="group" aria-label="...">
-            <div class="btn-group" role="group">
-                <button type="button" class="btn btn-link" data-toggle="modal" data-target="#modalSubjects">Select Subjects</button>
+        <div class="labels">
+            <div class="btn-group btn-group-justified" role="group">
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-link" data-toggle="modal" data-target="#modalSubjects">Select Subjects</button>
+                </div>
             </div>
+            <br>
+            <ul class="list-group">
+                <li ng-repeat="subject in checkedSubjects" class="list-group-item">{{ subject.name }}</li>
+            </ul>
         </div>
-        <br>
-        <ul class="list-group">
-            <li ng-repeat="subject in checkedSubjects" class="list-group-item">{{ subject.name }}</li>
-        </ul>
-        <div class="btn-group btn-group-justified" role="group" aria-label="...">
-            <div class="btn-group" role="group">
-                <button type="button" class="btn btn-link" data-toggle="modal" data-target="#modalKeywords">Select Keywords</button>
+        <div class="labels">
+            <div class="btn-group btn-group-justified" role="group">
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-link" data-toggle="modal" data-target="#modalKeywords">Select Keywords</button>
+                </div>
             </div>
+            <br>
+            <ul class="list-group">
+                <li ng-repeat="keyword in checkedKeywords" class="list-group-item">{{ keyword.name }}</li>
+            </ul>
         </div>
-        <br>
-        <ul class="list-group">
-            <li ng-repeat="keyword in checkedKeywords" class="list-group-item">{{ keyword.name }}</li>
-        </ul>
     </div>
 </div>
 

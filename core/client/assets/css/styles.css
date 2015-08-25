@@ -5,3 +5,20 @@
 body {
     background-color: #FBFDDF;
 }
+
+.tiles {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.panel-footer {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+}

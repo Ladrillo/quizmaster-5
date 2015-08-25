@@ -1,0 +1,32 @@
+<div class="panel panel-primary">
+    <!--título del panel-->
+    <div class="panel-heading">
+        <h4 class="panel-title">{{ quiz.stem }}</h4>
+    </div>
+    <!--cuerpo del panel-->
+    <div class="panel-body gabe-tile">
+        <!--<h4>Subjects</h4>
+        <span ng-repeat="subject in quiz.subjects">{{ subject }} </span>
+
+        <h4>Keywords</h4>
+        <span ng-repeat="keyword in quiz.keywords">{{ keyword }} </span>
+
+        <h4>{{ quiz.stem }}</h4>-->
+
+        <!--<h4>Truthy Answers</h4>-->
+        <p ng-repeat="truthy in quiz.truthies">{{ truthy }} </p>
+
+        <!--<h4>Falsy Answers</h4>-->
+        <p ng-repeat="falsy in quiz.falsies">{{ falsy }} </p>
+
+        <!--<h4>Regular Expressions</h4>
+        <p ng-repeat="regexp in quiz.regexps">{{ regexp }} </p>-->
+
+    </div>
+    <div class="panel-footer">
+        <div class="btn-group btn-group-sm" role="group">
+            <button type="button" class="btn btn-default">Edit</button>
+            <button type="button" class="btn btn-default">Delete</button>
+        </div>
+    </div>
+</div>

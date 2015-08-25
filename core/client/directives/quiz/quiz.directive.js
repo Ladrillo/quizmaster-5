@@ -8,6 +8,8 @@
 
                 templateUrl: 'directives/quiz/quiz.template.html',
 
+                scope: {},
+
                 controller: function ($scope, subjectsResource, keywordsResource, quizzesResource) {
                     // words directive is bound to these:
                     $scope.checkedSubjects = [];

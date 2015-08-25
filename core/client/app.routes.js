@@ -15,6 +15,11 @@
                     url: '/quiz',
                     templateUrl: 'components/quiz/quiz.client.template.html',
                     controller: 'quizController'
+                })
+                .state('quizzes', {
+                    url: '/quizzes',
+                    templateUrl: 'components/quizzes/quizzes.client.template.html',
+                    controller: 'quizzesController'
                 });
         });
 

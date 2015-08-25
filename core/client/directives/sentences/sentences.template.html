@@ -1,37 +1,41 @@
-<div>
-    <label for="{{ sentencesType }}" class="control-label">{{ sentencesType }}</label>
-    <div class="input-group">
-        <input ng-model="newSentence" type="text" class="form-control" id="{{ sentencesType }}" placeholder="Type {{ sentencesType }}...">
-        <span class="input-group-btn">
+<div class="flex">
+    <div class="col-sm-3">
+        <label for="{{ sentencesType }}" class="control-label">{{ sentencesType }}</label>
+    </div>
+    <div class="col-sm-9">
+        <div class="input-group">
+            <input ng-model="newSentence" type="text" class="form-control" id="{{ sentencesType }}" placeholder="Type {{ sentencesType }}...">
+            <span class="input-group-btn">
             <button ng-disabled="!inputValid()" ng-click="addSentence()" class="btn btn-primary" type="button">Add</button>
         </span>
-    </div>
-    <br>
-    <ul class="list-group">
-        <li ng-repeat="sentence in sentences" class="list-group-item">
-            <div ng-hide="!!editing">{{ sentence }}
-                <div class="pull-right">
-                    <button ng-disabled="!!currentSentence" ng-hide="!!deleting" ng-click="flipEditing(); setCurrentSentence(sentence)" type="button"
-                    class="btn btn-xs btn-link">Edit</button>
-                    <button ng-disabled="!!currentSentence" ng-hide="!!deleting" ng-click="flipDeleting(); setCurrentSentence(sentence)" type="button"
-                    class="btn btn-xs btn-link">Delete</button>
-                    <button ng-show="!!deleting" ng-click="flipDeleting(); eraseSentence(); flushCurrentSentence()" class="btn btn-xs btn-danger">Delete!</button>
-                    <button ng-show="!!deleting" ng-click="flipDeleting(); flushCurrentSentence()" type="button" class="btn btn-xs btn-primary">Cancel</button>
+        </div>
+        <br>
+        <ul class="list-group">
+            <li ng-repeat="sentence in sentences" class="list-group-item">
+                <div ng-hide="!!editing">{{ sentence }}
+                    <div class="pull-right">
+                        <button ng-disabled="!!currentSentence" ng-hide="!!deleting" ng-click="flipEditing(); setCurrentSentence(sentence)" type="button"
+                        class="btn btn-xs btn-link">Edit</button>
+                        <button ng-disabled="!!currentSentence" ng-hide="!!deleting" ng-click="flipDeleting(); setCurrentSentence(sentence)" type="button"
+                        class="btn btn-xs btn-link">Delete</button>
+                        <button ng-show="!!deleting" ng-click="flipDeleting(); eraseSentence(); flushCurrentSentence()" class="btn btn-xs btn-danger">Delete!</button>
+                        <button ng-show="!!deleting" ng-click="flipDeleting(); flushCurrentSentence()" type="button" class="btn btn-xs btn-primary">Cancel</button>
+                    </div>
                 </div>
-            </div>
 
-            <!--only visible when editing-->
-            <div ng-show="!!editing" class="input-group">
-                <input ng-model="sentence" type="text" class="form-control">
-                <span class="input-group-btn">
+                <!--only visible when editing-->
+                <div ng-show="!!editing" class="input-group">
+                    <input ng-model="sentence" type="text" class="form-control">
+                    <span class="input-group-btn">
                     <button ng-disabled="!editValid()" ng-click="flipEditing(); updateSentence(); flushCurrentSentence()" class="btn btn-primary" type="button">Save</button>
                 </span>
-            </div>
-            <!--sentences: {{ sentences }}
+                </div>
+                <!--sentences: {{ sentences }}
             <br> current sentence: {{ currentSentence }}
             <br> input valid: {{ inputValid() }}
             <br> edit valid: {{ editValid() }}
             <br> sentence: {{ sentence }}-->
-        </li>
-    </ul>
+            </li>
+        </ul>
+    </div>
 </div>
