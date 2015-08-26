@@ -6,7 +6,7 @@
             return {
                 restrict: 'E',
 
-                templateUrl: 'directives/quiztile/quiztile.template.html',
+                templateUrl: 'directives/quiztile/quiz.tile.template.html',
 
                 controller: function ($scope) {
 

@@ -6,7 +6,7 @@
             return {
                 restrict: 'E',
 
-                templateUrl: 'directives/quiz/quiz.template.html',
+                templateUrl: 'directives/quizfull/quiz.full.template.html',
 
                 controller: function ($scope, subjectsResource, keywordsResource, quizzesResource) {
                     // words directive is bound to these:

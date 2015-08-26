@@ -17,17 +17,20 @@
         keywordsResource,
         quizzesResource) {
 
-        $scope.test = "This means the quizzesController and view are working. You should see tiles.";
 
-
+        // GET ALL QUIZZES
         $scope.listQuizzes = function () {
-            $scope.quizzes = quizzesResource.query();
+            quizzesResource.query(function (response) {
+                $scope.quizzes = response;
+            });
         };
 
+
         // DELETE QUIZ
-        $scope.removeQuiz = function (quiz) {
-            this.quizzes.splice(this.quizzes.indexOf(quiz), 1);
-            quiz.$delete();
+        $scope.removeQuiz = function (quiz) {            ;
+            quiz.$delete(function () {
+                $scope.quizzes.splice($scope.quizzes.indexOf(quiz), 1);
+            });
         };
 
         $scope.listQuizzes();
