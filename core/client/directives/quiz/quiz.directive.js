@@ -8,21 +8,19 @@
 
                 templateUrl: 'directives/quiz/quiz.template.html',
 
-                scope: {},
-
                 controller: function ($scope, subjectsResource, keywordsResource, quizzesResource) {
                     // words directive is bound to these:
-                    $scope.checkedSubjects = [];
-                    $scope.checkedKeywords = [];
+                    // $scope.checkedSubjects = [];
+                    // $scope.checkedKeywords = [];
 
                     // sentences directive is bound to these:
-                    $scope.truthies = [];
-                    $scope.falsies = [];
-                    $scope.regexps = [];
+                    // $scope.truthies = [];
+                    // $scope.falsies = [];
+                    // $scope.regexps = [];
 
                     // the other values the quiz needs:
-                    $scope.instructions = "";
-                    $scope.stem = "";
+                    // $scope.instructions = "";
+                    // $scope.stem = "";
 
                     $scope.truthiesType = "Truthy answers";
                     $scope.falsiesType = "Falsy answers";

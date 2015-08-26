@@ -6,9 +6,9 @@ module.exports = function (app) {
         .post(quizzesCtrl.postQuiz)
         .get(quizzesCtrl.getQuizzes);
 
-    // app.route('/api/quizzes/:id')
-    //     .get(quizzesCtrl.getQuiz)
+    app.route('/api/quizzes/:id')
+        .get(quizzesCtrl.getOneQuiz)
     //     .patch(quizzesCtrl.patchQuiz)
     //     .put(quizzesCtrl.putQuiz)
-    //     .delete(quizzesCtrl.deleteQuiz);
+        .delete(quizzesCtrl.deleteQuiz);
 };
