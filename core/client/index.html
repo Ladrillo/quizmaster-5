@@ -12,11 +12,10 @@
 <body ng-app="quizmaster">
     <div class="container">
         <ul>
-            <li>
-                <a ui-sref="words">Words</a>
-                <a ui-sref="quizedit({id:0})">New Quiz</a>
-                <a ui-sref="quizzes">Quizzes</a>
-            </li>
+            <li><a ui-sref="words">Words Manager</a></li>
+            <li><a ui-sref="quizedit">Edit Quiz</a></li>
+            <li><a ui-sref="quiznew">New Quiz</a></li>
+            <li><a ui-sref="quizlist">List Quizzes</a></li>
         </ul>
         <h1>Quizmaster</h1>
         <h3>App wired: {{ true }}</h3>
@@ -44,9 +43,11 @@
     <script src="directives/sentences/sentences.directive.js"></script>
     <script src="directives/quizfull/quiz.full.directive.js"></script>
     <script src="directives/quiztile/quiz.tile.directive.js"></script>
-    <!--controllers-->
+    <!--controllers words-->
     <script src="components/wordedit/word.edit.client.controller.js"></script>
+    <!--controllers quizzes-->
     <script src="components/quizedit/quiz.edit.client.controller.js"></script>
+    <script src="components/quiznew/quiz.new.client.controller.js"></script>
     <script src="components/quizlist/quiz.list.client.controller.js"></script>
 </body>
 

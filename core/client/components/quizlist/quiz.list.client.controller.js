@@ -2,15 +2,15 @@
     "use strict";
 
     angular.module('quizmaster')
-        .controller('quizzesController', [
+        .controller('quizListController', [
             '$scope',
             '$stateParams',
             'subjectsResource',
             'keywordsResource',
             'quizzesResource',
-            quizzesController]);
+            quizListController]);
 
-    function quizzesController(
+    function quizListController(
         $scope,
         $stateParams,
         subjectsResource,

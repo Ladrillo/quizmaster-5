@@ -3,7 +3,7 @@
 
     angular.module('quizmaster')
         .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-            // $urlRouterProvider.otherwise('/');
+            $urlRouterProvider.otherwise('/');
 
             $stateProvider
                 .state('words', {
@@ -11,15 +11,20 @@
                     templateUrl: 'components/wordedit/word.edit.client.template.html',
                     controller: 'wordsController'
                 })
-                .state('quizzes', {
+                .state('quizlist', {
                     url: '/quizzes',
                     templateUrl: 'components/quizlist/quiz.list.client.template.html',
-                    controller: 'quizzesController'
+                    controller: 'quizListController'
+                })
+                .state('quiznew', {
+                    url: '/quizzes/new',
+                    templateUrl: 'components/quiznew/quiz.new.client.template.html',
+                    controller: 'quizNewController'
                 })
                 .state('quizedit', {
                     url: '/quizzes/:id',
                     templateUrl: 'components/quizedit/quiz.edit.client.template.html',
-                    controller: 'quizController'
+                    controller: 'quizEditController'
                 });
         }]);
 
