@@ -90,15 +90,6 @@
 
                     $scope.listKeywords(); // populate view
 
-
-                    // QUIZZES QUIZZES QUIZZES QUIZZES QUIZZES
-                    // QUIZZES QUIZZES QUIZZES QUIZZES QUIZZES
-                    // QUIZZES QUIZZES QUIZZES QUIZZES QUIZZES
-
-                    $scope.createQuiz = function () {
-                        new quizzesResource($scope.quizInProgress)
-                            .$save();
-                    };
                 }
             };
         });

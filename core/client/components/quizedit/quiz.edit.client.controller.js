@@ -5,6 +5,7 @@
         .controller('quizEditController', [
             '$scope',
             '$stateParams',
+            '$state',
             '$resource',
             'subjectsResource',
             'keywordsResource',
@@ -14,6 +15,7 @@
     function quizEditController(
         $scope,
         $stateParams,
+        $state,
         $resource,
         subjectsResource,
         keywordsResource,
@@ -25,47 +27,42 @@
         };
 
 
-        // GET THE CURRENT QUIZ'S SUBJECTS
-        function getCurrentQuizSubjects() {
-            $scope.currentQuizSubjects = $scope.currentQuiz.subjects;
-
-        }
-
-        function getCurrentQuizKeywords() {
-            $scope.currentQuizKeywords = $scope.currentQuiz.subjects;
-        }
-
-
         $scope.getCurrentQuiz();
 
 
+        function wordsIdsArray(objArr) {
+            var arr = [];
+            objArr.forEach(function (e) { arr.push(e._id); });
+            return arr;
+        }
 
 
+        $scope.updateSubject = function () {
+            subjectsResource.update({ _id: $scope.currentSubject._id }, $scope.currentSubject);
+        };
 
 
+        $scope.updateQuiz = function () {
+            var subjectsIds = wordsIdsArray($scope.quizInProgress.subjects),
+                keywordsIds = wordsIdsArray($scope.quizInProgress.keywords);
 
-
-
-
-
-        //         // words directive is bound to these:
-        //         $scope.checkedSubjects = [];
-        //         $scope.checkedKeywords = [];
-        //
-        //         // sentences directive is bound to these:
-        //         $scope.truthies = $scope.currentQuiz.truthies;
-        //         $scope.falsies = $scope.currentQuiz.falsies;
-        //         $scope.regexps = $scope.currentQuiz.regexps;
-        //
-        //         // the other values the quiz needs:
-        //         $scope.instructions = $scope.currentQuiz.instructions;
-        //         $scope.stem = $scope.currentQuiz.stem;
-
-
-
-
+            quizzesResource.update({
+                _id: $scope.quizInProgress._id
+            }, {
+                    subjects: subjectsIds,
+                    keywords: keywordsIds,
+                    instructions: $scope.quizInProgress.instructions,
+                    stem: $scope.quizInProgress.stem,
+                    truthies: $scope.quizInProgress.truthies,
+                    falsies: $scope.quizInProgress.falsies,
+                    regexps: $scope.quizInProgress.regexps
+                });
+            $state.go('quizlist');
+        };
 
     }
+
+
 
 
 } ());

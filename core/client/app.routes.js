@@ -19,10 +19,7 @@
                 .state('quiznew', {
                     url: '/quizzes/new',
                     templateUrl: 'components/quiznew/quiz.new.client.template.html',
-                    controller: 'quizNewController',
-                    resolve: {
-                        
-                    }
+                    controller: 'quizNewController'
                 })
                 .state('quizedit', {
                     url: '/quizzes/:id',

@@ -13,8 +13,7 @@
                     kind: "=",
                     newWord: "=",
                     currentWord: "=",
-                    checkedIds: "=",
-                    checkedNames: "=",
+                    checkedWords: "=",
 
                     createWord: "&",
                     updateWord: "&",
@@ -23,8 +22,7 @@
 
                 controller: function ($scope) {
                     $scope.newWord = "";
-                    $scope.checkedIds = [];
-                    $scope.checkedNames = [];
+                    $scope.checkedWords = [];
                     $scope.deleting = false;
                     $scope.editing = false;
 
@@ -80,13 +78,11 @@
 
                     // MANAGING CHECKBOXES
                     $scope.toggleChecked = function (word) {
-                        if (this.checkedIds.indexOf(word._id) === -1) {
-                            this.checkedIds.push(word._id);
-                            this.checkedNames.push(word.name);
+                        if (this.checkedWords.indexOf(word) === -1) {
+                            this.checkedWords.push(word);
                         }
                         else {
-                            this.checkedIds.splice(this.checkedIds.indexOf(word._id), 1);
-                            this.checkedNames.splice(this.checkedNames.indexOf(word.name), 1);
+                            this.checkedWords.splice(this.checkedWords.indexOf(word), 1);
                         }
                     };
                 }

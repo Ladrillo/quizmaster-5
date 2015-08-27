@@ -5,7 +5,7 @@
             <div class="modal-body">
                 <!--directive-->
                 <gabe-words words="subjects" kind="subjectKind" new-word="newSubject" create-word="createSubject()" current-word="currentSubject"
-                update-word="updateSubject()" delete-word="deleteSubject()" checked-ids="quizInProgress.subjects" checked-names="snames"></gabe-words>
+                update-word="updateSubject()" delete-word="deleteSubject()" checked-words="quizInProgress.subjects"></gabe-words>
                 <!--directive ends-->
                 <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Done</button>
                 <br>
@@ -23,7 +23,7 @@
             <div class="modal-body">
                 <!--directive-->
                 <gabe-words words="keywords" kind="keywordKind" new-word="newKeyword" create-word="createKeyword()" current-word="currentKeyword"
-                update-word="updateKeyword()" delete-word="deleteKeyword()" checked-ids="quizInProgress.keywords" checked-names="knames"></gabe-words>
+                update-word="updateKeyword()" delete-word="deleteKeyword()" checked-words="quizInProgress.keywords"></gabe-words>
                 <!--directive ends-->
                 <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Done</button>
                 <br>
@@ -48,7 +48,7 @@
             </div>
             <br>
             <ul class="list-group">
-                <li ng-repeat="subject in snames" class="list-group-item">{{ subject }}</li>
+                <li ng-repeat="subject in quizInProgress.subjects" class="list-group-item">{{ subject.name }}</li>
             </ul>
         </div>
         <div class="labels">
@@ -59,7 +59,7 @@
             </div>
             <br>
             <ul class="list-group">
-                <li ng-repeat="keyword in knames" class="list-group-item">{{ keyword }}</li>
+                <li ng-repeat="keyword in quizInProgress.keywords" class="list-group-item">{{ keyword.name }}</li>
             </ul>
         </div>
     </div>
@@ -109,6 +109,3 @@
         <gabe-sentences sentences="quizInProgress.regexps" sentences-type="regexpsType"></gabe-sentences>
     </div>
 </div>
-<button class="btn btn-default" ng-click="createQuiz()">Create quiz</button>
-
-{{ quizInProgress }}

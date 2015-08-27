@@ -8,7 +8,6 @@ module.exports = function (app) {
 
     app.route('/api/quizzes/:id')
         .get(quizzesCtrl.getOneQuiz)
-    //     .patch(quizzesCtrl.patchQuiz)
-    //     .put(quizzesCtrl.putQuiz)
+        .put(quizzesCtrl.putQuiz)
         .delete(quizzesCtrl.deleteQuiz);
 };
