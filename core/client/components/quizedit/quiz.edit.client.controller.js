@@ -47,7 +47,7 @@
                 keywordsIds = wordsIdsArray($scope.quizInProgress.keywords);
 
             quizzesResource.update({
-                id: $scope.quizInProgress._id
+                _id: $scope.quizInProgress._id
             }, {
                     subjects: subjectsIds,
                     keywords: keywordsIds,
