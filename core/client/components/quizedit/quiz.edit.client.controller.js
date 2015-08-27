@@ -21,10 +21,7 @@
 
         // GET THE CURRENT QUIZ FROM THE URL
         $scope.getCurrentQuiz = function () {
-            $scope.currentQuiz = quizzesResource.get({ id: $stateParams.id }, function () {
-                getCurrentQuizSubjects();
-                getCurrentQuizKeywords();
-            });
+            $scope.quizInProgress = quizzesResource.get({ id: $stateParams.id });
         };
 
 

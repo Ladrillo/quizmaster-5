@@ -10,15 +10,16 @@
 
                 controller: function ($scope, subjectsResource, keywordsResource, quizzesResource) {
 
-                    $scope.quizInProgress = {
-                        subjects: [],
-                        keywords: [],
-                        instructions: "",
-                        stem: "",
-                        truthies: [],
-                        falsies: [],
-                        regexps: []
-                    };
+                    // THIS OBJECT IS WHAT THE VIEW POPULATES WITH USER INPUT
+                    // $scope.quizInProgress = {
+                    //     subjects: [],
+                    //     keywords: [],
+                    //     instructions: "",
+                    //     stem: "",
+                    //     truthies: [],
+                    //     falsies: [],
+                    //     regexps: []
+                    // };
 
                     $scope.truthiesType = "Truthy answers";
                     $scope.falsiesType = "Falsy answers";

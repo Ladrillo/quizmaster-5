@@ -5,7 +5,7 @@
             <div class="modal-body">
                 <!--directive-->
                 <gabe-words words="subjects" kind="subjectKind" new-word="newSubject" create-word="createSubject()" current-word="currentSubject"
-                update-word="updateSubject()" delete-word="deleteSubject()" checked="quizInProgress.subjects"></gabe-words>
+                update-word="updateSubject()" delete-word="deleteSubject()" checked-ids="quizInProgress.subjects" checked-names="snames"></gabe-words>
                 <!--directive ends-->
                 <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Done</button>
                 <br>
@@ -23,7 +23,7 @@
             <div class="modal-body">
                 <!--directive-->
                 <gabe-words words="keywords" kind="keywordKind" new-word="newKeyword" create-word="createKeyword()" current-word="currentKeyword"
-                update-word="updateKeyword()" delete-word="deleteKeyword()" checked="quizInProgress.keywords"></gabe-words>
+                update-word="updateKeyword()" delete-word="deleteKeyword()" checked-ids="quizInProgress.keywords" checked-names="knames"></gabe-words>
                 <!--directive ends-->
                 <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Done</button>
                 <br>
@@ -48,7 +48,7 @@
             </div>
             <br>
             <ul class="list-group">
-                <li ng-repeat="subject in quizInProgress.checkedSubjects" class="list-group-item">{{ subject.name }}</li>
+                <li ng-repeat="subject in snames" class="list-group-item">{{ subject }}</li>
             </ul>
         </div>
         <div class="labels">
@@ -59,7 +59,7 @@
             </div>
             <br>
             <ul class="list-group">
-                <li ng-repeat="keyword in quizInProgress.checkedKeywords" class="list-group-item">{{ keyword.name }}</li>
+                <li ng-repeat="keyword in knames" class="list-group-item">{{ keyword }}</li>
             </ul>
         </div>
     </div>
