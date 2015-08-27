@@ -13,20 +13,22 @@ exports.postQuiz = function (req, res, next) {
 
 exports.getQuizzes = function (req, res) {
     Quiz.find({})
-    .populate('user')
-    .exec(function (err, quizzes) {
-        if (err) res.status(500).send(err);
-        else res.json(quizzes);
-    });
+        .populate('user')
+        .populate('subjects')
+        .populate('keywords')
+        .exec(function (err, quizzes) {
+            if (err) res.status(500).send(err);
+            else res.json(quizzes);
+        });
 };
 
 
 exports.getOneQuiz = function (req, res) {
     Quiz.findById(req.params.id)
-    .exec(function (err, quiz) {
-        if (err) res.status(500).send(err);
-        else res.json(quiz);
-    });
+        .exec(function (err, quiz) {
+            if (err) res.status(500).send(err);
+            else res.json(quiz);
+        });
 };
 
 

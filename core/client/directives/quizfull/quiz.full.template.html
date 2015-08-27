@@ -5,7 +5,7 @@
             <div class="modal-body">
                 <!--directive-->
                 <gabe-words words="subjects" kind="subjectKind" new-word="newSubject" create-word="createSubject()" current-word="currentSubject"
-                update-word="updateSubject()" delete-word="deleteSubject()" checked="checkedSubjects"></gabe-words>
+                update-word="updateSubject()" delete-word="deleteSubject()" checked="quizInProgress.subjects"></gabe-words>
                 <!--directive ends-->
                 <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Done</button>
                 <br>
@@ -23,7 +23,7 @@
             <div class="modal-body">
                 <!--directive-->
                 <gabe-words words="keywords" kind="keywordKind" new-word="newKeyword" create-word="createKeyword()" current-word="currentKeyword"
-                update-word="updateKeyword()" delete-word="deleteKeyword()" checked="checkedKeywords"></gabe-words>
+                update-word="updateKeyword()" delete-word="deleteKeyword()" checked="quizInProgress.keywords"></gabe-words>
                 <!--directive ends-->
                 <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Done</button>
                 <br>
@@ -32,6 +32,7 @@
         </div>
     </div>
 </div>
+
 
 <!--subject and keyword selection and list block-->
 <div class="panel panel-default">
@@ -47,7 +48,7 @@
             </div>
             <br>
             <ul class="list-group">
-                <li ng-repeat="subject in checkedSubjects" class="list-group-item">{{ subject.name }}</li>
+                <li ng-repeat="subject in quizInProgress.checkedSubjects" class="list-group-item">{{ subject.name }}</li>
             </ul>
         </div>
         <div class="labels">
@@ -58,7 +59,7 @@
             </div>
             <br>
             <ul class="list-group">
-                <li ng-repeat="keyword in checkedKeywords" class="list-group-item">{{ keyword.name }}</li>
+                <li ng-repeat="keyword in quizInProgress.checkedKeywords" class="list-group-item">{{ keyword.name }}</li>
             </ul>
         </div>
     </div>
@@ -75,7 +76,7 @@
                 <label for="inputInstructions" class="control-label">Instructions</label>
             </div>
             <div class="col-sm-10">
-                <input ng-model="instructions" type="text" class="form-control" id="inputInstructions" placeholder="Type clear instructions">
+                <input ng-model="quizInProgress.instructions" type="text" class="form-control" id="inputInstructions" placeholder="Type clear instructions">
             </div>
         </div>
         <br>
@@ -85,7 +86,7 @@
                 <label for="inputStem" class="control-label"><p>Stem</p></label>
             </div>
             <div class="col-sm-10">
-                <input ng-model="stem" type="text" class="form-control" id="inputStem" placeholder="Type a stem">
+                <input ng-model="quizInProgress.stem" type="text" class="form-control" id="inputStem" placeholder="Type a stem">
             </div>
         </div>
         <br>
@@ -101,19 +102,13 @@
     </div>
     <div class="panel-body">
         <!--empieza el bloque truthies-->
-        <gabe-sentences sentences="truthies" sentences-type="truthiesType"></gabe-sentences>
+        <gabe-sentences sentences="quizInProgress.truthies" sentences-type="truthiesType"></gabe-sentences>
         <!--empieza el bloque falsies-->
-        <gabe-sentences sentences="falsies" sentences-type="falsiesType"></gabe-sentences>
+        <gabe-sentences sentences="quizInProgress.falsies" sentences-type="falsiesType"></gabe-sentences>
         <!--empieza el bloque pattern matching-->
-        <gabe-sentences sentences="regexps" sentences-type="regexpsType"></gabe-sentences>
+        <gabe-sentences sentences="quizInProgress.regexps" sentences-type="regexpsType"></gabe-sentences>
     </div>
 </div>
 <button class="btn btn-default" ng-click="createQuiz()">Create quiz</button>
 
-<!--<br><h4>subjects:</h4> {{ checkedSubjects }}
-<br><h4>keywords:</h4> {{ checkedKeywords }}
-<br><h4>instructions:</h4> {{ instructions }}
-<br><h4>stem:</h4> {{ stem }}
-<br><h4>truthies:</h4> {{ truthies }}
-<br><h4>falsies:</h4> {{ falsies }}
-<br><h4>regexps:</h4> {{ regexps }}-->
+{{ quizInProgress }}

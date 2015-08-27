@@ -3,21 +3,21 @@ var mongoose = require('mongoose'),
 
 var QuizSchema = new Schema({
     subjects: {
-        required: true,
-        // type: [{
-        //     type: Schema.Types.ObjectId,
-        //     ref: 'Subject'
-        // }]
-        type: [String]
+        // required: true,
+        type: [{
+            type: Schema.Types.ObjectId,
+            ref: 'Subject'
+        }]
+        // type: [String]
     },
 
     keywords: {
-        required: true,
-        // type: [{
-        //     type: Schema.Types.ObjectId,
-        //     ref: 'Keyword'
-        // }]
-        type: [String]
+        // required: true,
+        type: [{
+            type: Schema.Types.ObjectId,
+            ref: 'Keyword'
+        }]
+        // type: [String]
     },
 
     instructions: {
