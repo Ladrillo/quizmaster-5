@@ -47,6 +47,12 @@
                 .state('test', {
                     url: '/tests/:id',
                     templateUrl: 'components/test/test.client.template.html',
+                    resolve: {
+                        testsResource: 'testsResource',
+                        testInProgress: function (testsResource, $stateParams) {
+                            return testsResource.get({ id: $stateParams.id });
+                        }
+                    },
                     controller: 'testsController'
                 });
         }]);

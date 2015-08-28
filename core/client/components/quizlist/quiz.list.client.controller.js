@@ -8,6 +8,7 @@
             'subjectsResource',
             'keywordsResource',
             'quizzesResource',
+            'testsResource',
             'quizzes',
             quizListController]);
 
@@ -17,9 +18,14 @@
         subjectsResource,
         keywordsResource,
         quizzesResource,
+        testsResource,
         quizzes) {
 
         $scope.quizzes = quizzes; // resolved in the route
+
+        $scope.testInCreation = {
+            quizzes: []
+        };
 
         // DELETE QUIZ
         $scope.removeQuiz = function (quiz) {            ;
@@ -28,7 +34,27 @@
             });
         };
 
+        // CHECKBOXES THAT ADD TILE TO CURRENT TEST BEING CREATED
+        $scope.addToTestInCreation = function (id) {
+            if (this.testInCreation.quizzes.indexOf(id) === -1) {
+                this.testInCreation.quizzes.push(id);
+            }
+            else {
+                this.testInCreation.quizzes.splice(this.testInCreation.quizzes.indexOf(id), 1);
+            }
+        };
+
+        // CREATE TEST
+        $scope.createTest = function () {
+        new testsResource($scope.testInCreation)
+            .$save();
+        };
+
+
+
     }
 
 
+
 } ());
+

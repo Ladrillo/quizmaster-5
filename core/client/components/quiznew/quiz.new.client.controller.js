@@ -41,7 +41,7 @@
                 regexps: $scope.quizInProgress.regexps
             })
                 .$save();
-                $state.go('quizlist');
+            $state.go('quizlist');
         };
 
     }

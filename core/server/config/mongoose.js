@@ -8,5 +8,6 @@ module.exports = function () {
     require('../models/user.server.model');
     require('../models/subject.server.model');
     require('../models/keyword.server.model');
+    require('../models/test.server.model');
     return db;
 };
