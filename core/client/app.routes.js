@@ -2,30 +2,51 @@
     "use strict";
 
     angular.module('quizmaster')
-        .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+        .config(['$stateProvider', '$urlRouterProvider',  function ($stateProvider, $urlRouterProvider) {
             $urlRouterProvider.otherwise('/');
 
+
             $stateProvider
+
                 .state('words', {
                     url: '/words',
                     templateUrl: 'components/wordedit/word.edit.client.template.html',
                     controller: 'wordsController'
                 })
+
                 .state('quizlist', {
                     url: '/quizzes',
                     templateUrl: 'components/quizlist/quiz.list.client.template.html',
-                    controller: 'quizListController'
+                    resolve: {
+                        quizzesResource: 'quizzesResource',
+                        quizzes: function (quizzesResource) {
+                            return quizzesResource.query();
+                        }
+                    },
+                    controller: 'quizListController',
                 })
+
                 .state('quiznew', {
                     url: '/quizzes/new',
                     templateUrl: 'components/quiznew/quiz.new.client.template.html',
                     controller: 'quizNewController'
                 })
+
                 .state('quizedit', {
                     url: '/quizzes/:id',
                     templateUrl: 'components/quizedit/quiz.edit.client.template.html',
+                    resolve: {
+                        quizzesResource: 'quizzesResource',
+                        quizInProgress: function (quizzesResource, $stateParams) {
+                            return quizzesResource.get({ id: $stateParams.id });
+                        }
+                    },
                     controller: 'quizEditController'
                 });
         }]);
 
 } ());
+
+
+
+

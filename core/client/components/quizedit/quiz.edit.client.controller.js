@@ -10,6 +10,7 @@
             'subjectsResource',
             'keywordsResource',
             'quizzesResource',
+            'quizInProgress',
             quizEditController]);
 
     function quizEditController(
@@ -19,15 +20,11 @@
         $resource,
         subjectsResource,
         keywordsResource,
-        quizzesResource) {
-
-        // GET THE CURRENT QUIZ FROM THE URL
-        $scope.getCurrentQuiz = function () {
-            $scope.quizInProgress = quizzesResource.get({ id: $stateParams.id });
-        };
+        quizzesResource,
+        quizInProgress) {
 
 
-        $scope.getCurrentQuiz();
+        $scope.quizInProgress = quizInProgress; // resolved in the route
 
 
         function wordsIdsArray(objArr) {
@@ -56,8 +53,11 @@
                     truthies: $scope.quizInProgress.truthies,
                     falsies: $scope.quizInProgress.falsies,
                     regexps: $scope.quizInProgress.regexps
+                }, function () {
+                    $state.go('quizlist');
                 });
-            $state.go('quizlist');
+
+           ;
         };
 
     }

@@ -85,6 +85,8 @@
                             this.checkedWords.splice(this.checkedWords.indexOf(word), 1);
                         }
                     };
+
+
                 }
             };
         });

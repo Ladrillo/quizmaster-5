@@ -21,7 +21,7 @@
             <!--checkboxes visibles, no editando-->
             <div ng-hide="!!editing">
                 <label>
-                    <input ng-click="toggleChecked(word)" type="checkbox" value="{{ word.name }}"> {{ word.name }}
+                    <input ng-model="word.isChecked" ng-click="toggleChecked(word)" type="checkbox" value="{{ word.name }}"> {{ word.name }}
                 </label>
                 <div class="pull-right">
                     <button ng-disabled="currentWord._id" ng-hide="!!deleting" ng-click="flipEditing(); setCurrentWord(word)" type="button" class="btn btn-xs btn-link">Edit</button>
@@ -39,7 +39,9 @@
                     <button ng-disabled="!validWordEdit()" ng-click="flipEditing(); editWord(); flushCurrentWord()" class="btn btn-default" type="button">Save</button>
                 </span>
             </div>
+             --> {{ word.isChecked }}
         </div>
+        {{ checkedWords }}
         <!--{{ checked }} {{ currentWord }} {{ validNewWord() }} {{ validWordEdit() }}-->
     </div>
 </div>

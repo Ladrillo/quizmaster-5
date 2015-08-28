@@ -85,8 +85,6 @@
 
          $scope.listKeywords(); // populate view
 
-
-
     };
 
 

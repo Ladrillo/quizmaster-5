@@ -8,6 +8,7 @@
             'subjectsResource',
             'keywordsResource',
             'quizzesResource',
+            'quizzes',
             quizListController]);
 
     function quizListController(
@@ -15,16 +16,10 @@
         $stateParams,
         subjectsResource,
         keywordsResource,
-        quizzesResource) {
+        quizzesResource,
+        quizzes) {
 
-
-        // GET ALL QUIZZES
-        $scope.listQuizzes = function () {
-            quizzesResource.query(function (response) {
-                $scope.quizzes = response;
-            });
-        };
-
+        $scope.quizzes = quizzes; // resolved in the route
 
         // DELETE QUIZ
         $scope.removeQuiz = function (quiz) {            ;
@@ -32,8 +27,6 @@
                 $scope.quizzes.splice($scope.quizzes.indexOf(quiz), 1);
             });
         };
-
-        $scope.listQuizzes();
 
     }
 
