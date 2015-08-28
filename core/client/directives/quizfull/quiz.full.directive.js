@@ -21,6 +21,8 @@
                     //     regexps: []
                     // };
 
+                    console.log('shit', $scope.quizInProgress);
+
 
                     $scope.truthiesType = "Truthy answers";
                     $scope.falsiesType = "Falsy answers";
@@ -42,8 +44,8 @@
                     $scope.listSubjects = function () {
                         subjectsResource.query(function (data) {
                             $scope.subjects = data;
-                            syncChecked();
                         });
+
                     };
                     // DELETE
                     $scope.deleteSubject = function () {
@@ -63,20 +65,8 @@
                     };
 
 
-                    function syncChecked () {
-                        $scope.subjects.forEach(function (s) {
-                            if ($scope.quizInProgress.subjects.indexOf(s) === -1) {
-                                s.isChecked = false;
-                            }
-                            else {
-                                s.isChecked = true;
-                            }
-                        });
-                    }
+                    $scope.listSubjects();  // populate view
 
-
-
-                    $scope.listSubjects();
 
                     // KEYWORDS KEYWORDS KEYWORDS KEYWORDS KEYWORDS
                     // KEYWORDS KEYWORDS KEYWORDS KEYWORDS KEYWORDS

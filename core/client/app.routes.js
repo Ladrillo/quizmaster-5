@@ -42,6 +42,12 @@
                         }
                     },
                     controller: 'quizEditController'
+                })
+
+                .state('test', {
+                    url: '/tests/:id',
+                    templateUrl: 'components/test/test.client.template.html',
+                    controller: 'testsController'
                 });
         }]);
 

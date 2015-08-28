@@ -23,21 +23,27 @@
         quizzesResource,
         quizInProgress) {
 
+        $scope.foo = "bar";
 
-        $scope.quizInProgress = quizInProgress; // resolved in the route
 
+
+        quizInProgress.$promise.then(function (data) {
+            console.log("data.subjects: ", data.subjects);
+            console.log("$scope: ", $scope);
+            $scope.quizInProgress = data;
+            console.log("scope.quizInProgress.subjects: ", $scope.quizInProgress.subjects);
+        })
+            .then(function () {
+                angular.forEach($scope.quizInProgress.subjects, function (subject) {
+                    subject.isChecked = true;
+                });
+            });
 
         function wordsIdsArray(objArr) {
             var arr = [];
             objArr.forEach(function (e) { arr.push(e._id); });
             return arr;
         }
-
-
-        $scope.updateSubject = function () {
-            subjectsResource.update({ _id: $scope.currentSubject._id }, $scope.currentSubject);
-        };
-
 
         $scope.updateQuiz = function () {
             var subjectsIds = wordsIdsArray($scope.quizInProgress.subjects),
@@ -57,7 +63,7 @@
                     $state.go('quizlist');
                 });
 
-           ;
+            ;
         };
 
     }
