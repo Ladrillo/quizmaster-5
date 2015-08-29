@@ -54,7 +54,20 @@
                         }
                     },
                     controller: 'testsController'
+                })
+
+                .state('testlist', {
+                    url: '/tests',
+                    templateUrl: 'components/testlist/test.list.client.template.html',
+                    resolve: {
+                        testsResource: 'testsResource',
+                        tests: function (testsResource) {
+                            return testsResource.query();
+                        }
+                    },
+                    controller: 'testListController',
                 });
+                
         }]);
 
 } ());

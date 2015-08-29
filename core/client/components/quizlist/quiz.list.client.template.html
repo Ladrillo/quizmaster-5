@@ -13,14 +13,8 @@
     <button class="btn btn-lg btn-danger" ng-click="createTest()">Create Test</button>
 </div>
 <div class="tiles">
-    <div ng-repeat="quiz in quizzes | filter:shit | filter:search">
+    <div ng-repeat="quiz in quizzes">
         <gabe-quiztile></gabe-quiztile>
-    </div>
-    <br>
-    <div class="well">
-        <div ng-repeat="quiz in quizzes | filter:noShit">
-            <gabe-quiztile></gabe-quiztile>
-        </div>
     </div>
 </div>
 <!--quizzes: {{ quizzes }}-->
