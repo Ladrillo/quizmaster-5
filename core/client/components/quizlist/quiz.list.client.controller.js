@@ -50,9 +50,27 @@
             .$save();
         };
 
+        // FILTERING
+        $scope.shit = function(quiz) {
+            if (quiz.shit) return false;
+            return true;
+        };
+
+        $scope.noShit = function(quiz) {
+            if (quiz.shit) return true;
+            return false;
+        };
+
+
+
+
+
+
 
 
     }
+
+
 
 
 

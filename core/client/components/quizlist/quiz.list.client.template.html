@@ -1,26 +1,26 @@
-<div class="search-area row">
-    <div class="col-sm-6">
-        <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search for...">
-            <span class="input-group-btn">
+<div class="well">
+    <div class="search-area row">
+        <div class="col-sm-6">
+            <div class="input-group">
+                <input ng-model="search.$" type="text" class="form-control" placeholder="Search for...">
+                <span class="input-group-btn">
                 <button class="btn btn-default" type="button">Go!</button>
             </span>
-        </div>
-        <br>
-        <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search for...">
-            <span class="input-group-btn">
-                <button class="btn btn-default" type="button">Go!</button>
-            </span>
+            </div>
         </div>
     </div>
+    <br>
+    <button class="btn btn-lg btn-danger" ng-click="createTest()">Create Test</button>
 </div>
-<br>
 <div class="tiles">
-    <div ng-repeat="quiz in quizzes">
+    <div ng-repeat="quiz in quizzes | filter:shit | filter:search">
         <gabe-quiztile></gabe-quiztile>
     </div>
+    <br>
+    <div class="well">
+        <div ng-repeat="quiz in quizzes | filter:noShit">
+            <gabe-quiztile></gabe-quiztile>
+        </div>
+    </div>
 </div>
-<button ng-click="createTest()">Create Test</button>
 <!--quizzes: {{ quizzes }}-->
-{{ testInProgress.quizzes }}
