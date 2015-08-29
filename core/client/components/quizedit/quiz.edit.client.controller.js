@@ -25,10 +25,7 @@
 
 
         quizInProgress.$promise.then(function (data) {
-            console.log("data.subjects: ", data.subjects);
-            console.log("$scope: ", $scope);
             $scope.quizInProgress = data;
-            console.log("scope.quizInProgress.subjects: ", $scope.quizInProgress.subjects);
         })
             .then(function () {
                 angular.forEach($scope.quizInProgress.subjects, function (subject) {
