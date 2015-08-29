@@ -5,26 +5,31 @@
         .controller('testsController', [
             '$scope',
             '$resource',
+            '$stateParams',
             '$state',
             'subjectsResource',
             'keywordsResource',
             'quizzesResource',
             'testsResource',
             'testInProgress',
+            'notFunny',
             testsController]);
 
     function testsController(
         $scope,
         $resource,
+        $stateParams,
         $state,
         subjectsResource,
         keywordsResource,
+        quizzesResource,
         testsResource,
         testInProgress,
-        quizzesResource) {
+        notFunny) {
 
 
         $scope.quizesList = testInProgress.quizzes;
+
 
         // ----- MAIN FUNCTION FOR GENERATING TEST START
         (function generateTest() {

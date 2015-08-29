@@ -50,7 +50,7 @@
                     resolve: {
                         testsResource: 'testsResource',
                         testInProgress: function (testsResource, $stateParams) {
-                            return testsResource.get({ id: $stateParams.id });
+                            return testsResource.get({ id: $stateParams.id }).$promise;
                         }
                     },
                     controller: 'testsController'

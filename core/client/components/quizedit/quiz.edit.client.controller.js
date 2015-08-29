@@ -23,9 +23,6 @@
         quizzesResource,
         quizInProgress) {
 
-        $scope.foo = "bar";
-
-
 
         quizInProgress.$promise.then(function (data) {
             console.log("data.subjects: ", data.subjects);

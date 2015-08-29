@@ -27,6 +27,8 @@
             return arr;
         }
 
+        $scope.submitted = false;
+
         $scope.createQuiz = function () {
             var subjectsIds = wordsIdsArray($scope.quizInProgress.subjects),
                 keywordsIds = wordsIdsArray($scope.quizInProgress.keywords);
@@ -41,7 +43,12 @@
                 regexps: $scope.quizInProgress.regexps
             })
                 .$save();
-            $state.go('quizlist');
+                this.quizInProgress.stem = "";
+                this.quizInProgress.truthies = [];
+                this.quizInProgress.falsies = [];
+                this.quizInProgress.regexps = [];
+                this.submitted = true;
+            // $state.go('quizlist');
         };
 
     }

@@ -23,3 +23,49 @@ body {
 .quiz-select {
     margin-left: 15px;
 }
+
+/*copied straight from quizmaster 4*/
+
+.falsy {
+    color: red;
+}
+
+.truthy {
+    color: darkblue;
+}
+
+.btn:focus, .btn:active:focus, .btn.active:focus {
+    outline: 0 none;
+}
+
+div.answers {
+    background-color: #FFFFFF;
+}
+
+.btn {
+    text-align: left;
+    white-space: normal;
+}
+
+.next-or-submit-div {
+    display: flex;
+    justify-content: space-between;
+    height: 80px;
+}
+
+.next-or-submit-buttons {
+    align-self: flex-end;
+}
+
+.quiz-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+span.badge.badge-option {
+    margin-right: 10px;
+}
+
+span.badge {
+    margin-right: 5px;
+}
