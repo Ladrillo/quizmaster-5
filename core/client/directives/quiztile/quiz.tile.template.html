@@ -8,6 +8,7 @@
         <p ng-repeat="truthy in quiz.truthies">{{ truthy }} </p>
         <p ng-repeat="falsy in quiz.falsies">{{ falsy }} </p>
         <p ng-repeat="regexp in quiz.regexps">{{ regexp }} </p>
+        checked: {{ quiz.checked }}
     </div>
     <div class="panel-footer">
         <div class="btn-group btn-group-sm" role="group">
@@ -15,7 +16,7 @@
             <button ng-click="removeQuiz(quiz)" type="button" class="btn btn-default">Delete</button>
         </div>
         <div class="quiz-select">
-            <input ng-model="quiz.shit" ng-click="addToTestInCreation(quiz._id)" type="checkbox">
+            <input ng-model="quiz.checked" ng-click="addToTestInCreation(quiz)" type="checkbox">
         </div>
     </div>
 </div>

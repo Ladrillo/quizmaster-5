@@ -35,12 +35,12 @@
         };
 
         // CHECKBOXES THAT ADD TILE TO CURRENT TEST BEING CREATED
-        $scope.addToTestInCreation = function (id) {
-            if (this.testInCreation.quizzes.indexOf(id) === -1) {
-                this.testInCreation.quizzes.push(id);
+        $scope.addToTestInCreation = function (quiz) {
+            if (this.testInCreation.quizzes.indexOf(quiz) === -1) {
+                this.testInCreation.quizzes.push(quiz);
             }
             else {
-                this.testInCreation.quizzes.splice(this.testInCreation.quizzes.indexOf(id), 1);
+                this.testInCreation.quizzes.splice(this.testInCreation.quizzes.indexOf(quiz), 1);
             }
         };
 
@@ -50,6 +50,11 @@
             .$save();
         };
 
+        // FILTER
+        $scope.filterByChecked = function (quiz) {
+            if ($scope.testInCreation.quizzes.indexOf(quiz) === -1) return true;
+            return false;
+        };
 
     }
 

@@ -1,20 +1,33 @@
-<div class="well">
-    <div class="search-area row">
-        <div class="col-sm-6">
-            <div class="input-group">
-                <input ng-model="search.$" type="text" class="form-control" placeholder="Search for...">
-                <span class="input-group-btn">
-                <button class="btn btn-default" type="button">Go!</button>
-            </span>
+<div class="row">
+    <div class="col-md-9">
+        <div class="well">
+            <div class="search-area row">
+                <div class="col-sm-6">
+                    <div class="input-group">
+                        <input ng-model="search.$" type="text" class="form-control" placeholder="Search for...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">Go!</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <br>
+
+        </div>
+        <div class="tiles">
+            <div ng-repeat="quiz in quizzes | filter:search | filter:filterByChecked">
+                <gabe-quiztile></gabe-quiztile>
             </div>
         </div>
     </div>
-    <br>
-    <button class="btn btn-lg btn-danger" ng-click="createTest()">Create Test</button>
-</div>
-<div class="tiles">
-    <div ng-repeat="quiz in quizzes">
-        <gabe-quiztile></gabe-quiztile>
+    <div class="well col-md-3">
+        <h3>New Test</h3>
+        <button class="btn btn-lg btn-danger" ng-click="createTest()">Create Test</button>
+        <div class="tiles">
+            <div ng-repeat="quiz in testInCreation.quizzes">
+                <gabe-quiztile></gabe-quiztile>
+            </div>
+        </div>
+        <!--quizzes: {{ testInCreation }}-->
     </div>
 </div>
-<!--quizzes: {{ quizzes }}-->

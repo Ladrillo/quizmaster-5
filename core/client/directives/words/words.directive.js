@@ -30,8 +30,6 @@
                     $scope.deleting = false;
                     $scope.editing = false;
 
-                    console.log('mmf', $scope.currentQuiz);
-
 
                     // WORD BEING EDITED OR DELETED
                     $scope.currentWord = {};

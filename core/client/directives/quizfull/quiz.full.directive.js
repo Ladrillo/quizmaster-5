@@ -21,7 +21,7 @@
                     //     regexps: []
                     // };
 
-                    console.log('shit', $scope.quizInProgress);
+                    console.log('quiz:', $scope.quizInProgress);
 
 
                     $scope.truthiesType = "Truthy answers";

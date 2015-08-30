@@ -8,9 +8,10 @@
 
                 templateUrl: 'directives/quiztile/quiz.tile.template.html',
 
+
                 controller: function ($scope) {
 
-                    
+
 
 
                 }
