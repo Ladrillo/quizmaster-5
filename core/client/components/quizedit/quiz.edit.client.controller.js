@@ -24,14 +24,30 @@
         quizInProgress) {
 
 
+
+
         quizInProgress.$promise.then(function (data) {
-            $scope.quizInProgress = data;
+            $scope.quizInProgress = data; // resolved in the route
         })
             .then(function () {
-                angular.forEach($scope.quizInProgress.subjects, function (subject) {
-                    subject.isChecked = true;
+                $scope.subjects.forEach(function (subj) {
+                    $scope.quizInProgress.subjects.forEach(function (pSubj) {
+                        if (subj.name === pSubj.name) {
+                            subj.isChecked = true;
+                        }
+                    });
                 });
+
+                $scope.keywords.forEach(function (keyw) {
+                    $scope.quizInProgress.keywords.forEach(function (pKeyw) {
+                        if (keyw.name === pKeyw.name) {
+                            keyw.isChecked = true;
+                        }
+                    });
+                });
+
             });
+
 
         function wordsIdsArray(objArr) {
             var arr = [];

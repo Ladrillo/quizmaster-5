@@ -60,6 +60,14 @@
             return false;
         };
 
+        // DISABLE NEW TEST BUTTON
+        $scope.newTestButtonDisabled = function () {
+            if (!this.description || this.testInCreation.quizzes.length === 0) {
+                return true;
+            }
+            return false;
+        };
+
     }
 
 

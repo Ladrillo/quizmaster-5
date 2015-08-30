@@ -19,7 +19,8 @@
                     updateWord: "&",
                     deleteWord: "&",
 
-                    currentQuiz: "="
+                    // currentQuiz: "=",
+                    // isChecked:"="
                 },
 
 
@@ -82,16 +83,23 @@
 
                     // MANAGING CHECKBOXES
                     $scope.toggleChecked = function (word) {
-                        if (this.checkedWords.indexOf(word) === -1) {
-                            this.checkedWords.push(word);
-                        }
-                        else {
-                            this.checkedWords.splice(this.checkedWords.indexOf(word), 1);
-                        }
+                        var included = $scope.checkedWords.some(function (chWord) {
+                            return word.name === chWord.name;
+                        });
+
+                        if (!included) $scope.checkedWords.push(word);
+
+                        else $scope.checkedWords.forEach(function (chWord) {
+                            if (word.name === chWord.name) {
+                                $scope.checkedWords.splice($scope.checkedWords.indexOf(chWord), 1);
+                            }
+                        });
                     };
 
 
                 }
+
+
             };
         });
 

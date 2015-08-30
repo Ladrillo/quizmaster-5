@@ -16,13 +16,13 @@
         <label for="testDescription" class="control-label">Test Description</label>
         <input ng-model="description" type="text" class="form-control" id="testDescription" placeholder="Type test decription...">
         <br>
-        <button class="btn btn-lg btn-danger" ng-click="createTest()">Create</button>
+        <button ng-disabled="newTestButtonDisabled()" class="btn btn-lg btn-danger" ng-click="createTest()">Create</button>
         <div class="tiles">
             <div ng-repeat="quiz in testInCreation.quizzes">
                 <gabe-quiztile></gabe-quiztile>
             </div>
         </div>
-        <!--quizzes: {{ testInCreation }}
-        descrition: {{ description }}-->
+        quizzes: {{ testInCreation.quizzes }}
+        descrition: {{ description }}
     </div>
 </div>
