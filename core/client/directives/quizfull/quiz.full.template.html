@@ -1,12 +1,12 @@
-<!-- Modal Subjects-->
+ <!--Modal Subjects
 <div class="modal fade" id="modalSubjects" tabindex="-1" role="dialog" aria-labelledby="subjectsModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-body">
-                <!--directive-->
+                directive
                 <gabe-words words="subjects" kind="subjectKind" new-word="newSubject" create-word="createSubject()" current-word="currentSubject"
                 update-word="updateSubject()" delete-word="deleteSubject()" checked-words="quizInProgress.subjects"></gabe-words>
-                <!--directive ends-->
+                directive ends
                 <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Done</button>
                 <br>
                 <br>
@@ -16,15 +16,15 @@
 </div>
 
 
-<!-- Modal Keywords-->
+ Modal Keywords
 <div class="modal fade" id="modalKeywords" tabindex="-1" role="dialog" aria-labelledby="keywordsModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-body">
-                <!--directive-->
+                directive
                 <gabe-words words="keywords" kind="keywordKind" new-word="newKeyword" create-word="createKeyword()" current-word="currentKeyword"
                 update-word="updateKeyword()" delete-word="deleteKeyword()" checked-words="quizInProgress.keywords" current-quiz="quizInProgress"></gabe-words>
-                <!--directive ends-->
+                directive ends
                 <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Done</button>
                 <br>
                 <br>
@@ -34,7 +34,7 @@
 </div>
 
 
-<!--subject and keyword selection and list block-->
+subject and keyword selection and list block
 <div class="panel panel-default">
     <div class="panel-heading">
         <h3 class="panel-title">Labels</h3>
@@ -63,6 +63,14 @@
             </div>
         </div>
     </div>
+</div>-->
+
+<div class="row">
+    <gabe-words class="col-md-6" words="subjects" kind="subjectKind" new-word="newSubject" create-word="createSubject()" current-word="currentSubject"
+update-word="updateSubject()" delete-word="deleteSubject()" checked-words="quizInProgress.subjects"></gabe-words>
+
+<gabe-words class="col-md-6" words="keywords" kind="keywordKind" new-word="newKeyword" create-word="createKeyword()" current-word="currentKeyword"
+update-word="updateKeyword()" delete-word="deleteKeyword()" checked-words="quizInProgress.keywords" current-quiz="quizInProgress"></gabe-words>
 </div>
 
 <!--stem and instructions block-->

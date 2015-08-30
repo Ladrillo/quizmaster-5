@@ -24,7 +24,8 @@
         $scope.quizzes = quizzes; // resolved in the route
 
         $scope.testInCreation = {
-            quizzes: []
+            quizzes: [],
+            description: ""
         };
 
         // DELETE QUIZ
@@ -46,7 +47,10 @@
 
         // CREATE TEST
         $scope.createTest = function () {
-        new testsResource($scope.testInCreation)
+        new testsResource({
+            quizzes: $scope.testInCreation.quizzes,
+            description: $scope.description
+        })
             .$save();
         };
 

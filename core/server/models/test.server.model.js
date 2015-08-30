@@ -8,6 +8,10 @@ var QuizSchema = new Schema({
             type: Schema.Types.ObjectId,
             ref: 'Quiz'
         }]
+    },
+    description: {
+        required: true,
+        type: String
     }
 });
 

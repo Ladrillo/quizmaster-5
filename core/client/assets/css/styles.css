@@ -11,7 +11,7 @@ body {
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    margin: 15px;
+    margin-top: 15px;
 }
 
 .panel-footer {
@@ -22,6 +22,20 @@ body {
 
 .quiz-select {
     margin-left: 15px;
+}
+
+.list-words {
+    height: 150px;
+    overflow: auto;
+}
+
+.gabe-tile {
+    height: 130px;
+    overflow: auto;
+}
+
+.panel-tile {
+    width: 250px
 }
 
 /*copied straight from quizmaster 4*/
