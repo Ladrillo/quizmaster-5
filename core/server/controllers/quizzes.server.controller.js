@@ -13,7 +13,7 @@ exports.postQuiz = function (req, res, next) {
 
 exports.getQuizzes = function (req, res) {
     Quiz.find({})
-        // .populate('user')
+        .populate('user')
         .populate('subjects')
         .populate('keywords')
         .exec(function (err, quizzes) {
@@ -25,7 +25,7 @@ exports.getQuizzes = function (req, res) {
 
 exports.getOneQuiz = function (req, res) {
     Quiz.findById(req.params.id)
-        // .populate('user')
+        .populate('user')
         .populate('subjects')
         .populate('keywords')
         .exec(function (err, quiz) {

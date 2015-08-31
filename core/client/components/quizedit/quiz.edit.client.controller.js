@@ -7,10 +7,9 @@
             '$stateParams',
             '$state',
             '$resource',
+            'subjectsResource',
+            'keywordsResource',
             'quizzesResource',
-            'quizInProgress',
-            'subjects',
-            'keywords',
             quizEditController]);
 
     function quizEditController(
@@ -18,39 +17,49 @@
         $stateParams,
         $state,
         $resource,
-        quizzesResource,
-        quizInProgress,
-        subjects,
-        keywords) {
-
-        // RESOLVING WORDS
-        $scope.subjects = subjects; // resolving in the route so edit quiz directive won't choke
-        $scope.keywords = keywords; // resolving in the route so edit quiz directive won't choke
-
-        // TRYING TO POPULATE CURRENT QUIZ CORRECTLY
-
-        $scope.quizInProgress = quizInProgress; // resolved in the route
+        subjectsResource,
+        keywordsResource,
+        quizzesResource) {
 
 
-        if ($scope.quizInProgress.instructions) {
 
-            $scope.subjects.forEach(function (subj) {
-                $scope.quizInProgress.subjects.forEach(function (pSubj) {
-                    if (subj.name === pSubj.name) {
-                        subj.isChecked = true;
-                    }
-                });
+        // CALLING THE SERVICES; RESOLVING IN ROUTE FAILED MISERABLY
+
+        quizzesResource.get({ id: $stateParams.id })
+            .$promise
+            .then(function (data) {
+                console.log(data);
+
+                $scope.quizInProgress = data;
+                if ($scope.quizInProgress.instructions) {
+                    $scope.subjects.forEach(function (subj) {
+                        $scope.quizInProgress.subjects.forEach(function (pSubj) {
+                            if (subj.name === pSubj.name) {
+                                subj.isChecked = true;
+                            }
+                        });
+                    });
+                    $scope.keywords.forEach(function (keyw) {
+                        $scope.quizInProgress.keywords.forEach(function (pKeyw) {
+                            if (keyw.name === pKeyw.name) {
+                                keyw.isChecked = true;
+                            }
+                        });
+                    });
+                }
             });
-            $scope.keywords.forEach(function (keyw) {
-                $scope.quizInProgress.keywords.forEach(function (pKeyw) {
-                    if (keyw.name === pKeyw.name) {
-                        keyw.isChecked = true;
-                    }
-                });
-            });
-            
-        }
 
+        subjectsResource.query()
+            .$promise
+            .then(function (data) {
+                $scope.subjects = data;
+            });
+
+        keywordsResource.query()
+            .$promise
+            .then(function (data) {
+                $scope.keywords = data;
+            });
 
 
         // UPDATING THE QUIZ

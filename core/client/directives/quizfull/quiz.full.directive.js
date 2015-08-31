@@ -8,9 +8,7 @@
 
                 templateUrl: 'directives/quizfull/quiz.full.template.html',
 
-                controller: function ($scope, subjectsResource, keywordsResource, quizzesResource) {
-
-                    console.log('quiz in progress:', $scope.quizInProgress);
+                controller: function ($scope, subjectsResource, keywordsResource) {
 
                     $scope.truthiesType = "Truthy answers";
                     $scope.falsiesType = "Falsy answers";
@@ -30,7 +28,7 @@
 
                     // GET all
                     $scope.listSubjects = function () {
-                        return this.subjects; // this comes from parent controller, resolved in its route
+                        return this.subjects; // this comes from parent controller
                     };
 
                     // DELETE
@@ -62,7 +60,7 @@
 
                     // GET all
                     $scope.listKeywords = function () {
-                        return this.keywords; // this comes from parent controller, resolved in its route
+                        return this.keywords; // this comes from parent controller
                     };
 
                     // DELETE
