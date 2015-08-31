@@ -22,16 +22,18 @@
         quizzesResource) {
 
 
-
-        // CALLING THE SERVICES; RESOLVING IN ROUTE FAILED MISERABLY
+        // POPULATING THE QUIZ FORM CORRECTLY
         (function populateQuizInProgress() {
+
+            // IF EDITING AN EXISTING QUIZ
             if ($stateParams.id) {
                 quizzesResource.get({ id: $stateParams.id })
                     .$promise
                     .then(function (data) {
+                        // current quiz being edited
                         console.log(data);
-
                         $scope.quizInProgress = data;
+                        // if editing, check chekboxes correctly
                         if ($scope.quizInProgress.instructions) {
                             $scope.subjects.forEach(function (subj) {
                                 $scope.quizInProgress.subjects.forEach(function (pSubj) {
@@ -50,23 +52,25 @@
                         }
                     });
             }
+
+            // IF CREATING A NEW QUIZ
             else $scope.quizInProgress = {};
+
+            // IN EATHER CASE
+            subjectsResource.query()
+                .$promise
+                .then(function (data) {
+                    $scope.subjects = data;
+                });
+            keywordsResource.query()
+                .$promise
+                .then(function (data) {
+                    $scope.keywords = data;
+                });
         } ());
 
-        subjectsResource.query()
-            .$promise
-            .then(function (data) {
-                $scope.subjects = data;
-            });
 
-        keywordsResource.query()
-            .$promise
-            .then(function (data) {
-                $scope.keywords = data;
-            });
-
-
-        // UPDATING THE QUIZ
+        // UPDATING A QUIZ
         function wordsIdsArray(objArr) {
             var arr = [];
             objArr.forEach(function (e) { arr.push(e._id); });
@@ -95,7 +99,7 @@
         };
 
 
-        // FUNCTIONS THAT HAVE TO DO WITH CREATING A NEW QUIZ
+        // CREATING A NEW QUIZ
         $scope.submitted = false;
 
         $scope.createQuiz = function () {
@@ -121,10 +125,8 @@
         };
 
 
-        // WORDS DIRECTIVE
-        // WORDS DIRECTIVE
-        // WORDS DIRECTIVE
-        
+        // VARIABLES OUR SUBJECTS AND KEYWORD DIRECTIVES NEED
+
         $scope.truthiesType = "Truthy answers";
         $scope.falsiesType = "Falsy answers";
         $scope.regexpsType = "Regular Expressions";

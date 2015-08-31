@@ -18,12 +18,7 @@
                     createWord: "&",
                     updateWord: "&",
                     deleteWord: "&",
-
-                    // currentQuiz: "=",
-                    // isChecked:"="
                 },
-
-
 
                 controller: function ($scope) {
                     $scope.newWord = "";
