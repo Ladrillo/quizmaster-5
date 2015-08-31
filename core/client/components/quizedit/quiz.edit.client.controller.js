@@ -31,25 +31,23 @@
                     .$promise
                     .then(function (data) {
                         // current quiz being edited
-                        console.log(data);
+                        // console.log(data);
                         $scope.quizInProgress = data;
                         // if editing, check chekboxes correctly
-                        if ($scope.quizInProgress.instructions) {
-                            $scope.subjects.forEach(function (subj) {
-                                $scope.quizInProgress.subjects.forEach(function (pSubj) {
-                                    if (subj.name === pSubj.name) {
-                                        subj.isChecked = true;
-                                    }
-                                });
+                        $scope.subjects.forEach(function (subj) {
+                            $scope.quizInProgress.subjects.forEach(function (pSubj) {
+                                if (subj.name === pSubj.name) {
+                                    subj.isChecked = true;
+                                }
                             });
-                            $scope.keywords.forEach(function (keyw) {
-                                $scope.quizInProgress.keywords.forEach(function (pKeyw) {
-                                    if (keyw.name === pKeyw.name) {
-                                        keyw.isChecked = true;
-                                    }
-                                });
+                        });
+                        $scope.keywords.forEach(function (keyw) {
+                            $scope.quizInProgress.keywords.forEach(function (pKeyw) {
+                                if (keyw.name === pKeyw.name) {
+                                    keyw.isChecked = true;
+                                }
                             });
-                        }
+                        });
                     });
             }
 

@@ -52,7 +52,7 @@ update-word="updateKeyword()" delete-word="deleteKeyword()" checked-words="quizI
     </div>
 </div>
 
-<button class="btn btn-lg btn-danger pull-right" ng-click="updateQuiz()">Update quiz</button>
-<button class="btn btn-lg btn-danger pull-right" ng-click="createQuiz()">Create quiz</button>
+<button ng-show="quizInProgress.stem" class="btn btn-lg btn-danger pull-right" ng-click="updateQuiz()">Update quiz</button>
+<button ng-show="!quizInProgress.stem" class="btn btn-lg btn-danger pull-right" ng-click="createQuiz()">Create quiz</button>
 
 {{ quizInProgress }}
