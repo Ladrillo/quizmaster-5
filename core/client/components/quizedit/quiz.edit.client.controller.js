@@ -25,6 +25,18 @@
         // POPULATING THE QUIZ FORM CORRECTLY
         (function populateQuizInProgress() {
 
+            // IN ALL CASES
+            subjectsResource.query()
+                .$promise
+                .then(function (data) {
+                    $scope.subjects = data;
+                });
+            keywordsResource.query()
+                .$promise
+                .then(function (data) {
+                    $scope.keywords = data;
+                });
+                
             // IF EDITING AN EXISTING QUIZ
             if ($stateParams.id) {
                 quizzesResource.get({ id: $stateParams.id })
@@ -54,17 +66,7 @@
             // IF CREATING A NEW QUIZ
             else $scope.quizInProgress = {};
 
-            // IN EATHER CASE
-            subjectsResource.query()
-                .$promise
-                .then(function (data) {
-                    $scope.subjects = data;
-                });
-            keywordsResource.query()
-                .$promise
-                .then(function (data) {
-                    $scope.keywords = data;
-                });
+
         } ());
 
 
