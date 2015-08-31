@@ -29,6 +29,17 @@
                 .state('quizedit', {
                     url: '/quizzes/:id',
                     templateUrl: 'components/quizedit/quiz.edit.client.template.html',
+                    resolve: {
+                        subjectsResource: 'subjectsResource',
+                        subjects: function (subjectsResource) {
+                            return subjectsResource.query().$promise;
+                        },
+
+                        keywordsResource: 'keywordsResource',
+                        keywords: function (keywordsResource) {
+                            return keywordsResource.query().$promise;
+                        }
+                    },
                     controller: 'quizEditController'
                 })
 

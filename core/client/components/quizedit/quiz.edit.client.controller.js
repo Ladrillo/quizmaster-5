@@ -10,6 +10,8 @@
             'subjectsResource',
             'keywordsResource',
             'quizzesResource',
+            'subjects',
+            'keywords',
             quizEditController]);
 
     function quizEditController(
@@ -19,24 +21,28 @@
         $resource,
         subjectsResource,
         keywordsResource,
-        quizzesResource) {
+        quizzesResource,
+        subjects,
+        keywords) {
 
 
         // POPULATING THE QUIZ FORM CORRECTLY
         (function populateQuizInProgress() {
 
-            // IN ALL CASES
-            subjectsResource.query()
-                .$promise
-                .then(function (data) {
-                    $scope.subjects = data;
-                });
-            keywordsResource.query()
-                .$promise
-                .then(function (data) {
-                    $scope.keywords = data;
-                });
-                
+            // WE FIRST NEED SUBJECTS AND KEYWORDS IN SCOPE
+            $scope.subjects = subjects;
+            $scope.keywords = keywords;
+            // subjectsResource.query()
+            //     .$promise
+            //     .then(function (data) {
+            //         $scope.subjects = data;
+            //     });
+            // keywordsResource.query()
+            //     .$promise
+            //     .then(function (data) {
+            //         $scope.keywords = data;
+            //     });
+
             // IF EDITING AN EXISTING QUIZ
             if ($stateParams.id) {
                 quizzesResource.get({ id: $stateParams.id })
