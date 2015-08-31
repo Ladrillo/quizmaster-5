@@ -20,37 +20,11 @@
                     controller: 'quizListController',
                 })
 
-//                 .state('quiznew', {
-//                     url: '/quizzes/new',
-//                     templateUrl: 'components/quizedit/quiz.edit.client.template.html',
-//                     resolve: {
-//                         quizInProgress: function () {
-//                             return {
-//                                 subjects:[],
-//                                 keywords: [],
-//                                 instructions: "",
-//                                 stem: "",
-//                                 truthies: [],
-//                                 falsies: [],
-//                                 regexps:[]};
-//                         },
-//
-//                         subjectsResource: 'subjectsResource',
-//                         subjects: function (subjectsResource) {
-//                             return subjectsResource.query(function (data) {
-//                                 return data;
-//                             });
-//                         },
-//
-//                         keywordsResource: 'keywordsResource',
-//                         keywords: function (keywordsResource) {
-//                             return keywordsResource.query(function (data) {
-//                                 return data;
-//                             });
-//                         }
-//                     },
-//                     controller: 'quizEditController',
-//                 })
+                .state('quiznew', {
+                    url: '/quizzes/new',
+                    templateUrl: 'components/quizedit/quiz.edit.client.template.html',
+                    controller: 'quizEditController',
+                })
 
                 .state('quizedit', {
                     url: '/quizzes/:id',

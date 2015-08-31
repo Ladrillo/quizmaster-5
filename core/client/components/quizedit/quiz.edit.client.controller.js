@@ -24,30 +24,34 @@
 
 
         // CALLING THE SERVICES; RESOLVING IN ROUTE FAILED MISERABLY
+        (function populateQuizInProgress() {
+            if ($stateParams.id) {
+                quizzesResource.get({ id: $stateParams.id })
+                    .$promise
+                    .then(function (data) {
+                        console.log(data);
 
-        quizzesResource.get({ id: $stateParams.id })
-            .$promise
-            .then(function (data) {
-                console.log(data);
-
-                $scope.quizInProgress = data;
-                if ($scope.quizInProgress.instructions) {
-                    $scope.subjects.forEach(function (subj) {
-                        $scope.quizInProgress.subjects.forEach(function (pSubj) {
-                            if (subj.name === pSubj.name) {
-                                subj.isChecked = true;
-                            }
-                        });
+                        $scope.quizInProgress = data;
+                        if ($scope.quizInProgress.instructions) {
+                            $scope.subjects.forEach(function (subj) {
+                                $scope.quizInProgress.subjects.forEach(function (pSubj) {
+                                    if (subj.name === pSubj.name) {
+                                        subj.isChecked = true;
+                                    }
+                                });
+                            });
+                            $scope.keywords.forEach(function (keyw) {
+                                $scope.quizInProgress.keywords.forEach(function (pKeyw) {
+                                    if (keyw.name === pKeyw.name) {
+                                        keyw.isChecked = true;
+                                    }
+                                });
+                            });
+                        }
                     });
-                    $scope.keywords.forEach(function (keyw) {
-                        $scope.quizInProgress.keywords.forEach(function (pKeyw) {
-                            if (keyw.name === pKeyw.name) {
-                                keyw.isChecked = true;
-                            }
-                        });
-                    });
-                }
-            });
+            }
+            else $scope.quizInProgress = {};
+        } ());
 
         subjectsResource.query()
             .$promise
