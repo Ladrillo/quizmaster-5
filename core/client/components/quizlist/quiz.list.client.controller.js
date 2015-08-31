@@ -27,8 +27,21 @@
 
         $scope.quizzes = quizzes; // resolved in the route
 
+        // CHECKBOXES THAT ADD TILE TO CURRENT TEST BEING CREATED
+        $scope.addToTestInCreation = function (quiz) {
+            if (this.testInCreation.quizzes.indexOf(quiz) === -1) {
+                this.testInCreation.quizzes.push(quiz);
+            }
+            else {
+                this.testInCreation.quizzes.splice(this.testInCreation.quizzes.indexOf(quiz), 1);
+            }
+        };
+
         if ($stateParams.id) {
             $scope.testInCreation = testInCreation;
+            $scope.testInCreation.quizzes.forEach(function (quiz) {
+                quiz.checked = true;
+            });
         }
         else {
             $scope.testInCreation = {
@@ -42,16 +55,6 @@
             quiz.$delete(function () {
                 $scope.quizzes.splice($scope.quizzes.indexOf(quiz), 1);
             });
-        };
-
-        // CHECKBOXES THAT ADD TILE TO CURRENT TEST BEING CREATED
-        $scope.addToTestInCreation = function (quiz) {
-            if (this.testInCreation.quizzes.indexOf(quiz) === -1) {
-                this.testInCreation.quizzes.push(quiz);
-            }
-            else {
-                this.testInCreation.quizzes.splice(this.testInCreation.quizzes.indexOf(quiz), 1);
-            }
         };
 
         // CREATE TEST
