@@ -27,13 +27,16 @@
         subjects,
         keywords) {
 
-
+        // RESOLVING WORDS
         $scope.subjects = subjects; // resolving in the route so edit quiz directive won't choke
         $scope.keywords = keywords; // resolving in the route so edit quiz directive won't choke
 
-        quizInProgress.$promise.then(function (data) {
-            $scope.quizInProgress = data; // resolved in the route
-        })
+        // TRYING TO POPULATE CURRENT QUIZ CORRECTLY
+        quizInProgress.$promise
+
+            .then(function (data) {
+                $scope.quizInProgress = data; // resolved in the route
+            })
             .then(function () {
                 $scope.subjects.forEach(function (subj) {
                     $scope.quizInProgress.subjects.forEach(function (pSubj) {
@@ -53,6 +56,7 @@
             });
 
 
+        // UPDATING THE QUIZ
         function wordsIdsArray(objArr) {
             var arr = [];
             objArr.forEach(function (e) { arr.push(e._id); });

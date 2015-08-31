@@ -10,6 +10,8 @@
             'subjectsResource',
             'keywordsResource',
             'quizzesResource',
+            'subjects',
+            'keywords',
             quizNewController]);
 
     function quizNewController(
@@ -19,7 +21,12 @@
         $resource,
         subjectsResource,
         keywordsResource,
-        quizzesResource) {
+        quizzesResource,
+        subjects,
+        keywords) {
+
+        $scope.subjects = subjects; // resolving in the route so edit quiz directive won't choke
+        $scope.keywords = keywords; // resolving in the route so edit quiz directive won't choke
 
         function wordsIdsArray(objArr) {
             var arr = [];
@@ -43,11 +50,12 @@
                 regexps: $scope.quizInProgress.regexps
             })
                 .$save();
-                this.quizInProgress.stem = "";
-                this.quizInProgress.truthies = [];
-                this.quizInProgress.falsies = [];
-                this.quizInProgress.regexps = [];
-                this.submitted = true;
+            // reset the appropiate fields
+            this.quizInProgress.stem = "";
+            this.quizInProgress.truthies = [];
+            this.quizInProgress.falsies = [];
+            this.quizInProgress.regexps = [];
+            this.submitted = true;
         };
 
     }

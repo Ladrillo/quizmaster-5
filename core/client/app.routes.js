@@ -38,21 +38,21 @@
                     resolve: {
                         quizzesResource: 'quizzesResource',
                         quizInProgress: function (quizzesResource, $stateParams) {
-                            return quizzesResource.get({ id: $stateParams.id });
+                            return quizzesResource.get({ id: $stateParams.id }).$promise;
                         },
 
                         subjectsResource: 'subjectsResource',
                         subjects: function (subjectsResource) {
                             return subjectsResource.query(function (data) {
                                 return data;
-                            });
+                            }).$promise;
                         },
 
                         keywordsResource: 'keywordsResource',
                         keywords: function (keywordsResource) {
                             return keywordsResource.query(function (data) {
                                 return data;
-                            });
+                            }).$promise;
                         }
 
                     },
