@@ -48,7 +48,6 @@
                 this.quizInProgress.falsies = [];
                 this.quizInProgress.regexps = [];
                 this.submitted = true;
-            // $state.go('quizlist');
         };
 
     }

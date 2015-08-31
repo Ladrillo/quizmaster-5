@@ -11,6 +11,8 @@
             'keywordsResource',
             'quizzesResource',
             'quizInProgress',
+            'subjects',
+            'keywords',
             quizEditController]);
 
     function quizEditController(
@@ -21,10 +23,13 @@
         subjectsResource,
         keywordsResource,
         quizzesResource,
-        quizInProgress) {
+        quizInProgress,
+        subjects,
+        keywords) {
 
 
-
+        $scope.subjects = subjects; // resolving in the route so edit quiz directive won't choke
+        $scope.keywords = keywords; // resolving in the route so edit quiz directive won't choke
 
         quizInProgress.$promise.then(function (data) {
             $scope.quizInProgress = data; // resolved in the route
@@ -45,7 +50,6 @@
                         }
                     });
                 });
-
             });
 
 

@@ -40,13 +40,21 @@
 
                     $scope.subjectKind = "Subjects";
 
-                    // GET all
-                    $scope.listSubjects = function () {
-                        subjectsResource.query(function (data) {
-                            $scope.subjects = data;
-                        });
+                    // GET all -- I am going to try and resolve this in the route, in the parent controller
+                    // $scope.listSubjects = function () {
+                    //     subjectsResource.query(function (data) {
+                    //         $scope.subjects = data;
+                    //     });
+                    // };
 
+                    $scope.listSubjects = function () {
+                        return this.subjects; // this comes from parent controller, resolved in route
                     };
+
+                    $scope.listKeywords = function () {
+                        return this.keywords; // this comes from parent controller, resolved in route
+                    };
+
                     // DELETE
                     $scope.deleteSubject = function () {
                         $scope.currentSubject.$delete();
@@ -74,10 +82,10 @@
 
                     $scope.keywordKind = "Keywords";
 
-                    // GET all
-                    $scope.listKeywords = function () {
-                        $scope.keywords = keywordsResource.query();
-                    };
+                    // GET all -- I am going to try and resolve this in the route, in the parent controller
+                    // $scope.listKeywords = function () {
+                    //     $scope.keywords = keywordsResource.query();
+                    // };
                     // DELETE
                     $scope.deleteKeyword = function () {
                         $scope.currentKeyword.$delete();

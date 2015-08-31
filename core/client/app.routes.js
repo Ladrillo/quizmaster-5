@@ -39,7 +39,22 @@
                         quizzesResource: 'quizzesResource',
                         quizInProgress: function (quizzesResource, $stateParams) {
                             return quizzesResource.get({ id: $stateParams.id });
+                        },
+
+                        subjectsResource: 'subjectsResource',
+                        subjects: function (subjectsResource) {
+                            return subjectsResource.query(function (data) {
+                                return data;
+                            });
+                        },
+
+                        keywordsResource: 'keywordsResource',
+                        keywords: function (keywordsResource) {
+                            return keywordsResource.query(function (data) {
+                                return data;
+                            });
                         }
+
                     },
                     controller: 'quizEditController'
                 })
