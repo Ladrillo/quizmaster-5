@@ -1,3 +1,3 @@
 <div class="" ng-repeat="test in tests">
-   <p>{{ test.description }}, <a ui-sref="test({ id:test._id })">{{ test._id }}</a></p>
+   <p>{{ test.description }}, ({{ test.created | date:'medium' }}), <a ui-sref="test({ id:test._id })">{{ test._id }}</a><button ng-click="removeTest(test)" class="btn">delete</button></p>
 </div>

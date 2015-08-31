@@ -4,6 +4,7 @@
     angular.module('quizmaster')
         .controller('testListController', [
             '$scope',
+            '$state',
             '$stateParams',
             'subjectsResource',
             'keywordsResource',
@@ -14,6 +15,7 @@
 
     function testListController(
         $scope,
+        $state,
         $stateParams,
         subjectsResource,
         keywordsResource,
@@ -33,7 +35,7 @@
 
 
 
-        
+
     }
 
 

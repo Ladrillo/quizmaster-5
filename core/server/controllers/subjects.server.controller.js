@@ -3,6 +3,7 @@
 var Subject = require('mongoose').model('Subject');
 
 exports.postSubject = function (req, res, next) {
+    // if (req.loggedInUser.permissions.indexOf('canPostSubject') > -1)
     var subject = new Subject(req.body);
     subject.save(function (err) {
         if (err) res.send(err);

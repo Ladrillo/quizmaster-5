@@ -45,7 +45,7 @@
                 })
 
                 .state('test', {
-                    url: '/tests/:id',
+                    url: '/tests/run/:id',
                     templateUrl: 'components/test/test.client.template.html',
                     resolve: {
                         testsResource: 'testsResource',
@@ -66,8 +66,20 @@
                         }
                     },
                     controller: 'testListController',
+                })
+
+                .state('testedit', {
+                    url: '/test/:id',
+                    templateUrl: 'components/testedit/test.edit.client.template.html',
+                    resolve: {
+                        testsResource: 'testsResource',
+                        testInProgress: function (testsResource, $stateParams) {
+                            return testsResource.get({ id: $stateParams.id });
+                        }
+                    },
+                    controller: 'testEditController'
                 });
-                
+
         }]);
 
 } ());

@@ -4,6 +4,7 @@
     angular.module('quizmaster')
         .controller('quizListController', [
             '$scope',
+            '$state',
             '$stateParams',
             'subjectsResource',
             'keywordsResource',
@@ -14,6 +15,7 @@
 
     function quizListController(
         $scope,
+        $state,
         $stateParams,
         subjectsResource,
         keywordsResource,
@@ -51,7 +53,11 @@
             quizzes: $scope.testInCreation.quizzes,
             description: $scope.description
         })
-            .$save();
+            .$save(function () {
+                $state.go('testlist');
+            });
+
+
         };
 
         // FILTER

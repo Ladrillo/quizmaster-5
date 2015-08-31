@@ -9,6 +9,10 @@ var QuizSchema = new Schema({
             ref: 'Quiz'
         }]
     },
+    created: {
+        type: Date,
+        default: Date.now
+    },
     description: {
         required: true,
         type: String
