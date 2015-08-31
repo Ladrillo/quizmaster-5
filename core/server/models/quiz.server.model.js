@@ -3,7 +3,7 @@ var mongoose = require('mongoose'),
 
 var QuizSchema = new Schema({
     subjects: {
-        // required: true,
+        required: true,
         type: [{
             type: Schema.Types.ObjectId,
             ref: 'Subject'
@@ -11,7 +11,7 @@ var QuizSchema = new Schema({
     },
 
     keywords: {
-        // required: true,
+        required: true,
         type: [{
             type: Schema.Types.ObjectId,
             ref: 'Keyword'

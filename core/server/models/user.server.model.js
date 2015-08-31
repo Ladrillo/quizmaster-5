@@ -4,11 +4,11 @@ var mongoose = require('mongoose'),
 var UserSchema = new Schema({
     firstName: String,
     lastName: String,
-    // email: {
-    //     type: String,
-    //     match: [/.+\@.+\..+/, "Please fill a valid e-mail address"],
-    //     required: true
-    // },
+    email: {
+        type: String,
+        match: [/.+\@.+\..+/, "Please fill a valid e-mail address"],
+        required: true
+    },
     // permissions: {
     //     required: true,
     //     type: [{

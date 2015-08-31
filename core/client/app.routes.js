@@ -2,17 +2,11 @@
     "use strict";
 
     angular.module('quizmaster')
-        .config(['$stateProvider', '$urlRouterProvider',  function ($stateProvider, $urlRouterProvider) {
+        .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             $urlRouterProvider.otherwise('/');
 
 
             $stateProvider
-
-                .state('words', {
-                    url: '/words',
-                    templateUrl: 'components/wordedit/word.edit.client.template.html',
-                    controller: 'wordsController'
-                })
 
                 .state('quizlist', {
                     url: '/quizzes',
@@ -28,8 +22,34 @@
 
                 .state('quiznew', {
                     url: '/quizzes/new',
-                    templateUrl: 'components/quiznew/quiz.new.client.template.html',
-                    controller: 'quizNewController'
+                    templateUrl: 'components/quizedit/quiz.edit.client.template.html',
+                    resolve: {
+                        quizInProgress: function () {
+                            return {
+                                subjects:[],
+                                keywords: [],
+                                instructions: "",
+                                stem: "",
+                                truthies: [],
+                                falsies: [],
+                                regexps:[]};
+                        },
+
+                        subjectsResource: 'subjectsResource',
+                        subjects: function (subjectsResource) {
+                            return subjectsResource.query(function (data) {
+                                return data;
+                            }).$promise;
+                        },
+
+                        keywordsResource: 'keywordsResource',
+                        keywords: function (keywordsResource) {
+                            return keywordsResource.query(function (data) {
+                                return data;
+                            }).$promise;
+                        }
+                    },
+                    controller: 'quizEditController',
                 })
 
                 .state('quizedit', {
