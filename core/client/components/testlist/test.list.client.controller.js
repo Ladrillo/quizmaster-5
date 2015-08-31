@@ -24,11 +24,16 @@
         $scope.tests = tests; // resolved in the route
 
 
+        // DELETE TEST
+        $scope.removeTest = function (test) {            ;
+            test.$delete(function () {
+                $scope.tests.splice($scope.tests.indexOf(test), 1);
+            });
+        };
 
 
 
-
-
+        
     }
 
 
