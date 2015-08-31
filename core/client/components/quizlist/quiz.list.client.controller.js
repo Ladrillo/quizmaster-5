@@ -11,6 +11,7 @@
             'quizzesResource',
             'testsResource',
             'quizzes',
+            'testInCreation',
             quizListController]);
 
     function quizListController(
@@ -21,14 +22,20 @@
         keywordsResource,
         quizzesResource,
         testsResource,
-        quizzes) {
+        quizzes,
+        testInCreation) {
 
         $scope.quizzes = quizzes; // resolved in the route
 
-        $scope.testInCreation = {
-            quizzes: [],
-            description: ""
-        };
+        if ($stateParams.id) {
+            $scope.testInCreation = testInCreation;
+        }
+        else {
+            $scope.testInCreation = {
+                quizzes: [],
+                description: ""
+            };
+        }
 
         // DELETE QUIZ
         $scope.removeQuiz = function (quiz) {            ;
@@ -56,8 +63,6 @@
             .$save(function () {
                 $state.go('testlist');
             });
-
-
         };
 
         // FILTER

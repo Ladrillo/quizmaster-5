@@ -5,7 +5,6 @@
         .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             $urlRouterProvider.otherwise('/');
 
-
             $stateProvider
 
                 .state('quizlist', {
@@ -15,6 +14,11 @@
                         quizzesResource: 'quizzesResource',
                         quizzes: function (quizzesResource) {
                             return quizzesResource.query();
+                        },
+
+                        testsResource: 'testsResource',
+                        testInCreation: function (testsResource, $stateParams) {
+                            return {};
                         }
                     },
                     controller: 'quizListController',
@@ -66,6 +70,22 @@
                     controller: 'testsController'
                 })
 
+                .state('testedit', {
+                    url: '/tests/:id',
+                    templateUrl: 'components/quizlist/quiz.list.client.template.html',
+                    resolve: {
+                        testsResource: 'testsResource',
+                        testInCreation: function (testsResource, $stateParams) {
+                            return testsResource.get({ id: $stateParams.id }).$promise;
+                        },
+                        quizzesResource: 'quizzesResource',
+                        quizzes: function (quizzesResource) {
+                            return quizzesResource.query();
+                        }
+                    },
+                    controller: 'quizListController'
+                })
+
                 .state('testlist', {
                     url: '/tests',
                     templateUrl: 'components/testlist/test.list.client.template.html',
@@ -76,18 +96,6 @@
                         }
                     },
                     controller: 'testListController',
-                })
-
-                .state('testedit', {
-                    url: '/test/:id',
-                    templateUrl: 'components/testedit/test.edit.client.template.html',
-                    resolve: {
-                        testsResource: 'testsResource',
-                        testInProgress: function (testsResource, $stateParams) {
-                            return testsResource.get({ id: $stateParams.id });
-                        }
-                    },
-                    controller: 'testEditController'
                 });
 
         }]);
