@@ -29,19 +29,9 @@
         // POPULATING THE QUIZ FORM CORRECTLY
         (function populateQuizInProgress() {
 
-            // WE FIRST NEED SUBJECTS AND KEYWORDS IN SCOPE
+            // WE FIRST NEED SUBJECTS AND KEYWORDS IN SCOPE, resolved in route
             $scope.subjects = subjects;
             $scope.keywords = keywords;
-            // subjectsResource.query()
-            //     .$promise
-            //     .then(function (data) {
-            //         $scope.subjects = data;
-            //     });
-            // keywordsResource.query()
-            //     .$promise
-            //     .then(function (data) {
-            //         $scope.keywords = data;
-            //     });
 
             // IF EDITING AN EXISTING QUIZ
             if ($stateParams.id) {
