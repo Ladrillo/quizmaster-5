@@ -1,0 +1,53 @@
+<div class="container">
+    <div ng-repeat="quiz in test.toDoQuizes" class="well container" ng-show="$index === test.currentQuizIndex">
+        <div class="quiz-header">
+            <h3>{{ testInProgress.description }}</h3>
+            <p>
+                <span class="badge">{{ $index + 1 }}</span>of {{ test.toDoQuizes.length }}</p>
+        </div>
+        <p>{{ quiz.instructions }}</p>
+        <!--start of the main well-->
+        <div class="well answers" ng-hide="gameOver">
+            <h4>{{ quiz.stem }}</h4>
+            <br>
+            <!--this is the options group-->
+            <div class="btn-group-vertical">
+                <button ng-disabled="quiz.submitted" ng-class="quiz.isAnswerSelected(answer) ? 'btn btn-default' : 'btn btn-primary'" ng-repeat="answer in quiz.shuffledAnswers"
+                ng-click="quiz.updateSelection(answer)" type="button" class="btn btn-default">
+                    <span class="badge badge-option">{{ $index + 1 }}</span>{{ answer }}</button>
+                <button ng-disabled="quiz.submitted" ng-class="quiz.allFalseClicked ? 'btn btn-primary' : 'btn btn-default'" class="btn btn-default"
+                ng-click="quiz.allFalse()" type="button">All statements are false!</button>
+            </div>
+            <div class="next-or-submit-div">
+                <!--feedback block-->
+                <div class="next-or-submit-buttons">
+                    <ul class="list-inline">
+                        <li>
+                            <h4>{{ quiz.feedback }}</h4>
+                        </li>
+                        <li>{{ quiz.sarcasm }}</li>
+                    </ul>
+                </div>
+                <!--submit and next buttons-->
+                <div class="btn-group next-or-submit-buttons" role="group">
+                    <button ng-disabled="!quiz.selectedAnswers.length && !quiz.allFalseClicked" ng-hide="quiz.submitted" ng-click="quiz.submit()"
+                    type="button" class="btn btn-warning">Submit</button>
+                    <button ng-click="test.updateCurrentQuiz()" type="button" class="btn btn-default">Next</button>
+                </div>
+            </div>
+        </div>
+        <!--game over div-->
+        <div ng-show="gameOver" class="well answers">
+            <p>{{ quiz.feedback }}</p>
+            <h3>That's it!</h3>
+        </div>
+        <p>Score:
+            <span class="badge">{{ test.score | number:2 }} %</span>
+        </p>
+    </div>
+</div>
+<!--debugging-->
+<!--<!--<p>selected answers: {{ quiz.selectedAnswers }}</p>-->
+<!--<p>selection correct: {{ quiz.isSelectionCorrect() }}</p>-->
+<!--<p>selected answers length: {{ quiz.selectedAnswers.length }}</p>-->
+<!--<p>{{ test }}</p>-->

@@ -70,6 +70,18 @@
                     controller: 'testsController'
                 })
 
+                .state('teststyled', {
+                    url: '/tests/runstyle/:id',
+                    templateUrl: 'components/teststyled/test.client.template.html',
+                    resolve: {
+                        testsResource: 'testsResource',
+                        testInProgress: function (testsResource, $stateParams) {
+                            return testsResource.get({ id: $stateParams.id }).$promise;
+                        }
+                    },
+                    controller: 'testsController'
+                })
+
                 .state('testedit', {
                     url: '/tests/:id',
                     templateUrl: 'components/quizlist/quiz.list.client.template.html',

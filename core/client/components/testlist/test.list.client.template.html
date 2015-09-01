@@ -1,6 +1,6 @@
 <gabe-header></gabe-header>
 <div class="" ng-repeat="test in tests">
-    <p>{{ test.description }}, ({{ test.created | date:'medium' }}), <a ui-sref="test({ id:test._id })">{{ test._id }}</a>
+    <p>{{ test.description }}, ({{ test.created | date:'medium' }}), <a ui-sref="test({ id:test._id })">run old style</a>, <a ui-sref="teststyled({ id:test._id })">run new style</a>
         <button ng-click="removeTest(test)" class="btn btn-default">delete</button>
         <button ui-sref="testedit({id:test._id})" type="button" class="btn btn-default">Edit</button>
     </p>
