@@ -61,9 +61,13 @@
 
             // IF CREATING A NEW QUIZ
             else $scope.quizInProgress = {};
-
-
         } ());
+
+
+        // PUT THE PARAMETER IN SCOPE
+        $scope.isQuizNew = function () {
+            return $stateParams.id === 'new';
+        };
 
 
         // UPDATING A QUIZ
