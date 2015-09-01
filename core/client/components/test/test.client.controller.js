@@ -27,7 +27,7 @@
         testInProgress,
         notFunny) {
 
-
+        $scope.testInProgress = testInProgress;
         $scope.quizesList = testInProgress.quizzes;
 
 

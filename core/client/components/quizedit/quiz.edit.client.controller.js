@@ -66,7 +66,8 @@
 
         // PUT THE PARAMETER IN SCOPE
         $scope.isQuizNew = function () {
-            return $stateParams.id === 'new';
+            // console.log($stateParams.id);
+            return !$stateParams.id;
         };
 
 
