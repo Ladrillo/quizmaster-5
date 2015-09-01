@@ -12,13 +12,7 @@
 
 <body ng-app="quizmaster">
     <div class="container">
-        <ul>
-            <li><a ui-sref="quizlist">List Quizzes</a></li>
-            <li><a ui-sref="quiznew">New Quiz</a></li>
-            <li><a ui-sref="testlist">List Tests</a></li>
-        </ul>
         <h1>Quizmaster</h1>
-        <h3>App wired: {{ true }}</h3>
         <div ui-view></div>
     </div>
     <!-- Dependencies -->
@@ -45,6 +39,7 @@
     <script src="directives/words/words.directive.js"></script>
     <script src="directives/sentences/sentences.directive.js"></script>
     <script src="directives/quiztile/quiz.tile.directive.js"></script>
+    <script src="directives/header/header.directive.js"></script>
     <!--controllers quizzes-->
     <script src="components/quizedit/quiz.edit.client.controller.js"></script>
     <script src="components/quizlist/quiz.list.client.controller.js"></script>

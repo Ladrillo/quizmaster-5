@@ -1,3 +1,4 @@
+<gabe-header></gabe-header>
 <div class="" ng-repeat="test in tests">
     <p>{{ test.description }}, ({{ test.created | date:'medium' }}), <a ui-sref="test({ id:test._id })">{{ test._id }}</a>
         <button ng-click="removeTest(test)" class="btn btn-default">delete</button>
