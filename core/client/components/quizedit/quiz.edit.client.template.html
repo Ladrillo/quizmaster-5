@@ -18,7 +18,7 @@
     <!--stem and instructions block-->
     <md-card class="panel panel-default">
         <md-card-content>
-            <h3 class="md-headline">Question</h3>
+            <h3 class="md-display-1">Question</h3>
             <md-input-container>
                 <label>Type clear instructions</label>
                 <input ng-model="quizInProgress.instructions">
@@ -34,7 +34,7 @@
     <!--Answers block-->
     <md-card class="panel panel-default">
         <md-card-content class="panel-body">
-            <h3 class="md-headline">Answers</h3>
+            <h3 class="md-display-1">Answers</h3>
             <!--empieza el bloque truthies-->
             <gabe-sentences sentences="quizInProgress.truthies" sentences-type="truthiesType"></gabe-sentences>
             <!--empieza el bloque falsies-->
@@ -43,13 +43,13 @@
             <gabe-sentences sentences="quizInProgress.regexps" sentences-type="regexpsType"></gabe-sentences>
         </md-card-content>
     </md-card>
-
+</div>
     <md-button ng-show="!isQuizNew()" class="md-raised md-warn" ng-click="updateQuiz()">Update quiz</md-button>
     <md-button ng-show="isQuizNew()" class="md-raised md-warn" ng-click="createQuiz()">Create quiz</md-button>
 
     <!--{{ quizInProgress }}-->
     <!--{{ isQuizNew() }}-->
-</div>
+
 
 
 
