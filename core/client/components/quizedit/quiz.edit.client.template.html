@@ -1,60 +1,52 @@
-<gabe-header></gabe-header>
-<div class="row">
-    <gabe-words class="col-md-6" words="subjects" kind="subjectKind" new-word="newSubject" create-word="createSubject()" current-word="currentSubject"
-update-word="updateSubject()" delete-word="deleteSubject()" checked-words="quizInProgress.subjects" is-checked="isChecked"></gabe-words>
-
-<gabe-words class="col-md-6" words="keywords" kind="keywordKind" new-word="newKeyword" create-word="createKeyword()" current-word="currentKeyword"
-update-word="updateKeyword()" delete-word="deleteKeyword()" checked-words="quizInProgress.keywords" current-quiz="quizInProgress"></gabe-words>
-</div>
-
-<!--stem and instructions block-->
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <h3 class="panel-title">Question</h3>
-    </div>
-    <div class="panel-body">
-        <div class="row">
-            <div class="col-sm-2">
-                <label for="inputInstructions" class="control-label">Instructions</label>
-            </div>
-            <div class="col-sm-10">
-                <input ng-model="quizInProgress.instructions" type="text" class="form-control" id="inputInstructions" placeholder="Type clear instructions">
-            </div>
+<div>
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <span>Quizmaster</span>
+            <!-- fill up the space between left and right area -->
+            <span flex></span>
         </div>
-        <br>
-        <br>
-        <div class="row">
-            <div class="col-sm-2">
-                <label for="inputStem" class="control-label">
-                    <p>Stem</p>
-                </label>
-            </div>
-            <div class="col-sm-10">
-                <input ng-model="quizInProgress.stem" type="text" class="form-control" id="inputStem" placeholder="Type a stem">
-            </div>
-        </div>
-        <br>
-        <br>
+    </md-toolbar>
+
+    <div layout="column">
+        <gabe-words class="col-md-6" words="subjects" kind="subjectKind" new-word="newSubject" create-word="createSubject()" current-word="currentSubject"
+        update-word="updateSubject()" delete-word="deleteSubject()" checked-words="quizInProgress.subjects" is-checked="isChecked"></gabe-words>
+
+        <gabe-words class="col-md-6" words="keywords" kind="keywordKind" new-word="newKeyword" create-word="createKeyword()" current-word="currentKeyword"
+        update-word="updateKeyword()" delete-word="deleteKeyword()" checked-words="quizInProgress.keywords" current-quiz="quizInProgress"></gabe-words>
     </div>
+
+    <!--stem and instructions block-->
+    <md-card class="panel panel-default">
+        <md-card-content>
+            <h3 class="md-headline">Question</h3>
+            <md-input-container>
+                <label>Type clear instructions</label>
+                <input ng-model="quizInProgress.instructions">
+            </md-input-container>
+
+            <md-input-container>
+                <label>Type the stem of the question</label>
+                <input ng-model="quizInProgress.stem">
+            </md-input-container>
+        </md-card-content>
+    </md-card>
+
+    <!--Answers block-->
+    <md-card class="panel panel-default">
+        <md-card-content class="panel-body">
+            <h3 class="md-headline">Answers</h3>
+            <!--empieza el bloque truthies-->
+            <gabe-sentences sentences="quizInProgress.truthies" sentences-type="truthiesType"></gabe-sentences>
+            <!--empieza el bloque falsies-->
+            <gabe-sentences sentences="quizInProgress.falsies" sentences-type="falsiesType"></gabe-sentences>
+            <!--empieza el bloque pattern matching-->
+            <gabe-sentences sentences="quizInProgress.regexps" sentences-type="regexpsType"></gabe-sentences>
+        </md-card-content>
+    </md-card>
+
+    <md-button ng-show="!isQuizNew()" class="md-raised md-warn" ng-click="updateQuiz()">Update quiz</md-button>
+    <md-button ng-show="isQuizNew()" class="md-raised md-warn" ng-click="createQuiz()">Create quiz</md-button>
+
+    <!--{{ quizInProgress }}-->
+    <!--{{ isQuizNew() }}-->
 </div>
-
-<!--Answers block-->
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <h3 class="panel-title">Answers</h3>
-    </div>
-    <div class="panel-body">
-        <!--empieza el bloque truthies-->
-        <gabe-sentences sentences="quizInProgress.truthies" sentences-type="truthiesType"></gabe-sentences>
-        <!--empieza el bloque falsies-->
-        <gabe-sentences sentences="quizInProgress.falsies" sentences-type="falsiesType"></gabe-sentences>
-        <!--empieza el bloque pattern matching-->
-        <gabe-sentences sentences="quizInProgress.regexps" sentences-type="regexpsType"></gabe-sentences>
-    </div>
-</div>
-
-<button ng-show="!isQuizNew()" class="btn btn-lg btn-danger pull-right" ng-click="updateQuiz()">Update quiz</button>
-<button ng-show="isQuizNew()" class="btn btn-lg btn-danger pull-right" ng-click="createQuiz()">Create quiz</button>
-
-<!--{{ quizInProgress }}-->
-<!--->{{ isQuizNew() }}-->

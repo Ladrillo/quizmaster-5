@@ -1,41 +1,39 @@
-<div class="row">
-    <div class="col-sm-2 gabri-label">
-        <label for="{{ sentencesType }}" class="control-label">{{ sentencesType }}</label>
+<div layout="column">
+    <div>
+        <md-input-container>
+            <label>Type {{ sentencesType }}</label>
+            <input ng-model="newSentence" ng-disabled="currentWord._id" ng-model="searchWord">
+        </md-input-container>
+        <md-button ng-disabled="!inputValid()" ng-click="addSentence()" class="md-raised md-primary">Add</md-button>
     </div>
-    <div class="col-sm-10">
-        <div class="input-group">
-            <input ng-model="newSentence" type="text" class="form-control" id="{{ sentencesType }}" placeholder="Type {{ sentencesType }}...">
-            <span class="input-group-btn">
-                <button ng-disabled="!inputValid()" ng-click="addSentence()" class="btn btn-primary" type="button">Add</button>
-            </span>
-        </div>
-        <br>
-        <ul class="list-group">
-            <li ng-repeat="sentence in sentences" class="list-group-item">
-                <div ng-hide="!!editing">{{ sentence }}
-                    <div class="pull-right">
-                        <button ng-disabled="!!currentSentence" ng-hide="!!deleting" ng-click="flipEditing(); setCurrentSentence(sentence)" type="button"
-                        class="btn btn-xs btn-link">Edit</button>
-                        <button ng-disabled="!!currentSentence" ng-hide="!!deleting" ng-click="flipDeleting(); setCurrentSentence(sentence)" type="button"
-                        class="btn btn-xs btn-link">Delete</button>
-                        <button ng-show="!!deleting" ng-click="flipDeleting(); eraseSentence(); flushCurrentSentence()" class="btn btn-xs btn-danger">Delete!</button>
-                        <button ng-show="!!deleting" ng-click="flipDeleting(); flushCurrentSentence()" type="button" class="btn btn-xs btn-primary">Cancel</button>
-                    </div>
-                </div>
 
-                <!--only visible when editing-->
-                <div ng-show="!!editing" class="input-group">
-                    <input ng-model="sentence" type="text" class="form-control">
-                    <span class="input-group-btn">
-                        <button ng-disabled="!editValid()" ng-click="flipEditing(); updateSentence(); flushCurrentSentence()" class="btn btn-primary" type="button">Save</button>
-                    </span>
+    <md-list>
+        <md-list-item ng-repeat="sentence in sentences">
+            <div layout="row" layout-sm="column" layout-fill layout-align-gt-sm="space-between center" ng-hide="!!editing">
+                <p>{{ sentence }}</p>
+                <div flex layout="row" layout-align="end center">
+                    <md-button ng-disabled="!!currentSentence" ng-hide="!!deleting" ng-click="flipEditing(); setCurrentSentence(sentence)" class="md-primary md-button md-default-theme">Edit</md-button>
+                    <md-button ng-disabled="!!currentSentence" ng-hide="!!deleting" ng-click="flipDeleting(); setCurrentSentence(sentence)" class="md-warn md-button md-default-theme">Delete</md-button>
+                    <!--Only visible when we are in a deleting operation-->
+                    <md-button ng-show="!!deleting" ng-click="flipDeleting(); eraseSentence(); flushCurrentSentence()" class="md-raised md-warn">Delete!</md-button>
+                    <md-button ng-show="!!deleting" ng-click="flipDeleting(); flushCurrentSentence()" type="md-button" class="md-primary md-button md-default-theme">Cancel</md-button>
                 </div>
-                <!--sentences: {{ sentences }}
+            </div>
+
+            <!--only visible when editing-->
+            <div layout="column" layout-fill ng-show="!!editing">
+                <md-input-container>
+                    <label>Type a better sentence</label>
+                    <input ng-model="sentence">
+                </md-input-container>
+                <md-button ng-disabled="!editValid()" ng-click="flipEditing(); updateSentence(); flushCurrentSentence()" class="md-raised md-primary">Done</button>
+            </div>
+
+            <!--sentences: {{ sentences }}
                 <br> current sentence: {{ currentSentence }}
                 <br> input valid: {{ inputValid() }}
                 <br> edit valid: {{ editValid() }}
                 <br> sentence: {{ sentence }}-->
-            </li>
-        </ul>
-    </div>
+        </md-list-item>
+    </md-list>
 </div>
