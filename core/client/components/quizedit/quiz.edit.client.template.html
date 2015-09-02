@@ -1,12 +1,12 @@
-<div>
-    <md-toolbar>
-        <div class="md-toolbar-tools">
-            <span>Quizmaster</span>
-            <!-- fill up the space between left and right area -->
-            <span flex></span>
-        </div>
-    </md-toolbar>
+<md-toolbar>
+    <div class="md-toolbar-tools">
+        <span>Quizmaster</span>
+        <!-- fill up the space between left and right area -->
+        <span flex></span>
+    </div>
+</md-toolbar>
 
+<div layout-margin layout-padding>
     <div layout="column">
         <gabe-words class="col-md-6" words="subjects" kind="subjectKind" new-word="newSubject" create-word="createSubject()" current-word="currentSubject"
         update-word="updateSubject()" delete-word="deleteSubject()" checked-words="quizInProgress.subjects" is-checked="isChecked"></gabe-words>
@@ -50,3 +50,7 @@
     <!--{{ quizInProgress }}-->
     <!--{{ isQuizNew() }}-->
 </div>
+
+
+
+

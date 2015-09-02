@@ -29,8 +29,8 @@
     <md-divider></md-divider>
     <md-card-footer layout="row" layout-align="space-between center">
         <div class="md-actions" layout="row" layout-align="start center">
-            <md-button ui-sref="quizedit({id:quiz._id})">Edit</md-button>
-            <md-button ng-click="removeQuiz(quiz)">Delete</md-button>
+            <md-button class="md-primary md-button md-default-theme" ui-sref="quizedit({id:quiz._id})">Edit</md-button>
+            <md-button class="md-raised md-warn" ng-click="removeQuiz(quiz)">Delete</md-button>
         </div>
         <md-checkbox ng-model="quiz.checked" ng-click="addToTestInCreation(quiz)" aria-label="quiz"></md-checkbox>
     </md-card-footer>
