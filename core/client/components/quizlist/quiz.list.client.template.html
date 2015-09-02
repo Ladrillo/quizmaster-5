@@ -1,35 +1,35 @@
-<gabe-header></gabe-header>
-<div class="row">
-    <div class="well col-md-3">
-        <div>
-            <h3>Find Quizzes</h3>
-            <label for="findBySubject" class="control-label">Find by subject</label>
-            <input ng-model="search.subjects.$" type="text" class="form-control" id="findBySubject" placeholder="Type subject...">
-            <br>
-            <label for="findByKeyword" class="control-label">Find by keyword</label>
-            <input ng-model="search.$" type="text" class="form-control" id="findByKeyword" placeholder="Type keywords...">
-        </div>
-        <div>
-            <h3>New Test</h3>
-            <label for="testDescription" class="control-label">Test Description</label>
-            <input ng-model="description" type="text" class="form-control" id="testDescription" placeholder="Type test decription...">
-            <br>
-            <button ng-disabled="newTestButtonDisabled()" class="btn btn-lg btn-danger" ng-click="createTest()">Create</button>
-            <br><br>
-            <div class="tiles selected-quizzes">
-                <div ng-repeat="quiz in testInCreation.quizzes">
-                    <gabe-quiztile></gabe-quiztile>
-                </div>
-            </div>
-        </div>
-        <!--quizzes: {{ testInCreation.quizzes }}-->
-        <!--descrition: {{ description }}-->
+<md-toolbar>
+    <div class="md-toolbar-tools">
+        <span>Quizmaster</span>
+        <!-- fill up the space between left and right area -->
+        <span flex></span>
     </div>
-    <div class="col-md-9">
-        <div class="tiles">
+</md-toolbar>
+
+<div layout="column">
+    <md-content layout-padding>
+        <md-input-container>
+            <label>Find by subject</label>
+            <input ng-model="search.subjects.$">
+        </md-input-container>
+        <md-input-container>
+            <label>Find by keyword</label>
+            <input ng-model="search.$">
+        </md-input-container>
+        <md-input-container>
+            <label>Test Description</label>
+            <input ng-model="description">
+        </md-input-container>
+        <md-button ng-disabled="newTestButtonDisabled()" class="md-raised md-warn" ng-click="createTest()">Create</md-button>
+    </md-content>
+
+    <md-content>
+        <div layout="column" layout-gt-sm="row" layout-align="space-between center" layout-padding layout-fill layout-wrap>
             <div ng-repeat="quiz in quizzes | filter:search | filter:filterByChecked">
                 <gabe-quiztile></gabe-quiztile>
             </div>
         </div>
-    </div>
+    </md-content>
 </div>
+<!--quizzes: {{ testInCreation.quizzes }}-->
+<!--descrition: {{ description }}-->

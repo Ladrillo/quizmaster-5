@@ -71,7 +71,7 @@
         // FILTER
         $scope.filterByChecked = function (quiz) {
             if ($scope.testInCreation.quizzes.indexOf(quiz) === -1) return true;
-            return false;
+            return true; // he anulado el filtrado por checked
         };
 
         // DISABLE NEW TEST BUTTON

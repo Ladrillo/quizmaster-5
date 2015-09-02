@@ -1,9 +1,5 @@
-* {
-    font-family: 'Droid Serif', serif;
-}
-
-body {
-    background-color: #C6C6C6;
+/*body, html {
+    background-color: #F2F4FB;
 }
 
 .tiles {
@@ -36,11 +32,11 @@ body {
 
 .panel-tile {
     width: 250px
-}
+}*/
 
 /*copied straight from quizmaster 4*/
 
-.falsy {
+/*.falsy {
     color: red;
 }
 
@@ -87,4 +83,4 @@ span.badge.badge-option {
 
 span.badge {
     margin-right: 5px;
-}
+}*/

@@ -1,22 +1,37 @@
-<div class="panel panel-default panel-tile">
-    <!--título del panel-->
-    <div class="panel-heading">
-        <h4 class="panel-title">{{ quiz.stem }}</h4>
-    </div>
-    <!--cuerpo del panel-->
-    <div class="panel-body gabe-tile">
-        <p ng-repeat="truthy in quiz.truthies">{{ truthy }} </p>
-        <p ng-repeat="falsy in quiz.falsies">{{ falsy }} </p>
-        <p ng-repeat="regexp in quiz.regexps">{{ regexp }} </p>
-        <!--checked: {{ quiz.checked }}-->
-    </div>
-    <div class="panel-footer">
-        <div class="btn-group btn-group-sm" role="group">
-            <button ui-sref="quizedit({id:quiz._id})" type="button" class="btn btn-default">Edit</button>
-            <button ng-click="removeQuiz(quiz)" type="button" class="btn btn-default">Delete</button>
+<md-card>
+    <md-card-content>
+        <md-subheader>{{ quiz.instructions }}</md-subheader>
+        <md-list>
+            <md-list-item>
+                <h4 class="md-headline">{{ quiz.stem }}</h4>
+            </md-list-item>
+            <md-list-item ng-repeat="truthy in quiz.truthies" class="md-2-line">
+                <div class="md-list-item-text">
+                    <h3>{{ truthy }}</h3>
+                    <p>truthy</p>
+                </div>
+            </md-list-item>
+            <md-list-item ng-repeat="falsy in quiz.falsies" class="md-2-line">
+                <div class="md-list-item-text">
+                    <h3>{{ falsy }}</h3>
+                    <p>falsy</p>
+                </div>
+            </md-list-item>
+            <md-list-item ng-repeat="regexp in quiz.regexps" class="md-2-line">
+                <div class="md-list-item-text">
+                    <h3>{{ regexp }}</h3>
+                    <p>regexp</p>
+                </div>
+            </md-list-item>
+            <!--checked: {{ quiz.checked }}-->
+        </md-list>
+    </md-card-content>
+    <md-divider></md-divider>
+    <md-card-footer layout="row" layout-align="space-between center">
+        <div class="md-actions" layout="row" layout-align="start center">
+            <md-button ui-sref="quizedit({id:quiz._id})">Edit</md-button>
+            <md-button ng-click="removeQuiz(quiz)">Delete</md-button>
         </div>
-        <div class="quiz-select">
-            <input ng-model="quiz.checked" ng-click="addToTestInCreation(quiz)" type="checkbox">
-        </div>
-    </div>
-</div>
+        <md-checkbox ng-model="quiz.checked" ng-click="addToTestInCreation(quiz)" aria-label="quiz"></md-checkbox>
+    </md-card-footer>
+</md-card>

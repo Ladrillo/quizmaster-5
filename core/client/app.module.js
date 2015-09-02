@@ -5,7 +5,8 @@
     angular.module('quizmaster', [
         'ui.router',
         'ngSanitize',
-        'ngResource'
+        'ngResource',
+        'ngMaterial'
     ]);
 
 
