@@ -23,7 +23,7 @@
         </div>
     </md-toolbar>
 
-    <div layout-sm="column" layout-gt-sm="row" layout-padding layout-margin>
+    <div layout-sm="column" layout-gt-md="row" layout-padding layout-margin>
         <md-sidenav md-is-locked-open="true" md-component-id="left">
             <md-content>
                 <md-list>
@@ -34,18 +34,15 @@
                     <md-list-item>
                         <md-button ui-sref="quizlist">Create New Test</md-button>
                     </md-list-item>
-                    <md-list-item>
-
-                    </md-list-item>
                     <md-divider></md-divider>
                 </md-list>
                 <md-list>
                     <h2 class="md-title">About This Site</h2>
                     <md-list-item>
-                        <p>Mission</p>
+                        <md-button ui-sref="quiznew">Mission</md-button>
                     </md-list-item>
                     <md-list-item>
-                        <p>Blog</p>
+                        <md-button ui-sref="quizlist">Blog</md-button>
                     </md-list-item>
                 </md-list>
             </md-content>

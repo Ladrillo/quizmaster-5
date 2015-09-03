@@ -1,4 +1,4 @@
-<md-content layout="column" layout-margin layout-padding>
+<md-content layout="column" layout-margin layout-padding layout-fill>
     <h3 class="md-display-1">Quiz Editing</h3>
     <p>Select a subject or create a new one if none of the existing ones apply. The selection of keywords very important: it
         will help other users find relevant quizzes more easily.
@@ -9,11 +9,9 @@
     </div>
 </md-content>
 
-<md-divider></md-divider>
-
 <md-tabs md-dynamic-height="true">
     <md-tab label="Step 1">
-        <md-content layout="column" layout-margin layout-padding>
+        <md-content layout-sm="column" layout-gt-lg="row" layout-margin layout-padding>
             <gabe-words flex words="subjects" kind="subjectKind" new-word="newSubject" create-word="createSubject()" current-word="currentSubject"
             update-word="updateSubject()" delete-word="deleteSubject()" checked-words="quizInProgress.subjects" is-checked="isChecked"></gabe-words>
 
@@ -28,7 +26,7 @@
             <div flex>
                 <md-card>
                     <md-card-content>
-                        <h3 class="md-display-1">Question</h3>
+                        <h3 class="md-headline">Question</h3>
                         <md-input-container>
                             <label>Type clear instructions</label>
                             <input ng-model="quizInProgress.instructions">
@@ -46,7 +44,7 @@
             <div flex>
                 <md-card>
                     <md-card-content>
-                        <h3 class="md-display-1">Answers</h3>
+                        <h3 class="md-headline">Answers</h3>
                         <!--empieza el bloque truthies-->
                         <gabe-sentences sentences="quizInProgress.truthies" sentences-type="truthiesType"></gabe-sentences>
                         <!--empieza el bloque falsies-->
