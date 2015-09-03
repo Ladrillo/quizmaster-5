@@ -5,52 +5,69 @@
         <span flex></span>
     </div>
 </md-toolbar>
+<md-tabs md-dynamic-height="true">
+    <md-tab label="Choose Keywords">
+        <!--<div layout-margin layout-padding>-->
+        <div layout="column" layout-margin layout-padding>
+            <div layout="row" layout-align="center center">
+                <p flex="90">Select a subject or create a new one if none of the existing ones apply. The selection of keywords is even
+                    more important: it will help other users find relevant quizzes more easily.</p>
+            </div>
+            <gabe-words flex words="subjects" kind="subjectKind" new-word="newSubject" create-word="createSubject()" current-word="currentSubject"
+            update-word="updateSubject()" delete-word="deleteSubject()" checked-words="quizInProgress.subjects" is-checked="isChecked"></gabe-words>
 
-<div layout-margin layout-padding>
-    <div layout="column">
-        <gabe-words class="col-md-6" words="subjects" kind="subjectKind" new-word="newSubject" create-word="createSubject()" current-word="currentSubject"
-        update-word="updateSubject()" delete-word="deleteSubject()" checked-words="quizInProgress.subjects" is-checked="isChecked"></gabe-words>
-
-        <gabe-words class="col-md-6" words="keywords" kind="keywordKind" new-word="newKeyword" create-word="createKeyword()" current-word="currentKeyword"
-        update-word="updateKeyword()" delete-word="deleteKeyword()" checked-words="quizInProgress.keywords" current-quiz="quizInProgress"></gabe-words>
-    </div>
-
+            <gabe-words flex words="keywords" kind="keywordKind" new-word="newKeyword" create-word="createKeyword()" current-word="currentKeyword"
+            update-word="updateKeyword()" delete-word="deleteKeyword()" checked-words="quizInProgress.keywords" current-quiz="quizInProgress"></gabe-words>
+        </div>
+    </md-tab>
     <!--stem and instructions block-->
-    <md-card class="panel panel-default">
-        <md-card-content>
-            <h3 class="md-display-1">Question</h3>
-            <md-input-container>
-                <label>Type clear instructions</label>
-                <input ng-model="quizInProgress.instructions">
-            </md-input-container>
+    <md-tab label="Quiz details">
+        <div layout="column" layout-margin layout-padding>
+            <div layout="row" layout-align="center center">
+                <p flex="70">Give clear instructions. Design the stem so that repetition in the answers is avoided. Make all answers have
+                    similar length. Use the same kind of language in all answers. All answers should seem equally plausible.
+                </p>
+                <div flex="20">
+                    <md-button ng-show="!isQuizNew()" class="md-raised md-warn" ng-click="updateQuiz()">Update quiz</md-button>
+                    <md-button ng-show="isQuizNew()" class="md-raised md-warn" ng-click="createQuiz()">Create quiz</md-button>
+                </div>
+            </div>
 
-            <md-input-container>
-                <label>Type the stem of the question</label>
-                <input ng-model="quizInProgress.stem">
-            </md-input-container>
-        </md-card-content>
-    </md-card>
+            <div flex>
+                <md-card>
+                    <md-card-content>
+                        <h3 class="md-display-1">Question</h3>
+                        <md-input-container>
+                            <label>Type clear instructions</label>
+                            <input ng-model="quizInProgress.instructions">
+                        </md-input-container>
 
-    <!--Answers block-->
-    <md-card class="panel panel-default">
-        <md-card-content class="panel-body">
-            <h3 class="md-display-1">Answers</h3>
-            <!--empieza el bloque truthies-->
-            <gabe-sentences sentences="quizInProgress.truthies" sentences-type="truthiesType"></gabe-sentences>
-            <!--empieza el bloque falsies-->
-            <gabe-sentences sentences="quizInProgress.falsies" sentences-type="falsiesType"></gabe-sentences>
-            <!--empieza el bloque pattern matching-->
-            <gabe-sentences sentences="quizInProgress.regexps" sentences-type="regexpsType"></gabe-sentences>
-        </md-card-content>
-    </md-card>
-</div>
-    <md-button ng-show="!isQuizNew()" class="md-raised md-warn" ng-click="updateQuiz()">Update quiz</md-button>
-    <md-button ng-show="isQuizNew()" class="md-raised md-warn" ng-click="createQuiz()">Create quiz</md-button>
+                        <md-input-container>
+                            <label>Type the stem of the question</label>
+                            <input ng-model="quizInProgress.stem">
+                        </md-input-container>
+                    </md-card-content>
+                </md-card>
+            </div>
+            <!--Answers block-->
+            <div flex>
+                <md-card>
+                    <md-card-content>
+                        <h3 class="md-display-1">Answers</h3>
+                        <!--empieza el bloque truthies-->
+                        <gabe-sentences sentences="quizInProgress.truthies" sentences-type="truthiesType"></gabe-sentences>
+                        <!--empieza el bloque falsies-->
+                        <gabe-sentences sentences="quizInProgress.falsies" sentences-type="falsiesType"></gabe-sentences>
+                        <!--empieza el bloque pattern matching-->
+                        <gabe-sentences sentences="quizInProgress.regexps" sentences-type="regexpsType"></gabe-sentences>
+                    </md-card-content>
+                </md-card>
+            </div>
+        </div>
+    </md-tab>
+    <!--</div>-->
+</md-tabs>
 
-    <!--{{ quizInProgress }}-->
-    <!--{{ isQuizNew() }}-->
 
-
-
-
-
+<!--{{ quizInProgress }}-->
+<!--{{ isQuizNew() }}-->
