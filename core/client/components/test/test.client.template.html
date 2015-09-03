@@ -1,41 +1,32 @@
-<div class="container">
-    <div ng-repeat="quiz in test.toDoQuizes" class="well container" ng-show="$index === test.currentQuizIndex">
-        <div class="quiz-header">
+<md-card ng-repeat="quiz in test.toDoQuizes" ng-show="$index === test.currentQuizIndex">
+    <md-subheader>
+        <div layout="row" layout-align="space-between center">
             <h3>{{ testInProgress.description }}</h3>
-            <p>
-                <span class="badge">{{ $index + 1 }}</span>of {{ test.toDoQuizes.length }}</p>
+            <p>Question {{ $index + 1 }} of {{ test.toDoQuizes.length }}</p>
         </div>
         <p>{{ quiz.instructions }}</p>
-        <!--start of the main well-->
-        <div class="well answers" ng-hide="gameOver">
-            <h4>{{ quiz.stem }}</h4>
-            <br>
+    </md-subheader>
+
+    <!--start of the main well-->
+    <md-content layout-padding layout-margin>
+        <div ng-hide="gameOver">
+            <h4 class="md-headline">{{ quiz.stem }}</h4>
+
             <!--this is the options group-->
-            <div class="btn-group-vertical">
-                <button ng-disabled="quiz.submitted" ng-class="quiz.isAnswerSelected(answer) ? 'btn btn-default' : 'btn btn-primary'" ng-repeat="answer in quiz.shuffledAnswers"
-                ng-click="quiz.updateSelection(answer)" type="button" class="btn btn-default">
-                    <span class="badge badge-option">{{ $index + 1 }}</span>{{ answer }}</button>
-                <button ng-disabled="quiz.submitted" ng-class="quiz.allFalseClicked ? 'btn btn-primary' : 'btn btn-default'" class="btn btn-default"
-                ng-click="quiz.allFalse()" type="button">All statements are false!</button>
-            </div>
-            <div class="next-or-submit-div">
-                <!--feedback block-->
-                <div class="next-or-submit-buttons">
-                    <ul class="list-inline">
-                        <li>
-                            <h4>{{ quiz.feedback }}</h4>
-                        </li>
-                        <li>{{ quiz.sarcasm }}</li>
-                    </ul>
-                </div>
-                <!--submit and next buttons-->
-                <div class="btn-group next-or-submit-buttons" role="group">
-                    <button ng-disabled="!quiz.selectedAnswers.length && !quiz.allFalseClicked" ng-hide="quiz.submitted" ng-click="quiz.submit()"
-                    type="button" class="btn btn-warning">Submit</button>
-                    <button ng-click="test.updateCurrentQuiz()" type="button" class="btn btn-default">Next</button>
-                </div>
-            </div>
+            <md-list>
+                <md-list-item ng-repeat="answer in quiz.shuffledAnswers">
+                    <md-button class="option" ng-disabled="quiz.submitted" ng-class="quiz.isAnswerSelected(answer) ? '' : 'md-raised md-primary'"
+                    ng-click="quiz.updateSelection(answer)">
+                        <span>{{ $index + 1 }} </span> {{ answer }}</md-button>
+                </md-list-item>
+                <md-list-item>
+                    <md-button class="option" ng-disabled="quiz.submitted" ng-class="quiz.allFalseClicked ? 'md-raised md-warn' : ''" ng-click="quiz.allFalse()">All statements are false!</md-button>
+                </md-list-item>
+            </md-list>
+            <p>{{ quiz.feedback }}</p>
+            <p>{{ quiz.sarcasm }}</p>
         </div>
+
         <!--game over div-->
         <div ng-show="gameOver" class="well answers">
             <p>{{ quiz.feedback }}</p>
@@ -44,49 +35,19 @@
         <p>Score:
             <span class="badge">{{ test.score | number:2 }} %</span>
         </p>
-    </div>
-</div>
-<!--debugging-->
-<!--<!--<p>selected answers: {{ quiz.selectedAnswers }}</p>-->
-<!--<p>selection correct: {{ quiz.isSelectionCorrect() }}</p>-->
-<!--<p>selected answers length: {{ quiz.selectedAnswers.length }}</p>-->
-<!--<p>{{ test }}</p>-->
-
-<md-card>
-    <md-card-content>
-        <md-subheader>{{ quiz.instructions }}</md-subheader>
-        <md-list>
-            <md-list-item>
-                <h4 class="md-headline">{{ quiz.stem }}</h4>
-            </md-list-item>
-            <md-list-item ng-repeat="truthy in quiz.truthies" class="md-2-line">
-                <div class="md-list-item-text">
-                    <h3>{{ truthy }}</h3>
-                    <p>truthy</p>
-                </div>
-            </md-list-item>
-            <md-list-item ng-repeat="falsy in quiz.falsies" class="md-2-line">
-                <div class="md-list-item-text">
-                    <h3>{{ falsy }}</h3>
-                    <p>falsy</p>
-                </div>
-            </md-list-item>
-            <md-list-item ng-repeat="regexp in quiz.regexps" class="md-2-line">
-                <div class="md-list-item-text">
-                    <h3>{{ regexp }}</h3>
-                    <p>regexp</p>
-                </div>
-            </md-list-item>
-            <!--checked: {{ quiz.checked }}-->
-        </md-list>
-    </md-card-content>
+    </md-content>
     <md-divider></md-divider>
+    <!--next or submit buttons-->
     <md-card-footer layout="row" layout-align="space-between center">
         <div class="md-actions" layout="row" layout-align="start center">
-            <md-button class="md-primary md-button md-default-theme" ui-sref="quizedit({id:quiz._id})">Edit</md-button>
-            <md-button class="md-raised md-warn" ng-click="removeQuiz(quiz)">Delete</md-button>
+            <md-button ng-disabled="!quiz.selectedAnswers.length && !quiz.allFalseClicked" ng-hide="quiz.submitted" ng-click="quiz.submit()"
+            class="md-raised md-warn">Submit</md-button>
+            <md-button ng-click="test.updateCurrentQuiz()" class="md-primary md-button md-default-theme" ng-click="removeQuiz(quiz)">Next</md-button>
         </div>
-        <md-checkbox ng-model="quiz.checked" ng-click="addToTestInCreation(quiz)" aria-label="quiz"></md-checkbox>
     </md-card-footer>
 </md-card>
-<!--ng-class="{red: hover}" ng-mouseenter="hover = false" ng-mouseleave="hover = true"-->
+
+<!--<p>selected answers: {{ quiz.selectedAnswers }}</p>
+<p>selection correct: {{ quiz.isSelectionCorrect() }}</p>
+<p>selected answers length: {{ quiz.selectedAnswers.length }}</p>
+<p>{{ test }}</p>-->
