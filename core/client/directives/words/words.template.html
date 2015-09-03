@@ -2,12 +2,12 @@
     <md-card-content>
         <div layout="row" layout-align="space-between center">
             <h2 class="md-display-1">{{ kind }}</h2>
-            <md-button ng-disabled="!validNewWord()" ng-click="addNewWord()" class="md-raised md-primary">Create New</md-button>
+            <md-button ng-disabled="!validNewWord()" ng-click="addNewWord()" class="md-raised md-primary">Add New</md-button>
         </div>
         <!--busqueda de palabras-->
 
         <md-input-container>
-            <label>Create a new one</label>
+            <label>Add a new one</label>
             <input ng-disabled="currentWord._id" ng-model="newWord">
         </md-input-container>
 
