@@ -6,8 +6,6 @@
     </div>
 </md-content>
 
-
-
 <md-content layout-padding>
     <md-input-container>
         <label>Find by subject</label>
@@ -21,11 +19,10 @@
         <label>Test Description</label>
         <input ng-model="description">
     </md-input-container>
-
 </md-content>
 
 <md-content>
-    <div layout="column" layout-gt-sm="row" layout-align="space-between center" layout-padding layout-fill layout-wrap>
+    <div layout="row" layout-wrap layout-padding layout-fill layout-wrap>
         <div ng-repeat="quiz in quizzes | filter:search | filter:filterByChecked">
             <gabe-quiztile></gabe-quiztile>
         </div>

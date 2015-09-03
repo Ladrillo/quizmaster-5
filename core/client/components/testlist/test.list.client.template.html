@@ -1,7 +1,36 @@
-<gabe-header></gabe-header>
-<div class="" ng-repeat="test in tests">
-    <p>{{ test.description }}, ({{ test.created | date:'medium' }}), <a ui-sref="test({ id:test._id })">run old style</a>, <a ui-sref="teststyled({ id:test._id })">run new style</a>
-        <button ng-click="removeTest(test)" class="btn btn-default">delete</button>
-        <button ui-sref="testedit({id:test._id})" type="button" class="btn btn-default">Edit</button>
-    </p>
-</div>
+<md-content layout="row" layout-align="start center" layout-wrap>
+    <md-card ng-repeat="test in tests">
+        <md-card-content>
+            <div layout="row" layout-align="space-between center">
+                <md-subheader>{{ test.created | date:'medium' }}</md-subheader>
+                <md-button ui-sref="test({ id:test._id })">Take the test!</md-button>
+            </div>
+            <md-list class="test">
+                <md-list-item layout="column" layout-align="center start">
+                    <h4 class="md-headline">{{ test.description }}</h4>
+                </md-list-item>
+                <md-list-item ng-repeat="quiz in test.quizzes" class="md-2-line">
+                    <div class="md-list-item-text">
+                        <h3>{{ quiz.stem }}</h3>
+                        <div layout="row" layout-align="start center" ng-repeat="truthy in quiz.truthies">
+                            <p>:-) {{ truthy }}</p>
+                        </div>
+                        <div layout="row" layout-align="start center" ng-repeat="falsy in quiz.falsies">
+                            <p>:-( {{ falsy }}</p>
+                        </div>
+                    </div>
+                </md-list-item>
+                <!--checked: {{ quiz.checked }}-->
+            </md-list>
+        </md-card-content>
+        <md-divider></md-divider>
+        <md-card-footer layout="row" layout-align="space-between center">
+            <div class="md-actions" layout="row" layout-align="start center">
+                <md-button class="md-primary md-button md-default-theme" ui-sref="testedit({id:test._id})">Edit</md-button>
+                <md-button class="md-raised md-warn" ng-click="removeTest(test)">Delete</md-button>
+            </div>
+        </md-card-footer>
+    </md-card>
+</md-content>
+<!--<i class="material-icons">highlight_off</i>
+<i class="material-icons">done</i>-->
