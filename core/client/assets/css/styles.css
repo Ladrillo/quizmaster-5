@@ -1,3 +1,8 @@
+.list-words {
+    height: 250px;
+    overflow: auto;
+}
+
 /*body, html {
     background-color: #F2F4FB;
 }
