@@ -1,25 +1,35 @@
-<md-content layout-padding>
-    <md-input-container>
-        <label>Find by subject</label>
-        <input ng-model="search.subjects.$">
-    </md-input-container>
-    <md-input-container>
-        <label>Find by keyword</label>
-        <input ng-model="search.$">
-    </md-input-container>
-    <md-input-container>
-        <label>Test Description</label>
-        <input ng-model="description">
-    </md-input-container>
-    <md-button ng-disabled="newTestButtonDisabled()" class="md-raised md-warn" ng-click="createTest()">Create</md-button>
-</md-content>
-
-<md-content>
-    <div layout="column" layout-gt-sm="row" layout-align="space-between center" layout-padding layout-fill layout-wrap>
-        <div ng-repeat="quiz in quizzes | filter:search | filter:filterByChecked">
-            <gabe-quiztile></gabe-quiztile>
-        </div>
+<md-toolbar>
+    <div class="md-toolbar-tools">
+        <span>Quizmaster</span>
+        <!-- fill up the space between left and right area -->
+        <span flex></span>
     </div>
-</md-content>
+</md-toolbar>
+
+<div layout="column">
+    <md-content layout-padding>
+        <md-input-container>
+            <label>Find by subject</label>
+            <input ng-model="search.subjects.$">
+        </md-input-container>
+        <md-input-container>
+            <label>Find by keyword</label>
+            <input ng-model="search.$">
+        </md-input-container>
+        <md-input-container>
+            <label>Test Description</label>
+            <input ng-model="description">
+        </md-input-container>
+        <md-button ng-disabled="newTestButtonDisabled()" class="md-raised md-warn" ng-click="createTest()">Create</md-button>
+    </md-content>
+
+    <md-content>
+        <div layout="column" layout-gt-sm="row" layout-align="space-between center" layout-padding layout-fill layout-wrap>
+            <div ng-repeat="quiz in quizzes | filter:search | filter:filterByChecked">
+                <gabe-quiztile></gabe-quiztile>
+            </div>
+        </div>
+    </md-content>
+</div>
 <!--quizzes: {{ testInCreation.quizzes }}-->
 <!--descrition: {{ description }}-->
