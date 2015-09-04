@@ -15,11 +15,11 @@
             <!--this is the options group-->
             <md-list>
                 <md-list-item ng-repeat="answer in quiz.shuffledAnswers">
-                    <md-button class="option" ng-disabled="quiz.submitted" ng-class="quiz.isAnswerSelected(answer) ? '' : 'md-raised md-primary'"
+                    <md-button class="option" ng-disabled="quiz.submited" ng-class="quiz.isAnswerSelected(answer) ? '' : 'md-raised md-primary'"
                     ng-click="quiz.updateSelection(answer)">{{ answer }}</md-button>
                 </md-list-item>
                 <md-list-item>
-                    <md-button class="option" ng-disabled="quiz.submitted" ng-class="quiz.allFalseClicked ? 'md-raised md-warn' : ''" ng-click="quiz.allFalse()">All statements are false!</md-button>
+                    <md-button class="option" ng-disabled="quiz.submited" ng-class="quiz.allFalseClicked ? 'md-raised md-warn' : ''" ng-click="quiz.allFalse()">All statements are false!</md-button>
                 </md-list-item>
             </md-list>
             submited: {{ quiz.submited }}
@@ -40,7 +40,7 @@
     <!--next or submit buttons-->
     <md-card-footer layout="row" layout-align="space-between center">
         <div class="md-actions" layout="row" layout-align="start center">
-            <md-button ng-disabled="!quiz.selectedAnswers.length && !quiz.allFalseClicked" ng-hide="quiz.submitted" ng-click="quiz.submit()"
+            <md-button ng-disabled="!quiz.selectedAnswers.length && !quiz.allFalseClicked" ng-hide="quiz.submited" ng-click="quiz.submit()"
             class="md-raised md-warn">Submit</md-button>
             <md-button ng-click="test.updateCurrentQuiz()" class="md-primary md-button md-default-theme" ng-click="removeQuiz(quiz)">Next</md-button>
         </div>

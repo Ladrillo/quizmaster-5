@@ -126,7 +126,7 @@
 
                     // submits current quiz
                     qz.submit = function () {
-                        this.submitted = true;
+                        this.submited = true;
                         if (this.isSelectionCorrect()) {
                             $scope.test.points += 1;
                             $scope.test.updateScore();
