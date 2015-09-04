@@ -29,7 +29,7 @@
 
         $scope.testInProgress = testInProgress;
         $scope.quizesList = testInProgress.quizzes;
-
+        $scope.doingTest = true;
 
         // ----- MAIN FUNCTION FOR GENERATING TEST START
         (function generateTest() {
