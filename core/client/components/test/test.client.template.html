@@ -22,6 +22,7 @@
                     <md-button class="option" ng-disabled="quiz.submitted" ng-class="quiz.allFalseClicked ? 'md-raised md-warn' : ''" ng-click="quiz.allFalse()">All statements are false!</md-button>
                 </md-list-item>
             </md-list>
+            submited: {{ quiz.submited }}
             <p>{{ quiz.feedback }}</p>
             <p>{{ quiz.sarcasm }}</p>
         </div>

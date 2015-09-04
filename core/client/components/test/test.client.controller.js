@@ -28,6 +28,7 @@
         notFunny) {
 
         $scope.testInProgress = testInProgress;
+
         $scope.quizesList = testInProgress.quizzes;
 
 
@@ -47,10 +48,7 @@
             $scope.test.currentQuizIndex = 0;
             $scope.test.currentQuiz = $scope.test.toDoQuizes[$scope.test.currentQuizIndex];
             $scope.test.totalNumberOfQuizes = $scope.test.toDoQuizes.length;
-            // $scope.test.submitedQuizes = [];
             $scope.test.submitedQuizes = 0;
-            // $scope.test.submitedNumberOfQuizes = $scope.test.submitedQuizes.length;
-            $scope.test.immediateFeedback = true;
 
             // update current quiz action
             $scope.test.updateCurrentQuiz = function () {
