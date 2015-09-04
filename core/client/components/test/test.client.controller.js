@@ -140,6 +140,7 @@
                         $scope.test.submitedQuizes += 1;
                         this.checkGameOver();
                     };
+
                     // ----- MAIN LOOP TO POPULATE QUIZ OBJECT END -----
                 }
 

@@ -42,7 +42,7 @@
         <div class="md-actions" layout="row" layout-align="start center">
             <md-button ng-disabled="!quiz.selectedAnswers.length && !quiz.allFalseClicked" ng-hide="quiz.submited" ng-click="quiz.submit()"
             class="md-raised md-warn">Submit</md-button>
-            <md-button ng-click="test.updateCurrentQuiz()" class="md-primary md-button md-default-theme" ng-click="removeQuiz(quiz)">Next</md-button>
+            <md-button ng-disabled="gameOver" ng-click="test.updateCurrentQuiz()" class="md-primary md-button md-default-theme" ng-click="removeQuiz(quiz)">Next</md-button>
         </div>
     </md-card-footer>
 </md-card>
