@@ -26,7 +26,7 @@
                             controller: 'quizListController',
                         },
                         sidebar: {
-                            templateUrl: 'shared/sidebar.html'
+                            templateUrl: 'shared/main.sidebar.html'
                         }
                     }
                 })
@@ -50,7 +50,7 @@
                             controller: 'quizEditController',
                         },
                         sidebar: {
-                            templateUrl: 'shared/sidebar.html'
+                            templateUrl: 'shared/main.sidebar.html'
                         }
                     }
                 })
@@ -74,7 +74,7 @@
                             controller: 'quizEditController'
                         },
                         sidebar: {
-                            templateUrl: 'shared/sidebar.html'
+                            templateUrl: 'shared/main.sidebar.html'
                         }
                     }
                 })
@@ -93,7 +93,7 @@
                             controller: 'testsController'
                         },
                         sidebar: {
-                            template: ""
+                            templateUrl: 'shared/test.sidebar.html'
                         }
                     }
                 })
@@ -116,7 +116,7 @@
                             controller: 'quizListController'
                         },
                         sidebar: {
-                            templateUrl: 'shared/sidebar.html'
+                            templateUrl: 'shared/main.sidebar.html'
                         }
                     }
                 })
@@ -135,7 +135,7 @@
                             controller: 'testListController',
                         },
                         sidebar: {
-                            templateUrl: 'shared/sidebar.html'
+                            templateUrl: 'shared/main.sidebar.html'
                         }
                     }
                 });
