@@ -22,9 +22,10 @@
     </md-toolbar>
 
     <div layout-sm="column" layout-gt-md="row" layout-padding layout-margin>
-        <ng-include src="'shared/sidebar.html'"></ng-include>
-        <div ui-view></div>
+         <div ui-view="sidebar"></div>
+         <div ui-view="main"></div>
     </div>
+
 
     <!-- Dependencies -->
     <script>
@@ -51,7 +52,6 @@
     <script src="directives/words/words.directive.js"></script>
     <script src="directives/sentences/sentences.directive.js"></script>
     <script src="directives/quiztile/quiz.tile.directive.js"></script>
-    <script src="directives/header/header.directive.js"></script>
     <!--controllers quizzes-->
     <script src="components/quizedit/quiz.edit.client.controller.js"></script>
     <script src="components/quizlist/quiz.list.client.controller.js"></script>
@@ -59,6 +59,7 @@
     <script src="components/testlist/test.list.client.controller.js"></script>
     <!--controller actual examination-->
     <script src="components/test/test.client.controller.js"></script>
+
 
 </body>
 

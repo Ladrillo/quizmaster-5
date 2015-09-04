@@ -29,7 +29,7 @@
 
         $scope.testInProgress = testInProgress;
         $scope.quizesList = testInProgress.quizzes;
-        $scope.doingTest = true;
+
 
         // ----- MAIN FUNCTION FOR GENERATING TEST START
         (function generateTest() {
@@ -142,9 +142,6 @@
                         $scope.test.submitedQuizes += 1;
                         this.checkGameOver();
                     };
-
-
-
                     // ----- MAIN LOOP TO POPULATE QUIZ OBJECT END -----
                 }
 
