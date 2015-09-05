@@ -34,44 +34,26 @@
             $scope.keywords = keywords;
             $scope.quizInProgress = {};
 
-            // badass helper function to populate a quiz being edited
-            function tryPopulateQuizInProgress() {
-                quizzesResource.get({ id: $stateParams.id })
-                    .$promise
-                    .then(function (data) {
-                        // data is current quiz being edited
-                        console.log(data);
-
-
-                        // let's populate quizInProgress field by field to avoid dreaded bug
-                        $scope.quizInProgress.instructions = data.instructions;
-                        $scope.quizInProgress.stem = data.stem;
-                        $scope.quizInProgress.subjects = data.subjects;
-                        $scope.quizInProgress.keywords = data.keywords;
-                        $scope.quizInProgress.truthies = data.truthies;
-                        $scope.quizInProgress.falsies = data.falsies;
-                        $scope.quizInProgress.regexps = data.regexps;
-
-                        // populate checkchekboxes correctly
-                        $scope.subjects.forEach(function (subj) {
-                            $scope.quizInProgress.subjects.forEach(function (pSubj) {
-                                if (subj.name === pSubj.name) {
-                                    subj.isChecked = true;
-                                }
-                            });
-                        });
-                        $scope.keywords.forEach(function (keyw) {
-                            $scope.quizInProgress.keywords.forEach(function (pKeyw) {
-                                if (keyw.name === pKeyw.name) {
-                                    keyw.isChecked = true;
-                                }
-                            });
+            // IF EDITING AN EXISTING QUIZ
+            if ($stateParams.id) {
+                $scope.quizInProgress = quizzesResource.get({ id: $stateParams.id }, function () {
+                    // populate checkchekboxes correctly
+                    $scope.subjects.forEach(function (subj) {
+                        $scope.quizInProgress.subjects.forEach(function (pSubj) {
+                            if (subj.name === pSubj.name) {
+                                subj.isChecked = true;
+                            }
                         });
                     });
+                    $scope.keywords.forEach(function (keyw) {
+                        $scope.quizInProgress.keywords.forEach(function (pKeyw) {
+                            if (keyw.name === pKeyw.name) {
+                                keyw.isChecked = true;
+                            }
+                        });
+                    });
+                });
             }
-
-            // IF EDITING AN EXISTING QUIZ
-            if ($stateParams.id) tryPopulateQuizInProgress();
 
             // IF CREATING A NEW QUIZ don't do anything
 

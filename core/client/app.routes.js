@@ -74,7 +74,8 @@
                             controller: 'quizEditController'
                         },
                         sidebar: {
-                            templateUrl: 'shared/main.sidebar.html'
+                            templateUrl: 'shared/main.sidebar.html',
+                            
                         }
                     }
                 })
