@@ -31,6 +31,10 @@
 
         $scope.quizesList = testInProgress.quizzes;
 
+        $scope.reloadTest = function () {
+            $state.reload();
+        };
+
 
         // ----- MAIN FUNCTION FOR GENERATING TEST START
         (function generateTest() {
@@ -52,13 +56,24 @@
 
             // update current quiz action
             $scope.test.updateCurrentQuiz = function () {
-                if (this.toDoQuizes.length - 1 === this.currentQuizIndex) {
-                    this.currentQuizIndex = 0;
+                $scope.indices = [];
+                for (var i = 0; i < this.toDoQuizes.length; i++) {
+                    if (!this.toDoQuizes[i].submited) {
+                        $scope.indices.push(i);
+                    }
+                }
+                console.log($scope.indices);
+                if (this.currentQuizIndex === this.toDoQuizes.length - 1) {
+                    this.currentQuizIndex = $scope.indices[0];
+                }
+                else if (this.currentQuizIndex === $scope.indices[$scope.indices.length - 1]) {
+                    this.currentQuizIndex = $scope.indices[0];
                 }
                 else {
-                    this.currentQuizIndex += 1;
+                    this.currentQuizIndex = $scope.indices[$scope.indices.indexOf(this.currentQuizIndex) + 1];
                 }
                 this.currentQuiz = this.toDoQuizes[this.currentQuizIndex];
+                $scope.oneQuizLeft = $scope.indices.length === 1;
             };
 
             // let's calculate points in percentage
@@ -140,6 +155,9 @@
                         $scope.test.submitedQuizes += 1;
                         this.checkGameOver();
                     };
+
+
+
 
                     // ----- MAIN LOOP TO POPULATE QUIZ OBJECT END -----
                 }
