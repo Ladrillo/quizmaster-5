@@ -5,7 +5,7 @@
                 <md-subheader>{{ test.created | date:'medium' }}</md-subheader>
                 <md-button ui-sref="test({ id:test._id })">Take the test!</md-button>
             </div>
-            <md-list class="test">
+            <md-list class="testcard">
                 <md-list-item layout="column" layout-align="center start">
                     <h4 class="md-headline">{{ test.description }}</h4>
                 </md-list-item>
@@ -13,10 +13,10 @@
                     <div class="md-list-item-text">
                         <h3>{{ quiz.stem }}</h3>
                         <div layout="row" layout-align="start center" ng-repeat="truthy in quiz.truthies">
-                            <p> {{ truthy }}</p>
+                            <p>{{ "\u2713" }} {{ truthy }}</p>
                         </div>
                         <div layout="row" layout-align="start center" ng-repeat="falsy in quiz.falsies">
-                            <p> {{ falsy }}</p>
+                            <p>{{ "\u2718" }} {{ falsy }}</p>
                         </div>
                     </div>
                 </md-list-item>

@@ -30,10 +30,11 @@
         (function populateQuizInProgress() {
 
             // WE FIRST NEED SUBJECTS AND KEYWORDS IN SCOPE, resolved in route
+            // the pipes fixed the worst bug imaginable
             $scope.subjects = $scope.subjects || subjects;
             $scope.keywords = $scope.keywords || keywords;
 
-            // QUIZ IN PROGRESS IS RESOLVED IN FUNCTION BELOW, AND SOURCE OF INFINITE MISERY
+            // the pipes fixed the worst bug imaginable
             $scope.quizInProgress = $scope.quizInProgress || {};
 
             // IF EDITING AN EXISTING QUIZ

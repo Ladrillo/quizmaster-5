@@ -23,11 +23,19 @@
 </md-content>
 
 <md-content>
-    <div layout="row" layout-wrap layout-padding layout-fill layout-wrap>
-        <div ng-repeat="quiz in quizzes | filter:search">
+    <div style="background-color:red;" layout="row" layout-padding layout-fill layout-wrap>
+        <div ng-repeat="quiz in quizzes | uncheckedQuiz">
+            <gabe-quiztile></gabe-quiztile>
+        </div>
+    </div>
+    <md-divider></md-divider>
+    <div layout="row" layout-padding layout-fill layout-wrap>
+        <md-divider></md-divider>
+        <div ng-repeat="quiz in quizzes | checkedQuiz | filter:search">
             <gabe-quiztile></gabe-quiztile>
         </div>
     </div>
 </md-content>
 <!--test in creation: {{ testInCreation }}
 description: {{ description }}-->
+<!--<div ng-repeat="quiz in quizzes | filter:search">-->

@@ -3,8 +3,15 @@
     overflow: auto;
 }
 
-.test {
+.testcard {
     height: 450px;
+    width: 400px;
+    overflow: auto;
+}
+
+.quizcard {
+    height: 350px;
+    width: 350px;
     overflow: auto;
 }
 
