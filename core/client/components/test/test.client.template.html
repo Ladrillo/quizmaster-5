@@ -8,7 +8,7 @@
     </md-subheader>
 
     <!--start of the main well-->
-    <md-content layout-padding layout-margin>
+    <md-content layout="row" layout-padding layout-margin>
         <div ng-hide="gameOver">
             <h4 class="md-headline">{{ quiz.stem }}</h4>
 
@@ -34,7 +34,7 @@
     <!--next or submit buttons-->
     <md-card-footer layout="row" layout-align="space-between center">
         <md-subheader>
-            <p>{{ quiz.feedback }} {{ quiz.sarcasm }} Score {{ test.score | number:2 }} %</p>
+            <p><span ng-class="quiz.isSelectionCorrect() ? 'animated infinite bounce' : 'animated infinite flash'">{{ quiz.feedback }}</span> {{ quiz.sarcasm }} Score {{ test.score | number: 0 }} %</p>
         </md-subheader>
         <div class="md-actions" layout="row" layout-align="end center">
             <md-button ng-disabled="!quiz.selectedAnswers.length && !quiz.allFalseClicked" ng-hide="quiz.submited" ng-click="quiz.submit()"
