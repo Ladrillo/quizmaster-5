@@ -26,7 +26,7 @@
         $scope.quizzes = quizzes; // resolved in the route
 
         $scope.testInCreation = $scope.testInCreation || { quizzes: [], description: "" };
-
+        // $scope.testInCreation = $scope.testInCreation || testsResource.testInCreation;
 
         // GRABBING TEST BEING MODIFIED, FROM URL PARAMETERS
         if ($stateParams.id) {
@@ -51,15 +51,19 @@
         };
 
 
-        // CHECKBOXES THAT ADD TILE TO CURRENT TEST BEING CREATED
+        // CHECKBOXES THAT ADD OR REMOVE TILE TO CURRENT TEST BEING CREATED
         $scope.toggleChecked = function (quiz) {
             if (this.testInCreation.quizzes.every(function (qz) {
                 return quiz._id !== qz._id;
             })) {
                 this.testInCreation.quizzes.push(quiz);
+                // trying to persist selection while I am away editing:
+                // testsResource.testInCreation = this.testInCreation;
             }
             else {
                 this.testInCreation.quizzes.splice(this.testInCreation.quizzes.indexOf(quiz), 1);
+                // trying to persist selection while I am away editing:
+                // testsResource.testInCreation = this.testInCreation;
             }
         };
 
