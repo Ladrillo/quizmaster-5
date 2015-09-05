@@ -32,16 +32,27 @@
             // WE FIRST NEED SUBJECTS AND KEYWORDS IN SCOPE, resolved in route
             $scope.subjects = subjects;
             $scope.keywords = keywords;
+            $scope.quizInProgress = {};
 
-            // IF EDITING AN EXISTING QUIZ
-            if ($stateParams.id) {
+            // badass helper function to populate a quiz being edited
+            function tryPopulateQuizInProgress() {
                 quizzesResource.get({ id: $stateParams.id })
                     .$promise
                     .then(function (data) {
-                        // current quiz being edited
-                        // console.log(data);
-                        $scope.quizInProgress = data;
-                        // if editing, check chekboxes correctly
+                        // data is current quiz being edited
+                        console.log(data);
+
+
+                        // let's populate quizInProgress field by field to avoid dreaded bug
+                        $scope.quizInProgress.instructions = data.instructions;
+                        $scope.quizInProgress.stem = data.stem;
+                        $scope.quizInProgress.subjects = data.subjects;
+                        $scope.quizInProgress.keywords = data.keywords;
+                        $scope.quizInProgress.truthies = data.truthies;
+                        $scope.quizInProgress.falsies = data.falsies;
+                        $scope.quizInProgress.regexps = data.regexps;
+
+                        // populate checkchekboxes correctly
                         $scope.subjects.forEach(function (subj) {
                             $scope.quizInProgress.subjects.forEach(function (pSubj) {
                                 if (subj.name === pSubj.name) {
@@ -59,8 +70,11 @@
                     });
             }
 
-            // IF CREATING A NEW QUIZ
-            else $scope.quizInProgress = {};
+            // IF EDITING AN EXISTING QUIZ
+            if ($stateParams.id) tryPopulateQuizInProgress();
+
+            // IF CREATING A NEW QUIZ don't do anything
+
         } ());
 
 
