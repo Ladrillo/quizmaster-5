@@ -14,9 +14,9 @@
                 },
 
                 controller: function ($scope) {
-                    $scope.sentences = [];
-                    $scope.newSentence = "";
-                    $scope.currentSentence = "";
+                    $scope.sentences = $scope.sentences || [];
+                    $scope.newSentence = $scope.newSentence || "";
+                    $scope.currentSentence = $scope.currentSentence || "";
 
                     $scope.editing = false;
                     $scope.flipEditing = function () {

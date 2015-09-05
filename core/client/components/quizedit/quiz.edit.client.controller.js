@@ -7,8 +7,6 @@
             '$stateParams',
             '$state',
             '$resource',
-            'subjectsResource',
-            'keywordsResource',
             'quizzesResource',
             'subjects',
             'keywords',
@@ -19,8 +17,6 @@
         $stateParams,
         $state,
         $resource,
-        subjectsResource,
-        keywordsResource,
         quizzesResource,
         subjects,
         keywords) {
@@ -30,9 +26,11 @@
         (function populateQuizInProgress() {
 
             // WE FIRST NEED SUBJECTS AND KEYWORDS IN SCOPE, resolved in route
-            $scope.subjects = subjects;
-            $scope.keywords = keywords;
-            $scope.quizInProgress = {};
+            $scope.subjects = $scope.subjects || subjects;
+            $scope.keywords = $scope.keywords || keywords;
+
+            // QUIZ IN PROGRESS IS RESOLVED IN FUNCTION BELOW, AND SOURCE OF INFINITE MISERY
+            $scope.quizInProgress = $scope.quizInProgress || {};
 
             // IF EDITING AN EXISTING QUIZ
             if ($stateParams.id) {
