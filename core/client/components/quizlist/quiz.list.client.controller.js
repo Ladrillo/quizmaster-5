@@ -11,7 +11,6 @@
             'quizzesResource',
             'testsResource',
             'quizzes',
-            'testInCreation',
             quizListController]);
 
     function quizListController(
@@ -22,14 +21,41 @@
         keywordsResource,
         quizzesResource,
         testsResource,
-        quizzes,
-        testInCreation) {
+        quizzes) {
 
         $scope.quizzes = quizzes; // resolved in the route
 
+        $scope.testInCreation = $scope.testInCreation || { quizzes: [], description: "" };
+
+
+        // GRABBING TEST BEING MODIFIED, FROM URL PARAMETERS
+        if ($stateParams.id) {
+            $scope.testInCreation = testsResource.get({ id: $stateParams.id }, function () {
+                // this callback checks the appropiate checkboxes and fills description
+                $scope.description = $scope.testInCreation.description;
+                $scope.quizzes.forEach(function (qz) {
+                    $scope.testInCreation.quizzes.forEach(function (q) {
+                        if (q._id === qz._id) {
+                            qz.checked = true;
+                        }
+                    });
+                });
+            });
+        }
+
+
+        // CHECK IF THERE ARE PARAMETERS IN THE URL
+        $scope.isTestNew = function () {
+            // console.log($stateParams.id);
+            return !$stateParams.id;
+        };
+
+
         // CHECKBOXES THAT ADD TILE TO CURRENT TEST BEING CREATED
-        $scope.addToTestInCreation = function (quiz) {
-            if (this.testInCreation.quizzes.indexOf(quiz) === -1) {
+        $scope.toggleChecked = function (quiz) {
+            if (this.testInCreation.quizzes.every(function (qz) {
+                return quiz._id !== qz._id;
+            })) {
                 this.testInCreation.quizzes.push(quiz);
             }
             else {
@@ -37,42 +63,39 @@
             }
         };
 
-        if ($stateParams.id) {
-            $scope.testInCreation = testInCreation;
-            $scope.testInCreation.quizzes.forEach(function (quiz) {
-                quiz.checked = true;
-            });
-        }
-        else {
-            $scope.testInCreation = {
-                quizzes: [],
-                description: ""
-            };
-        }
+
+        // CREATE TEST
+        $scope.createTest = function () {
+            new testsResource({
+                quizzes: $scope.testInCreation.quizzes,
+                description: $scope.description
+            })
+                .$save(function () {
+                    $state.go('testlist');
+                });
+        };
+
+
+        // UPDATE TEST
+        $scope.updateTest = function () {
+            testsResource.update({
+                id: $scope.testInCreation._id
+            }, {
+                    quizzes: $scope.testInCreation.quizzes,
+                    description: $scope.description
+                }, function () {
+                    $state.go('testlist');
+                });
+        };
+
 
         // DELETE QUIZ
-        $scope.removeQuiz = function (quiz) {            ;
+        $scope.removeQuiz = function (quiz) {
             quiz.$delete(function () {
                 $scope.quizzes.splice($scope.quizzes.indexOf(quiz), 1);
             });
         };
 
-        // CREATE TEST
-        $scope.createTest = function () {
-        new testsResource({
-            quizzes: $scope.testInCreation.quizzes,
-            description: $scope.description
-        })
-            .$save(function () {
-                $state.go('testlist');
-            });
-        };
-
-        // FILTER
-        $scope.filterByChecked = function (quiz) {
-            if ($scope.testInCreation.quizzes.indexOf(quiz) === -1) return true;
-            return true; // he anulado el filtrado por checked
-        };
 
         // DISABLE NEW TEST BUTTON
         $scope.newTestButtonDisabled = function () {

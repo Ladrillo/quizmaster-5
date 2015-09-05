@@ -7,6 +7,8 @@
             '$stateParams',
             '$state',
             '$resource',
+            'subjectsResource',
+            'keywordsResource',
             'quizzesResource',
             'subjects',
             'keywords',
@@ -17,6 +19,8 @@
         $stateParams,
         $state,
         $resource,
+        subjectsResource,
+        keywordsResource,
         quizzesResource,
         subjects,
         keywords) {
@@ -58,7 +62,7 @@
         } ());
 
 
-        // PUT THE PARAMETER IN SCOPE
+        // CHECK IF THERE ARE PARAMETERS IN THE URL
         $scope.isQuizNew = function () {
             // console.log($stateParams.id);
             return !$stateParams.id;

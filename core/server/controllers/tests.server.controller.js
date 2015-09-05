@@ -36,6 +36,7 @@ exports.putTest = function (req, res) {
         .exec(function (err, test) {
             if (err) res.status(500).send(err);
             else {
+                test.description = req.body.description;
                 test.quizzes = req.body.quizzes;
                 test.save();
                 res.json(test);

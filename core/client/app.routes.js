@@ -3,34 +3,10 @@
 
     angular.module('quizmaster')
         .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-            $urlRouterProvider.otherwise('/quizzes');
+            $urlRouterProvider
+                .otherwise('/quizzes');
 
             $stateProvider
-
-                .state('quizlist', {
-                    url: '/quizzes',
-                    views: {
-                        main: {
-                            templateUrl: 'components/quizlist/quiz.list.client.template.html',
-                            resolve: {
-                                quizzesResource: 'quizzesResource',
-                                quizzes: function (quizzesResource) {
-                                    return quizzesResource.query();
-                                },
-
-                                testsResource: 'testsResource',
-                                testInCreation: function (testsResource, $stateParams) {
-                                    return {};
-                                }
-                            },
-                            controller: 'quizListController',
-                        },
-                        sidebar: {
-                            templateUrl: 'shared/main.sidebar.html'
-                        }
-                    }
-                })
-
                 .state('quiznew', {
                     url: '/quizzes/new',
                     views: {
@@ -50,7 +26,26 @@
                             controller: 'quizEditController',
                         },
                         sidebar: {
-                            templateUrl: 'shared/main.sidebar.html'
+                            templateUrl: 'shared/mainsidebar/main.sidebar.html'
+                        }
+                    }
+                })
+
+                .state('quizlist', {
+                    url: '/quizzes',
+                    views: {
+                        main: {
+                            templateUrl: 'components/quizlist/quiz.list.client.template.html',
+                            resolve: {
+                                quizzesResource: 'quizzesResource',
+                                quizzes: function (quizzesResource) {
+                                    return quizzesResource.query();
+                                },
+                            },
+                            controller: 'quizListController'
+                        },
+                        sidebar: {
+                            templateUrl: 'shared/mainsidebar/main.sidebar.html'
                         }
                     }
                 })
@@ -74,8 +69,7 @@
                             controller: 'quizEditController'
                         },
                         sidebar: {
-                            templateUrl: 'shared/main.sidebar.html',
-                            
+                            templateUrl: 'shared/mainsidebar/main.sidebar.html'
                         }
                     }
                 })
@@ -94,7 +88,7 @@
                             controller: 'testsController'
                         },
                         sidebar: {
-                            templateUrl: 'shared/test.sidebar.html'
+                            templateUrl: 'shared/emptysidebar/empty.sidebar.html'
                         }
                     }
                 })
@@ -117,7 +111,7 @@
                             controller: 'quizListController'
                         },
                         sidebar: {
-                            templateUrl: 'shared/main.sidebar.html'
+                            templateUrl: 'shared/mainsidebar/main.sidebar.html'
                         }
                     }
                 })
@@ -136,7 +130,7 @@
                             controller: 'testListController',
                         },
                         sidebar: {
-                            templateUrl: 'shared/main.sidebar.html'
+                            templateUrl: 'shared/mainsidebar/main.sidebar.html'
                         }
                     }
                 });

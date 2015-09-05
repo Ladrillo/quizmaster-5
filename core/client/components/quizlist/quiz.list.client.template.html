@@ -2,7 +2,8 @@
     <h3 class="md-display-1">Test Editing</h3>
     <p>Select a few quizzes to create a test.</p>
     <div layout="row" layout-align="end center">
-        <md-button ng-disabled="newTestButtonDisabled()" class="md-raised md-warn" ng-click="createTest()">Create</md-button>
+        <md-button ng-show="isTestNew()" ng-disabled="newTestButtonDisabled()" class="md-raised md-warn" ng-click="createTest()">Create</md-button>
+        <md-button ng-show="!isTestNew()" class="md-raised md-warn" ng-click="updateTest()">Update</md-button>
     </div>
 </md-content>
 
@@ -23,10 +24,10 @@
 
 <md-content>
     <div layout="row" layout-wrap layout-padding layout-fill layout-wrap>
-        <div ng-repeat="quiz in quizzes | filter:search | filter:filterByChecked">
+        <div ng-repeat="quiz in quizzes | filter:search">
             <gabe-quiztile></gabe-quiztile>
         </div>
     </div>
 </md-content>
-<!--quizzes: {{ testInCreation.quizzes }}-->
-<!--descrition: {{ description }}-->
+<!--test in creation: {{ testInCreation }}
+description: {{ description }}-->
