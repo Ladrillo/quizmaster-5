@@ -10,7 +10,7 @@
     <!--start of the main well-->
     <md-content layout="row" layout-padding layout-margin>
         <div ng-hide="gameOver">
-            <h3 class="md-headline" ng-class="quiz.isSelectionCorrect() ? 'animated infinite bounce' : 'animated infinite flash'">{{ quiz.feedback }}</h3>
+            <p><span class="md-headline" ng-class="quiz.isSelectionCorrect() ? 'animated infinite bounce' : 'animated infinite flash'">{{ quiz.feedback }}</span><span class="md-caption"> {{ quiz.sarcasm }}</span></p>
             <h3 class="md-headline">{{ quiz.stem }}</h3>
 
             <!--this is the options group-->
@@ -26,7 +26,7 @@
             <!--submited: {{ quiz.submited }}-->
         </div>
         <div ng-show="gameOver">
-            <h2>End of the Test!</h2>
+            <h2><span class="md-headline" ng-class="quiz.isSelectionCorrect() ? 'animated infinite bounce' : 'animated infinite flash'">{{ quiz.feedback }}</span> End of the Test!</h2>
             <h3>You aced {{ test.points }} out of {{ test.totalNumberOfQuizes }} questions</h3>
             <md-button class="md-raised md-primary" ng-click="reloadTest()">Take Test Again</md-button>
         </div>
@@ -35,7 +35,7 @@
     <!--next or submit buttons-->
     <md-card-footer layout="row" layout-align="space-between center">
         <md-subheader>
-            <p>{{ quiz.sarcasm }} Score {{ test.score | number: 0 }} %</p>
+            <p>Score {{ test.score | number: 0 }} %</p>
         </md-subheader>
         <div class="md-actions" layout="row" layout-align="end center">
             <md-button ng-disabled="!quiz.selectedAnswers.length && !quiz.allFalseClicked" ng-hide="quiz.submited" ng-click="quiz.submit()"
@@ -43,7 +43,6 @@
             <md-button ng-hide="oneQuizLeft || gameOver" ng-click="test.updateCurrentQuiz()" class="md-primary md-button md-default-theme"
             ng-click="removeQuiz(quiz)">Next</md-button>
         </div>
-        <!--game over div-->
     </md-card-footer>
 </md-card>
 
