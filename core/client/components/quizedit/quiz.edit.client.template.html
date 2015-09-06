@@ -1,62 +1,86 @@
 <md-content layout="column" layout-margin layout-padding layout-fill>
-    <h3 class="md-display-1">Quiz Editing</h3>
-    <p>Select a subject or create a new one if none of the existing ones apply. The selection of keywords very important: it
-        will help other users find relevant quizzes more easily.
-    </p>
-    <div layout="row" layout-align="end center">
-        <md-button ng-show="!isQuizNew()" class="md-raised md-warn" ng-click="updateQuiz()">Update quiz</md-button>
-        <md-button ng-show="isQuizNew()" class="md-raised md-warn" ng-click="createQuiz()">Create quiz</md-button>
+    <h3 class="md-display-1">Quiz Edition</h3>
+    <h3>Creating a great Quiz</h3>
+    <div layout-gt-lg="row" layout-padding layout-margin>
+        <div flex>
+            <h4>1- Think of Stuff</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+        <div flex>
+            <h4>2- Some more stuff</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+        <div flex>
+            <h4>3- More Fun Stuff</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
     </div>
+
+    <md-divider></md-divider>
+    <md-tabs md-dynamic-height="true">
+        <md-tab label="Step 1">
+            <md-content layout-sm="column" layout-gt-sm="row" layout-margin layout-padding>
+                <gabe-words flex words="subjects" kind="subjectKind" new-word="newSubject" create-word="createSubject()" current-word="currentSubject"
+                update-word="updateSubject()" delete-word="deleteSubject()" checked-words="quizInProgress.subjects" is-checked="isChecked"></gabe-words>
+
+                <gabe-words flex words="keywords" kind="keywordKind" new-word="newKeyword" create-word="createKeyword()" current-word="currentKeyword"
+                update-word="updateKeyword()" delete-word="deleteKeyword()" checked-words="quizInProgress.keywords" current-quiz="quizInProgress"></gabe-words>
+            </md-content>
+        </md-tab>
+
+        <!--stem and instructions block-->
+        <md-tab label="Step 2">
+            <div layout="row" layout-align="end center">
+            <md-button ng-show="!isQuizNew()" class="md-raised md-warn" ng-click="updateQuiz()">Update quiz</md-button>
+            <md-button ng-show="isQuizNew()" class="md-raised md-warn" ng-click="createQuiz()">Create quiz</md-button>
+        </div>
+            <md-content layout-lg="column" layout-gt-lg="row" layout-margin layout-padding>
+
+                <div flex>
+                    <md-card>
+                        <md-card-content>
+                            <h3 class="md-headline">Question</h3>
+                            <md-input-container>
+                                <label>Type clear instructions</label>
+                                <input ng-model="quizInProgress.instructions">
+                            </md-input-container>
+
+                            <md-input-container>
+                                <label>Type the stem of the question</label>
+                                <input ng-model="quizInProgress.stem">
+                            </md-input-container>
+                        </md-card-content>
+                    </md-card>
+                </div>
+
+                <!--Answers block-->
+                <div flex>
+                    <md-card>
+                        <md-card-content>
+                            <!--empieza el bloque truthies-->
+                            <h3 class="md-headline">Truthy Answers</h3>
+                            <gabe-sentences sentences="quizInProgress.truthies" sentences-type="truthiesType"></gabe-sentences>
+                            <!--empieza el bloque falsies-->
+                            <h3 class="md-headline">Falsy Answers</h3>
+                            <gabe-sentences sentences="quizInProgress.falsies" sentences-type="falsiesType"></gabe-sentences>
+                            <!--empieza el bloque pattern matching-->
+                            <h3 class="md-headline">Regular Expressions</h3>
+                            <gabe-sentences sentences="quizInProgress.regexps" sentences-type="regexpsType"></gabe-sentences>
+                        </md-card-content>
+                    </md-card>
+                </div>
+            </md-content>
+        </md-tab>
+    </md-tabs>
 </md-content>
-
-<md-tabs md-dynamic-height="true">
-    <md-tab label="Step 1">
-        <md-content layout-sm="column" layout-gt-lg="row" layout-margin layout-padding>
-            <gabe-words flex words="subjects" kind="subjectKind" new-word="newSubject" create-word="createSubject()" current-word="currentSubject"
-            update-word="updateSubject()" delete-word="deleteSubject()" checked-words="quizInProgress.subjects" is-checked="isChecked"></gabe-words>
-
-            <gabe-words flex words="keywords" kind="keywordKind" new-word="newKeyword" create-word="createKeyword()" current-word="currentKeyword"
-            update-word="updateKeyword()" delete-word="deleteKeyword()" checked-words="quizInProgress.keywords" current-quiz="quizInProgress"></gabe-words>
-        </md-content>
-    </md-tab>
-
-    <!--stem and instructions block-->
-    <md-tab label="Step 2">
-        <md-content layout="column" layout-margin layout-padding>
-            <div flex>
-                <md-card>
-                    <md-card-content>
-                        <h3 class="md-headline">Question</h3>
-                        <md-input-container>
-                            <label>Type clear instructions</label>
-                            <input ng-model="quizInProgress.instructions">
-                        </md-input-container>
-
-                        <md-input-container>
-                            <label>Type the stem of the question</label>
-                            <input ng-model="quizInProgress.stem">
-                        </md-input-container>
-                    </md-card-content>
-                </md-card>
-            </div>
-
-            <!--Answers block-->
-            <div flex>
-                <md-card>
-                    <md-card-content>
-                        <h3 class="md-headline">Answers</h3>
-                        <!--empieza el bloque truthies-->
-                        <gabe-sentences sentences="quizInProgress.truthies" sentences-type="truthiesType"></gabe-sentences>
-                        <!--empieza el bloque falsies-->
-                        <gabe-sentences sentences="quizInProgress.falsies" sentences-type="falsiesType"></gabe-sentences>
-                        <!--empieza el bloque pattern matching-->
-                        <gabe-sentences sentences="quizInProgress.regexps" sentences-type="regexpsType"></gabe-sentences>
-                    </md-card-content>
-                </md-card>
-            </div>
-        </md-content>
-    </md-tab>
-
-</md-tabs>
 <!--{{ quizInProgress }}-->
 <!--{{ isQuizNew() }}-->

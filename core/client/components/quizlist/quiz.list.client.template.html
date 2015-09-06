@@ -1,13 +1,50 @@
 <md-content layout="column" layout-margin layout-padding layout-fill>
-    <h3 class="md-display-1">Test Editing</h3>
-    <p>Select a few quizzes to create a test.</p>
-    <div layout="row" layout-align="end center">
-        <md-button ng-show="isTestNew()" ng-disabled="newTestButtonDisabled()" class="md-raised md-warn" ng-click="createTest()">Create Quiz</md-button>
-        <md-button ng-show="!isTestNew()" class="md-raised md-warn" ng-click="updateTest()">Update Quiz</md-button>
+    <h3 class="md-display-1">Quiz Bank</h3>
+    <h3>How to use this bank</h3>
+    <div layout-gt-lg="row" layout-padding layout-margin>
+        <div flex>
+            <h4>1- Think of Stuff</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+        <div flex>
+            <h4>2- Some more stuff</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+        <div flex>
+            <h4>3- More Fun Stuff</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
     </div>
 </md-content>
 
-<md-content layout-padding>
+<md-content>
+    <div style="background-color:#BBDEFB;" layout="row" layout-fill layout-padding layout-wrap>
+        <div ng-repeat="quiz in quizzes | uncheckedQuiz">
+            <gabe-quiztile></gabe-quiztile>
+        </div>
+
+        <div layout="column" layout-align="end center">
+            <md-input-container>
+                <label>Test Description</label>
+                <input ng-model="description">
+            </md-input-container>
+            <md-button ng-show="isTestNew()" ng-disabled="newTestButtonDisabled()" class="md-raised md-warn" ng-click="createTest()">Create Test</md-button>
+            <md-button ng-show="!isTestNew()" class="md-raised md-warn" ng-click="updateTest()">Update Test</md-button>
+        </div>
+    </div>
+    <md-content layout="column" layout-margin layout-padding layout-fill>
+        <h3 class="md-display-1">Find Quizzes</h3>
+        <h3>Search by subject or keyword</h3>
+    </md-content>
     <md-input-container>
         <label>Find by subject</label>
         <input ng-model="search.subjects.$">
@@ -16,27 +53,13 @@
         <label>Find by keyword</label>
         <input ng-model="search.$">
     </md-input-container>
-    <md-input-container>
-        <label>Test Description</label>
-        <input ng-model="description">
-    </md-input-container>
-</md-content>
-
-<md-content>
-    <div style="background-color:red;" layout="row" layout-padding layout-fill layout-wrap>
-        <div ng-repeat="quiz in quizzes | uncheckedQuiz">
-            <gabe-quiztile></gabe-quiztile>
-        </div>
-    </div>
-    <md-divider></md-divider>
     <div layout="row" layout-padding layout-fill layout-wrap>
-        <md-divider></md-divider>
         <div ng-repeat="quiz in quizzes | checkedQuiz | filter:search">
             <gabe-quiztile></gabe-quiztile>
         </div>
     </div>
 </md-content>
 
-test in creation: {{ testInCreation }} <br>
-quizzes: {{ quizzes }}
+<!--test in creation: {{ testInCreation }} <br>
+quizzes: {{ quizzes }}-->
 <!--description: {{ description }}-->
