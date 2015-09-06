@@ -25,31 +25,16 @@
         testsResource,
         quizzes) {
 
-        $scope.quizzes = quizzes; // resolved in the route
 
+        // POPULATE EVERYTHING CORRECTLY
+        (function () {
+            $scope.quizzes = quizzes; // resolved in the route
 
-        // $scope.testInCreation = $scope.testInCreation || { quizzes: [], description: "" };
-        $scope.testInCreation = selectService.getTestInCreation() || $scope.testInCreation || { quizzes: [], description: "" };
+            $scope.testInCreation = selectService.getTestInCreation() || $scope.testInCreation || { quizzes: [], description: "" };
 
-
-        // DOING THE RIGHT THING IF I NAVIGATE BACK TO DESIGNING NEW TEST
-        if (selectService.getTestInCreation()) {
-            // this callback checks the appropiate checkboxes
-            $scope.quizzes.forEach(function (qz) {
-                $scope.testInCreation.quizzes.forEach(function (q) {
-                    if (q._id === qz._id) {
-                        qz.checked = true;
-                    }
-                });
-            });
-        }
-
-
-        // GRABBING TEST BEING MODIFIED, FROM URL PARAMETERS
-        if ($stateParams.id) {
-            $scope.testInCreation = testsResource.get({ id: $stateParams.id }, function () {
-                // this callback checks the appropiate checkboxes and fills description
-                $scope.description = $scope.testInCreation.description;
+            // DOING THE RIGHT THING IF I NAVIGATE BACK TO DESIGNING NEW TEST
+            if ($scope.testInCreation.description) {
+                // this callback checks the appropiate checkboxes
                 $scope.quizzes.forEach(function (qz) {
                     $scope.testInCreation.quizzes.forEach(function (q) {
                         if (q._id === qz._id) {
@@ -57,8 +42,24 @@
                         }
                     });
                 });
-            });
-        }
+            }
+
+
+            // GRABBING TEST BEING MODIFIED, FROM URL PARAMETERS
+            if ($stateParams.id) {
+                $scope.testInCreation = testsResource.get({ id: $stateParams.id }, function () {
+                    // this callback checks the appropiate checkboxes and fills description
+                    $scope.description = $scope.testInCreation.description;
+                    $scope.quizzes.forEach(function (qz) {
+                        $scope.testInCreation.quizzes.forEach(function (q) {
+                            if (q._id === qz._id) {
+                                qz.checked = true;
+                            }
+                        });
+                    });
+                });
+            }
+        } ());
 
 
         // CHECK IF THERE ARE PARAMETERS IN THE URL
