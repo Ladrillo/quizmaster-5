@@ -6,6 +6,7 @@
             '$scope',
             '$state',
             '$stateParams',
+            'selectService',
             'subjectsResource',
             'keywordsResource',
             'quizzesResource',
@@ -17,6 +18,7 @@
         $scope,
         $state,
         $stateParams,
+        selectService,
         subjectsResource,
         keywordsResource,
         quizzesResource,
@@ -25,8 +27,23 @@
 
         $scope.quizzes = quizzes; // resolved in the route
 
-        $scope.testInCreation = $scope.testInCreation || { quizzes: [], description: "" };
-        // $scope.testInCreation = $scope.testInCreation || testsResource.testInCreation;
+
+        // $scope.testInCreation = $scope.testInCreation || { quizzes: [], description: "" };
+        $scope.testInCreation = selectService.getTestInCreation() || $scope.testInCreation || { quizzes: [], description: "" };
+
+
+        // DOING THE RIGHT THING IF I NAVIGATE BACK TO DESIGNING NEW TEST
+        if (selectService.getTestInCreation()) {
+            // this callback checks the appropiate checkboxes
+            $scope.quizzes.forEach(function (qz) {
+                $scope.testInCreation.quizzes.forEach(function (q) {
+                    if (q._id === qz._id) {
+                        qz.checked = true;
+                    }
+                });
+            });
+        }
+
 
         // GRABBING TEST BEING MODIFIED, FROM URL PARAMETERS
         if ($stateParams.id) {
@@ -57,13 +74,11 @@
                 return quiz._id !== qz._id;
             })) {
                 this.testInCreation.quizzes.push(quiz);
-                // trying to persist selection while I am away editing:
-                // testsResource.testInCreation = this.testInCreation;
+                selectService.setTestInCreation(this.testInCreation);
             }
             else {
                 this.testInCreation.quizzes.splice(this.testInCreation.quizzes.indexOf(quiz), 1);
-                // trying to persist selection while I am away editing:
-                // testsResource.testInCreation = this.testInCreation;
+                selectService.setTestInCreation(this.testInCreation);
             }
         };
 
