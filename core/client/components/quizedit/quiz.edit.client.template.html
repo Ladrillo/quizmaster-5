@@ -27,7 +27,7 @@
 
     <md-divider></md-divider>
     <md-tabs md-dynamic-height="true">
-        <md-tab label="Step 1">
+        <md-tab label="Labeling">
             <md-content layout-sm="column" layout-gt-sm="row" layout-margin layout-padding>
                 <gabe-words flex words="subjects" kind="subjectKind" new-word="newSubject" create-word="createSubject()" current-word="currentSubject"
                 update-word="updateSubject()" delete-word="deleteSubject()" checked-words="quizInProgress.subjects" is-checked="isChecked"></gabe-words>
@@ -38,7 +38,7 @@
         </md-tab>
 
         <!--stem and instructions block-->
-        <md-tab label="Step 2">
+        <md-tab label="Content">
             <div layout="row" layout-align="end center">
             <md-button ng-show="!isQuizNew()" class="md-raised md-warn" ng-click="updateQuiz()">Update quiz</md-button>
             <md-button ng-show="isQuizNew()" class="md-raised md-warn" ng-click="createQuiz()">Create quiz</md-button>
@@ -73,8 +73,8 @@
                             <h3 class="md-headline">Falsy Answers</h3>
                             <gabe-sentences sentences="quizInProgress.falsies" sentences-type="falsiesType"></gabe-sentences>
                             <!--empieza el bloque pattern matching-->
-                            <h3 class="md-headline">Regular Expressions</h3>
-                            <gabe-sentences sentences="quizInProgress.regexps" sentences-type="regexpsType"></gabe-sentences>
+                            <!--<h3 class="md-headline">Regular Expressions</h3>
+                            <gabe-sentences sentences="quizInProgress.regexps" sentences-type="regexpsType"></gabe-sentences>-->
                         </md-card-content>
                     </md-card>
                 </div>

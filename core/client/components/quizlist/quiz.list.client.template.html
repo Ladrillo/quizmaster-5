@@ -25,18 +25,17 @@
         </div>
     </div>
 </md-content>
-
 <md-content>
-    <div style="background-color:#BBDEFB;" layout="row" layout-fill layout-padding layout-wrap>
+    <div style="background-color:#E6F1FB;" layout="row" layout-fill layout-padding layout-wrap>
         <div ng-repeat="quiz in quizzes | uncheckedQuiz">
             <gabe-quiztile></gabe-quiztile>
         </div>
 
-        <div layout="column" layout-align="end center">
+        <div layout="row" layout-align="start center">
             <md-input-container>
-                <label>Test Description</label>
-                <input ng-model="description">
-            </md-input-container>
+            <label>Test Description</label>
+            <input ng-model="description">
+        </md-input-container>
             <md-button ng-show="isTestNew()" ng-disabled="newTestButtonDisabled()" class="md-raised md-warn" ng-click="createTest()">Create Test</md-button>
             <md-button ng-show="!isTestNew()" class="md-raised md-warn" ng-click="updateTest()">Update Test</md-button>
         </div>
