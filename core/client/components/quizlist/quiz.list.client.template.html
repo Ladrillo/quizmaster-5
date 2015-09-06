@@ -26,6 +26,8 @@
     </div>
 </md-content>
 <md-content>
+    <h3 class="md-display-1">Create a Test</h3>
+    <h3>Select at least one quiz and type a description</h3>
     <div style="background-color:#E6F1FB;" layout="row" layout-fill layout-padding layout-wrap>
         <div ng-repeat="quiz in quizzes | uncheckedQuiz">
             <gabe-quiztile></gabe-quiztile>
@@ -33,9 +35,9 @@
 
         <div layout="row" layout-align="start center">
             <md-input-container>
-            <label>Test Description</label>
-            <input ng-model="description">
-        </md-input-container>
+                <label>Test Description</label>
+                <input ng-model="description">
+            </md-input-container>
             <md-button ng-show="isTestNew()" ng-disabled="newTestButtonDisabled()" class="md-raised md-warn" ng-click="createTest()">Create Test</md-button>
             <md-button ng-show="!isTestNew()" class="md-raised md-warn" ng-click="updateTest()">Update Test</md-button>
         </div>
