@@ -40,8 +40,8 @@
         <!--stem and instructions block-->
         <md-tab label="Content">
             <div layout="row" layout-align="end center">
-            <md-button ng-disabled="!fieldsFilledIn()" ng-show="!isQuizNew()" class="md-raised md-warn" ng-click="updateQuiz()">Update quiz</md-button>
-            <md-button ng-disabled="!fieldsFilledIn()" ng-show="isQuizNew()" class="md-raised md-warn" ng-click="createQuiz()">Create quiz</md-button>
+            <md-button ng-show="!isQuizNew()" class="md-raised md-warn" ng-click="updateQuiz()">Update quiz</md-button>
+            <md-button ng-show="isQuizNew()" class="md-raised md-warn" ng-click="createQuiz()">Create quiz</md-button>
         </div>
             <md-content layout-lg="column" layout-gt-lg="row" layout-margin layout-padding>
 
