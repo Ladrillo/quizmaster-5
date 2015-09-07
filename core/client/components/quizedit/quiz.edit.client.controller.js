@@ -99,6 +99,19 @@
         };
 
 
+        // DISABLES UPDATE AND CREATE BUTTONS IF RETURNS FALSE
+        $scope.fieldsFilledIn = function () {
+            if (
+                this.quizInProgress.subjects.length > 0 &&
+                this.quizInProgress.keywords.length > 0 &&
+                this.quizInProgress.instructions &&
+                this.quizInProgress.stem &&
+                this.quizInProgress.truthies.length > 0 &&
+                this.quizInProgress.falsies.length > 0) return true;
+            return false;
+        };
+
+
         // CREATING A NEW QUIZ
         $scope.submitted = false;
 

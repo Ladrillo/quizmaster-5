@@ -1,5 +1,5 @@
 <md-content layout="column" layout-margin layout-padding layout-fill>
-    <h3 class="md-display-1">Quiz Edition</h3>
+    <h3 class="md-display-1">Edit Quiz</h3>
     <h3>Creating a great Quiz</h3>
     <div layout-gt-lg="row" layout-padding layout-margin>
         <div flex>
@@ -40,8 +40,8 @@
         <!--stem and instructions block-->
         <md-tab label="Content">
             <div layout="row" layout-align="end center">
-            <md-button ng-show="!isQuizNew()" class="md-raised md-warn" ng-click="updateQuiz()">Update quiz</md-button>
-            <md-button ng-show="isQuizNew()" class="md-raised md-warn" ng-click="createQuiz()">Create quiz</md-button>
+            <md-button ng-disabled="!fieldsFilledIn()" ng-show="!isQuizNew()" class="md-raised md-warn" ng-click="updateQuiz()">Update quiz</md-button>
+            <md-button ng-disabled="!fieldsFilledIn()" ng-show="isQuizNew()" class="md-raised md-warn" ng-click="createQuiz()">Create quiz</md-button>
         </div>
             <md-content layout-lg="column" layout-gt-lg="row" layout-margin layout-padding>
 
