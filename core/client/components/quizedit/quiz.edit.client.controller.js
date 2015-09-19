@@ -56,7 +56,7 @@
                         });
                     });
                 });
-            }
+            } 
 
             // IF CREATING A NEW QUIZ don't do anything
 

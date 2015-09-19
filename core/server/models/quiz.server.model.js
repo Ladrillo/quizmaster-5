@@ -31,13 +31,11 @@ var QuizSchema = new Schema({
     },
 
     truthies: {
-        required: true,
         trim: true,
         type: [String]
     },
 
     falsies: {
-        required: true,
         trim: true,
         type: [String]
     },
